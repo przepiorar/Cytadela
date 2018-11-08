@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardInstance : MonoBehaviour, IClickable
 {
    // public CardVizu viz;
-   //// public GE_Logic currentLogic;
+    public GE_Logic currentLogic;
 
    // void Start()
    // {
@@ -14,23 +14,23 @@ public class CardInstance : MonoBehaviour, IClickable
 
     public void OnClick()
     {
-        //if (currentLogic == null)
-        //{
-        //    return;
-        //}
-        //currentLogic.OnClick(this);
+        if (currentLogic == null)
+        {
+            return;
+        }
+        currentLogic.OnClick(this);
     }
     public void OnHighlight()
     {
-        //if (currentLogic == null)
-        // {
-        //     return;
-        // }
-        // currentLogic.OnClick(this);
-
-        //Debug.Log("dziala");
-        Vector3 s = Vector3.one *1.5f;
-        this.transform.localScale = s;
+        if (currentLogic == null)
+        {
+            return;
+        }
+      //  Debug.Log("highlights");
+        currentLogic.OnHighlight(this);
+        
+       /* Vector3 s = Vector3.one *1.5f;
+        this.transform.localScale = s; */
     }
 
 }

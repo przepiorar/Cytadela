@@ -3,27 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[CreateAssetMenu(menuName = "Action/MouseOverDetection")]
-public class MouseOverDetection : Actions 
+[CreateAssetMenu(menuName = "Action/OnMouseClick")]
+public class OnMouseClick : Actions
 {
     public override void Execute(float d)
     {
-       // if (Input.GetMouseButton(0))
-       // {
+        if (Input.GetMouseButtonDown(0))
+        {
             List<RaycastResult> results = Settings.GetUIObjects();
             foreach (RaycastResult r in results)
             {
                 IClickable c = r.gameObject.GetComponentInParent<IClickable>();
                 if (c != null)
                 {
-                    c.OnHighlight();
+                    c.OnClick();
                     break;
                 }
-                else
-                {
-                    Debug.Log(r.gameObject.name);
-                }
             }
-        //}
+        }
     }
 }
