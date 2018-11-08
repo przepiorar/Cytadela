@@ -6,13 +6,13 @@ using UnityEngine;
 public class HandCard : GE_Logic
 {
    // public GameEvent onCurrentCardSelected;
-   // public CardVariable currentCard;
+   public CardVariable currentCard;
    // public State holdingCard;
 
     public override void OnClick(CardInstance inst)
     {
-        Debug.Log("this card is in hand");
-  //      currentCard.Set(card);
+      //  Debug.Log("this card is in hand");
+       currentCard.Set(inst);
   //      Setting.gameManager.UpdateState(holdingCard);
    //     onCurrentCardSelected.Raise();
     }

@@ -116,6 +116,8 @@
     <Compile Include="Assets\Scripts\Cards\Element.cs" />
     <Compile Include="Assets\Scripts\Cards\ElementImage.cs" />
     <Compile Include="Assets\Scripts\Cards\ElementInt.cs" />
+    <Compile Include="Assets\Scripts\CardVariable.cs" />
+    <Compile Include="Assets\Scripts\CurrentSelected.cs" />
     <Compile Include="Assets\Scripts\GameElements\CardInstance.cs" />
     <Compile Include="Assets\Scripts\GameElements\CardsDown.cs" />
     <Compile Include="Assets\Scripts\GameElements\GE_Logic.cs" />

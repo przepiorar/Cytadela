@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6155bc2d049a342b9912ae73d36c2c, type: 3}
   m_Name: My Hand Card
   m_EditorClassIdentifier: 
+  currentCard: {fileID: 11400000, guid: 8b314642f446c624eb1d90d4e02f8f78, type: 2}
