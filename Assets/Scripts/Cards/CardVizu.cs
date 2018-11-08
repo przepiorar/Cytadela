@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class CardVizu : MonoBehaviour {
     
     public Card card;
-
-    public Image image;
+    public CardVizuProp[] properties; 
 
     private void Start()
     {
@@ -19,10 +18,36 @@ public class CardVizu : MonoBehaviour {
         {
             return;
         }
-        image.sprite = card.art;
+        for (int i = 0; i < properties.Length; i++)
+        {
+            CardProperties cp = c.properties[i];
+            CardVizuProp p = GetProp(cp.element);
+            if (p==null)
+            {
+                continue;
+            }
+            if (cp.element is ElementImage)
+            {
+                p.image.sprite = cp.sprite;
+            }
+            if (cp.element is ElementInt)
+            {
+            }
+        }
     }
-    void OnMouseDown()
+
+    public CardVizuProp GetProp(Element e)
     {
-        Debug.Log("dupa");
+        CardVizuProp result = null;
+        for (int i = 0; i < properties.Length; i++)
+        {
+            if (properties[i].element == e)
+            {
+                result = properties[i];
+                break;
+            }
+
+        }
+        return result;
     }
 }
