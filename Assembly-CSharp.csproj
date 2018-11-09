@@ -107,6 +107,7 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Scripts\Actions\Actions.cs" />
+    <Compile Include="Assets\Scripts\Actions\MouseHoldWithCard.cs" />
     <Compile Include="Assets\Scripts\Actions\MouseOverDetection.cs" />
     <Compile Include="Assets\Scripts\Actions\OnMouseClick.cs" />
     <Compile Include="Assets\Scripts\Cards\Card.cs" />
@@ -116,7 +117,6 @@
     <Compile Include="Assets\Scripts\Cards\Element.cs" />
     <Compile Include="Assets\Scripts\Cards\ElementImage.cs" />
     <Compile Include="Assets\Scripts\Cards\ElementInt.cs" />
-    <Compile Include="Assets\Scripts\CardVariable.cs" />
     <Compile Include="Assets\Scripts\CurrentSelected.cs" />
     <Compile Include="Assets\Scripts\GameElements\CardInstance.cs" />
     <Compile Include="Assets\Scripts\GameElements\CardsDown.cs" />
@@ -126,6 +126,9 @@
     <Compile Include="Assets\Scripts\IClickable.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Settings.cs" />
+    <Compile Include="Assets\Scripts\Variables\CardVariable.cs" />
+    <Compile Include="Assets\Scripts\Variables\GameEvent.cs" />
+    <Compile Include="Assets\Scripts\Variables\GameEventListener.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />

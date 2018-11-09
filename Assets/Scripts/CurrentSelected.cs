@@ -29,7 +29,7 @@ public class CurrentSelected : MonoBehaviour
     private void Start()
     {
         mTransform = this.transform;
-      //  CloseCard();
+        CloseCard(); //bo na początku nie mamy wybranej zadnej karty
     }
 
     public void Update()
