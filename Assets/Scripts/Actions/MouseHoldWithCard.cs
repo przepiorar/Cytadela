@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class MouseHoldWithCard : Actions
 {
     public State playerControlState;
-    public GameEvent OnPlayerControlState;
     public override void Execute(float d)
     {
         bool mouseIsDown = Input.GetMouseButton(0);
@@ -19,7 +18,10 @@ public class MouseHoldWithCard : Actions
                 //check for dropable area
             }
             Settings.gameManager.SetState(playerControlState);
-            OnPlayerControlState.Raise();
+
+            GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
+            CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
+            c.CloseCard();
             return;
         }
     }

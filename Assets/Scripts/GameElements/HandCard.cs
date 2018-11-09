@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "My Card Hand ")]
 public class HandCard : GE_Logic
 {
-    public GameEvent onCurrentCardSelected;
    public CardVariable currentCard;
     public State holdingCard;  //na jaki state ma sie zmienic karta którą wezmiemy
 
@@ -14,7 +13,9 @@ public class HandCard : GE_Logic
       //  Debug.Log("this card is in hand");
        currentCard.Set(inst);
        Settings.gameManager.SetState(holdingCard);
-       onCurrentCardSelected.Raise();
+       GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
+        CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
+        c.LoadCard();
     }
 
     public override void OnHighlight(CardInstance inst)

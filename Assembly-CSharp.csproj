@@ -127,8 +127,6 @@
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Settings.cs" />
     <Compile Include="Assets\Scripts\Variables\CardVariable.cs" />
-    <Compile Include="Assets\Scripts\Variables\GameEvent.cs" />
-    <Compile Include="Assets\Scripts\Variables\GameEventListener.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />
