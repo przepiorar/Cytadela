@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Selected
+  - Area
+  - AreaParent
   layers:
   - Default
   - TransparentFX

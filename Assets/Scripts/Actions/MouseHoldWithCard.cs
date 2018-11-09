@@ -22,6 +22,10 @@ public class MouseHoldWithCard : Actions
             GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
             CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
             c.CloseCard();
+
+            GameObject GameArea= GameObject.FindGameObjectWithTag("Area");
+            GameArea.SetActive(false);
+
             return;
         }
     }

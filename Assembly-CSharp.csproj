@@ -118,12 +118,14 @@
     <Compile Include="Assets\Scripts\Cards\ElementImage.cs" />
     <Compile Include="Assets\Scripts\Cards\ElementInt.cs" />
     <Compile Include="Assets\Scripts\CurrentSelected.cs" />
+    <Compile Include="Assets\Scripts\GameElements\Area.cs" />
     <Compile Include="Assets\Scripts\GameElements\CardInstance.cs" />
     <Compile Include="Assets\Scripts\GameElements\CardsDown.cs" />
     <Compile Include="Assets\Scripts\GameElements\GE_Logic.cs" />
     <Compile Include="Assets\Scripts\GameElements\HandCard.cs" />
     <Compile Include="Assets\Scripts\GameElements\State.cs" />
     <Compile Include="Assets\Scripts\IClickable.cs" />
+    <Compile Include="Assets\Scripts\IDropable.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Settings.cs" />
     <Compile Include="Assets\Scripts\Variables\CardVariable.cs" />
