@@ -12,13 +12,13 @@ public class HandCard : GE_Logic
 
     public override void OnClick(CardInstance inst)
     {
-      //  Debug.Log("this card is in hand");
-       currentCard.Set(inst);
-       Settings.gameManager.SetState(holdingCard);
-       GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
-       CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
-        
-       c.LoadCard();
+        //  Debug.Log("this card is in hand");
+        currentCard.Set(inst);
+        Settings.gameManager.SetState(holdingCard);
+
+        GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
+        CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
+        c.LoadCard();
 
         GameObject GameArea = GameObject.FindGameObjectWithTag("AreaParent");
         GameArea.SetActiveRecursively(true);

@@ -7,16 +7,27 @@ using UnityEngine.EventSystems;
 public class MouseHoldWithCard : Actions
 {
     public State playerControlState;
+    public CardVariable currentCard;
     public override void Execute(float d)
     {
         bool mouseIsDown = Input.GetMouseButton(0);
         if (!mouseIsDown)
         {
             List<RaycastResult> results = Settings.GetUIObjects();
+            
             foreach (RaycastResult r in results)
             {
-                //check for dropable area
+                Area a = r.gameObject.GetComponentInParent<Area>();
+                if (a !=null)
+                {
+                    a.OnDrop();
+                    break;
+                }
             }
+
+            currentCard.value.gameObject.SetActive(true);
+            currentCard.value = null; //po co ?
+            
             Settings.gameManager.SetState(playerControlState);
 
             GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
