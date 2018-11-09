@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Area : MonoBehaviour, IDropable
+public class Area : MonoBehaviour
 {
     public CardVariable currentCard;
     public GameObject areaGrid;
