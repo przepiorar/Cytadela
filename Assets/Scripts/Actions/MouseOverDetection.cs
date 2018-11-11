@@ -14,7 +14,7 @@ public class MouseOverDetection : Actions
         {
              c = r.gameObject.GetComponentInParent<IClickable>();
             if (c != null)
-            {
+            {   
                 c.OnHighlight();
                 break;
             }

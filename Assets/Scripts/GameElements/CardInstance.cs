@@ -26,11 +26,16 @@ public class CardInstance : MonoBehaviour, IClickable
         {
             return;
         }
-      //  Debug.Log("highlights");
+        Debug.Log("highlights");
         currentLogic.OnHighlight(this);
-        
-       /* Vector3 s = Vector3.one *1.5f;
-        this.transform.localScale = s; */
+            StartCoroutine(Czekaj());
+    }
+    IEnumerator Czekaj()
+    {
+        Vector3 s = Vector3.one * 1.5f;
+        this.transform.localScale = s;
+        yield return new WaitForEndOfFrame();
+        this.transform.localScale = s / 3 * 2;
     }
 
 }

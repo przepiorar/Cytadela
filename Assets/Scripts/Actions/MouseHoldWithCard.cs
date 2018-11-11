@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class MouseHoldWithCard : Actions
 {
     public State playerControlState;
-   // public CardVariable currentCard;
+    public CardVariable currentCard;
     public override void Execute(float d)
     {
         bool mouseIsDown = Input.GetMouseButton(0);
@@ -24,8 +24,8 @@ public class MouseHoldWithCard : Actions
                     break;
                 }
             }
-           // currentCard.value.gameObject.SetActive(true);
-           // currentCard.value = null; //po co ?
+            currentCard.value.gameObject.SetActive(true);  //wracanie karty na rękę
+            currentCard.value = null; 
             
             Settings.gameManager.SetState(playerControlState);
 

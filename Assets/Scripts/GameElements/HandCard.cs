@@ -27,6 +27,5 @@ public class HandCard : GE_Logic
 
     public override void OnHighlight(CardInstance inst)
     {
-
     }
 }
