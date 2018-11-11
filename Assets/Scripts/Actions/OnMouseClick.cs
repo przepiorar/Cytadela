@@ -16,6 +16,7 @@ public class OnMouseClick : Actions
                 IClickable c = r.gameObject.GetComponentInParent<IClickable>();
                 if (c != null)
                 {
+                    Settings.time = 0;
                     c.OnClick();
                     break;
                 }

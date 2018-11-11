@@ -7,6 +7,7 @@ TagManager:
   - Selected
   - Area
   - AreaParent
+  - Selected2
   layers:
   - Default
   - TransparentFX
