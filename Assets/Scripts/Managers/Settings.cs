@@ -15,4 +15,14 @@ public static class Settings
         EventSystem.current.RaycastAll(pointerData, results);
         return results;
     }
+
+    public static void SetParentCard(Transform c, Transform p)
+    {
+        c.SetParent(p.transform);
+        c.localPosition = Vector3.zero;
+        c.localEulerAngles = Vector3.zero;
+        c.localScale = Vector3.one;
+    }
+
+
 }

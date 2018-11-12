@@ -10,7 +10,6 @@ public class MouseHighlight : Actions
     public CardVariable currentCard;
     public override void Execute(float d)
     {
-        bool mouseIsDown = Input.GetMouseButton(0);
         // PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
        // while (true)
        // {

@@ -8,10 +8,10 @@ public class CardVizu : MonoBehaviour {
     public Card card;
     public CardVizuProp[] properties; 
 
-    private void Start()
-    {
-        LoadCard(card);
-    }
+    //private void Start()
+    //{
+    //    LoadCard(card);
+    //}
     public void LoadCard(Card c)
     {
         if (c == null)

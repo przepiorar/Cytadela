@@ -128,6 +128,7 @@
     <Compile Include="Assets\Scripts\GameElements\State.cs" />
     <Compile Include="Assets\Scripts\IClickable.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Managers\Settings.cs" />
     <Compile Include="Assets\Scripts\Variables\CardVariable.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
