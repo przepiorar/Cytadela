@@ -101,10 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1af8c359448c564d87389497b6ee476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: cac107d74ad15ec429efbffa093e4f73, type: 2}
-  properties:
-  - image: {fileID: 114669942525080962}
-    element: {fileID: 11400000, guid: d4613134d32ba5a49887c2836a7dc0b8, type: 2}
+  art: {fileID: 114669942525080962}
+  card: {fileID: 0}
 --- !u!114 &114669942525080962
 MonoBehaviour:
   m_ObjectHideFlags: 1
