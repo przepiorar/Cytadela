@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
             CardVizu viz = go.GetComponent<CardVizu>();
             viz.LoadCard(GetCardInst(currentPlayer.startingCards[i]));
             CardInstance inst = go.GetComponent<CardInstance>();
+            inst.currentLogic = currentPlayer.startingLogic;
             Settings.SetParentCard(go.transform,currentPlayer.handGrid.transform);
         }
     }
