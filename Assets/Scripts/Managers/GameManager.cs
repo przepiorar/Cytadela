@@ -6,45 +6,41 @@ public class GameManager : MonoBehaviour
 {
     public State currentState;
     public PlayerController currentPlayer;
-
-    public Card[] allCards;
-    Dictionary<int, Card> cardDict = new Dictionary<int, Card>();
+    
+    public List<Card> allCards = new List<Card>();
+    Stack<Card> stackCards = new Stack<Card>();
     public GameObject cardPrefab;
 
     private void Start()
     {
         Settings.gameManager = this;
-        cardDict.Clear();
-        for (int i = 0; i < allCards.Length; i++)
+        int a;
+
+
+        for (int i = allCards.Count - 1; i >= 0; i--)
         {
-            cardDict.Add(i, allCards[i]);
+            a = Random.Range(0, i + 1);
+            stackCards.Push(allCards[a]);
+            allCards.RemoveAt(a);
         }
-        CreateStartingCard();
-
+        PickCard();
+        PickCard();
+        PickCard();
+        PickCard();
+        PickCard();
 
     }
 
-    void CreateStartingCard()
+    void PickCard()
     {
-        for (int i = 0; i < currentPlayer.startingCards.Length; i++)
-        {
-            GameObject go = Instantiate(cardPrefab) as GameObject;
-            CardVizu viz = go.GetComponent<CardVizu>();
-            viz.LoadCard(GetCardInst(currentPlayer.startingCards[i]));
-            CardInstance inst = go.GetComponent<CardInstance>();
-            inst.currentLogic = currentPlayer.startingLogic;
-            Settings.SetParentCard(go.transform,currentPlayer.handGrid.transform);
-        }
+        GameObject card = Instantiate(cardPrefab) as GameObject;
+        CardVizu viz = card.GetComponent<CardVizu>();
+        viz.LoadCard(stackCards.Pop());
+        CardInstance inst = card.GetComponent<CardInstance>();
+        inst.currentLogic = currentPlayer.startingLogic;
+        Settings.SetParentCard(card.transform, currentPlayer.handGrid.transform);
     }
 
-    Card GetCardInst(int id)
-    {
-        Card c = null;
-        cardDict.TryGetValue(id, out c);
-        Card newCard = c ;
-        return newCard;
-
-    }
 
     private void Update()
     {
