@@ -6,45 +6,76 @@ public class GameManager : MonoBehaviour
 {
     public State currentState;
     public PlayerController currentPlayer;
-    
+
+    public List<PlayerController> allPlayers = new List<PlayerController>();    
     public List<Card> allCards = new List<Card>();
-    Stack<Card> stackCards = new Stack<Card>();
     public GameObject cardPrefab;
+    public Sprite rewers;
+
+    [System.NonSerialized]
+    public Stack<Card> stackCards = new Stack<Card>();
+    [System.NonSerialized]
+    public bool koniecTury;
+    [System.NonSerialized]
+    public int currentPlayerId;
 
     private void Start()
     {
         Settings.gameManager = this;
         int a;
 
-
         for (int i = allCards.Count - 1; i >= 0; i--)
         {
             a = Random.Range(0, i + 1);
             stackCards.Push(allCards[a]);
+            stackCards.Push(allCards[a]);
             allCards.RemoveAt(a);
         }
-        PickCard();
-        PickCard();
-        PickCard();
-        PickCard();
-        PickCard();
-
+        foreach (PlayerController player in allPlayers)
+        {
+            player.PickCard();
+            player.PickCard();
+            player.PickCard();
+            player.PickCard();
+        }
+        koniecTury = false;
+        currentPlayerId = 0;
+        //currentPlayer.PickCard();
+        //currentPlayer.PickCard();
+        //currentPlayer.PickCard();
+        //currentPlayer.PickCard();
     }
 
-    void PickCard()
+    public void KoniecTury()
     {
-        GameObject card = Instantiate(cardPrefab) as GameObject;
-        CardVizu viz = card.GetComponent<CardVizu>();
-        viz.LoadCard(stackCards.Pop());
-        CardInstance inst = card.GetComponent<CardInstance>();
-        inst.currentLogic = currentPlayer.startingLogic;
-        Settings.SetParentCard(card.transform, currentPlayer.handGrid.transform);
+      //  currentPlayer.PickCard();
+        koniecTury = true;
     }
 
 
     private void Update()
     {
         currentState.Tick(Time.deltaTime);
+        if (koniecTury)
+        {
+            if (currentPlayerId<allPlayers.Count-1)
+            {
+                currentPlayer.OffLogic();
+                currentPlayerId++;
+                currentPlayer = allPlayers[currentPlayerId];
+                koniecTury =false;
+                currentPlayer.OnLogic();
+              //  allPlayers[1].handGrid = allPlayers[0].handGrid;
+            }
+            else
+            {
+                currentPlayer.OffLogic();
+                currentPlayerId = 0;
+                currentPlayer = allPlayers[currentPlayerId];
+                koniecTury = false;
+                currentPlayer.OnLogic();
+            }
+        }
     }
 
     public void SetState(State state)
