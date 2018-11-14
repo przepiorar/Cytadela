@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         foreach (CardInstance inst in cardsHand)
         {
             inst.currentLogic = null;
-            inst.viz.art.sprite = Settings.gameManager.rewers;
+            inst.viz.art.sprite = Settings.gameManager.rewers;            
         }
     }
     public void OnLogic()
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         foreach (CardInstance inst in cardsHand)
         {
             inst.currentLogic = startingLogic;
-            inst.viz.art.sprite = inst.viz.card.sprite;
+            inst.viz.art.sprite = inst.viz.card.sprite;            
         }
     }
 }

@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     {
         Settings.gameManager = this;
         int a;
+        koniecTury = false;
+        currentPlayerId = 0;
+        currentPlayer = allPlayers[0];
 
         for (int i = allCards.Count - 1; i >= 0; i--)
         {
@@ -38,12 +41,7 @@ public class GameManager : MonoBehaviour
             player.PickCard();
             player.PickCard();
         }
-        koniecTury = false;
-        currentPlayerId = 0;
-        //currentPlayer.PickCard();
-        //currentPlayer.PickCard();
-        //currentPlayer.PickCard();
-        //currentPlayer.PickCard();
+      //  allPlayers[1].OffLogic();
     }
 
     public void KoniecTury()
@@ -56,25 +54,25 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentState.Tick(Time.deltaTime);
+        allPlayers[1 - currentPlayerId].OffLogic();
         if (koniecTury)
         {
+            currentPlayer.OffLogic();
             if (currentPlayerId<allPlayers.Count-1)
             {
-                currentPlayer.OffLogic();
                 currentPlayerId++;
                 currentPlayer = allPlayers[currentPlayerId];
-                koniecTury =false;
                 currentPlayer.OnLogic();
-              //  allPlayers[1].handGrid = allPlayers[0].handGrid;
+                Settings.MirrorRotation(-1);
             }
             else
             {
-                currentPlayer.OffLogic();
                 currentPlayerId = 0;
                 currentPlayer = allPlayers[currentPlayerId];
-                koniecTury = false;
                 currentPlayer.OnLogic();
+                Settings.MirrorRotation(1);
             }
+            koniecTury = false;
         }
     }
 

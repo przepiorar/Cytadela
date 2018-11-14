@@ -24,5 +24,18 @@ public static class Settings
         c.localScale = Vector3.one;
     }
 
+    public static void MirrorRotation(int a)
+    {
+        GameObject[] test = GameObject.FindGameObjectsWithTag("test");
+        foreach (GameObject item in test)
+        {
+            item.transform.localScale = new Vector3(1, a*1, 1);
+        }
+        gameManager.currentPlayer.tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
+        gameManager.allPlayers[1-gameManager.currentPlayerId].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
+        GameObject.FindGameObjectWithTag("Selected").transform.localScale = new Vector3(1, a*1, 1);
+        GameObject.FindGameObjectWithTag("Selected2").transform.localScale = new Vector3(1, a*1, 1);
+    }
+
 
 }

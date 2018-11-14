@@ -21,6 +21,8 @@ public class Area : MonoBehaviour
         Settings.SetParentCard(currentCard.value.transform, areaGrid.transform);
         currentCard.value.gameObject.SetActive(true);
         currentCard.value.currentLogic = cardDownLogic;
+        Settings.gameManager.currentPlayer.cardsDown.Add(currentCard.value);
+        Settings.gameManager.currentPlayer.cardsHand.Remove(currentCard.value);
         // Debug.Log("place card down");
     }
 }
