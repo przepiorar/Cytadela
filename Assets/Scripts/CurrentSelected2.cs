@@ -17,7 +17,7 @@ public class CurrentSelected2 : MonoBehaviour
             return;
         }
 
-        currentCard.value.gameObject.SetActive(false);
+       // currentCard.value.gameObject.SetActive(false);
         cardViz.LoadCard(currentCard.value.viz.card);
         cardViz.gameObject.SetActive(true);
         mTransform.position = Input.mousePosition+new Vector3(0,150,0);

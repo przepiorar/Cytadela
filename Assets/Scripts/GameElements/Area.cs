@@ -4,7 +4,6 @@ using System.Collections;
 public class Area : MonoBehaviour
 {
     public CardVariable currentCard;
-    public GameObject areaGrid;
     public GE_Logic cardDownLogic;
 
     public void OnDrop()
@@ -18,7 +17,7 @@ public class Area : MonoBehaviour
         //currentCard.value.transform.localPosition = Vector3.zero;
         //currentCard.value.transform.localEulerAngles = Vector3.zero;
         //currentCard.value.transform.localScale = Vector3.one;
-        Settings.SetParentCard(currentCard.value.transform, areaGrid.transform);
+        Settings.SetParentCard(currentCard.value.transform, Settings.gameManager.currentPlayer.tableGrid.transform);
         currentCard.value.gameObject.SetActive(true);
         currentCard.value.currentLogic = cardDownLogic;
         Settings.gameManager.currentPlayer.cardsDown.Add(currentCard.value);

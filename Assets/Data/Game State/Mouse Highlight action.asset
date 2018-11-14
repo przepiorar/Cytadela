@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d4141a8314ee3d409a3a90e4042254a, type: 3}
-  m_Name: Mouse Highlight act
+  m_Name: Mouse Highlight action
   m_EditorClassIdentifier: 
   playerControlState: {fileID: 11400000, guid: b833ca67f5c1f0f4e8588f55dfd4585c, type: 2}
   currentCard: {fileID: 11400000, guid: 8b314642f446c624eb1d90d4e02f8f78, type: 2}

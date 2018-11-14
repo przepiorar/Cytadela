@@ -44,10 +44,13 @@ public class GameManager : MonoBehaviour
       //  allPlayers[1].OffLogic();
     }
 
-    public void KoniecTury()
+    public void EndTurnButton()
     {
-      //  currentPlayer.PickCard();
         koniecTury = true;
+    }
+    public void PickCardButton()
+    {
+        currentPlayer.PickCard();
     }
 
 

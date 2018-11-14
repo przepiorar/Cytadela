@@ -22,7 +22,7 @@ public class MouseHighlight : Actions
                 //List<RaycastResult> results = Settings.GetUIObjects();
 
             
-                currentCard.value.gameObject.SetActive(true);  //wracanie karty na rękę
+             //   currentCard.value.gameObject.SetActive(true);  //wracanie karty na rękę
                 currentCard.value = null;
 
                 Settings.gameManager.SetState(playerControlState);
