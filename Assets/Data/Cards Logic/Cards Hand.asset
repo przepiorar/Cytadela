@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6155bc2d049a342b9912ae73d36c2c, type: 3}
+  m_Name: Cards Hand
+  m_EditorClassIdentifier: 
+  currentCard: {fileID: 11400000, guid: 8b314642f446c624eb1d90d4e02f8f78, type: 2}
+  holdingCard: {fileID: 11400000, guid: 93cc8770509faec46a55942ec2c7b4f8, type: 2}
+  highlightCard: {fileID: 11400000, guid: be22b10911803c04caa6a008a5219c5c, type: 2}

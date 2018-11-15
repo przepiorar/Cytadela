@@ -107,10 +107,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 948
-  m_MinSize: {x: 681, y: 321}
-  m_MaxSize: {x: 12006, y: 8021}
+  m_MinSize: {x: 711, y: 492}
+  m_MaxSize: {x: 18006, y: 14042}
   vertical: 0
-  controlID: 9
+  controlID: 78
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -156,10 +156,10 @@ MonoBehaviour:
     y: 0
     width: 1271
     height: 948
-  m_MinSize: {x: 204, y: 321}
-  m_MaxSize: {x: 4004, y: 8021}
+  m_MinSize: {x: 234, y: 492}
+  m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 10
+  controlID: 44
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -205,14 +205,14 @@ MonoBehaviour:
     y: 664
     width: 1271
     height: 284
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 234, y: 271}
+  m_MaxSize: {x: 10004, y: 10021}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
   - {fileID: 11}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -425,9 +425,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 1a0f0000
-    m_LastClickedID: 3866
-    m_ExpandedIDs: e6fbffff00000000720e0000ee0e00001a0f0000260f0000
+    m_SelectedIDs: 960d0000
+    m_LastClickedID: 0
+    m_ExpandedIDs: e2c5f8ff86deffff92fbffffbcfbffffc8fbffffe6fbffff00000000660e0000720e00008e0e0000b40e0000c00e0000d40e0000ee0e00001a0f00002e0f0000420f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -477,14 +477,14 @@ MonoBehaviour:
     height: 643
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 723.6976216323231
+  lastFramingTime: 14429.07611975036
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.0027454458, y: 12.00366, z: 0.009748399}
+    m_Target: {x: 0.090507865, y: 10.272941, z: -0.0497984}
     speed: 2
-    m_Value: {x: -0.0027454458, y: 12.00366, z: 0.009748399}
+    m_Value: {x: 0.090507865, y: 10.272941, z: -0.0497984}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -512,19 +512,19 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.56165886, y: -0.0049636317, z: 0.003368511, w: -0.8273471}
+    m_Target: {x: 0.6877578, y: -0.003264763, z: 0.0030955153, w: 0.7259264}
     speed: 2
-    m_Value: {x: -0.5616589, y: -0.004963632, z: 0.0033685113, w: -0.82734716}
+    m_Value: {x: 0.68775773, y: -0.0032647625, z: 0.0030955148, w: 0.72592634}
   m_Size:
-    m_Target: 0.31350833
+    m_Target: 1.3632119
     speed: 2
-    m_Value: 0.31350833
+    m_Value: 1.3632119
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: -0.19257759, y: 0.7770975, z: -0.28349456, w: -0.5278865}
+  m_LastSceneViewRotation: {x: 0.28869691, y: -0.710929, z: -0.46689278, w: -0.43959686}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -567,19 +567,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Images
+    - Assets/Data/Game Elements
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Images
+  - Assets/Data/Game Elements
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\VOBIS\Documents\GitHub\Cytadela-2tut
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 99.89119}
-    m_SelectedIDs: d60d0000
-    m_LastClickedID: 3542
+    scrollPos: {x: 0, y: 102.05181}
+    m_SelectedIDs: 220b0000
+    m_LastClickedID: 2850
     m_ExpandedIDs: 00000000340a00004e0b0000920b0000b20b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -633,24 +633,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 320f0000
-    m_LastClickedInstanceID: 3890
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 800900001cf3fbff863400002a0d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: CurrentSelected
-      m_OriginalName: CurrentSelected
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 2516
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 9}
     m_CreateAssetUtility:

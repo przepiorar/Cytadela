@@ -29,7 +29,8 @@ public static class Settings
         GameObject[] test = GameObject.FindGameObjectsWithTag("test");
         foreach (GameObject item in test)
         {
-            item.transform.localScale = new Vector3(1, a*1, 1);
+          //  item.transform.localScale = new Vector3(1, a*1, 1);
+            item.transform.localScale = new Vector3(item.transform.localScale.x, a * Mathf.Abs( item.transform.localScale.y), item.transform.localScale.z);
         }
         gameManager.currentPlayer.tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
         gameManager.allPlayers[1-gameManager.currentPlayerId].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);

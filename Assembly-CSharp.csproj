@@ -112,12 +112,7 @@
     <Compile Include="Assets\Scripts\Actions\MouseOverDetection.cs" />
     <Compile Include="Assets\Scripts\Actions\OnMouseClick.cs" />
     <Compile Include="Assets\Scripts\Cards\Card.cs" />
-    <Compile Include="Assets\Scripts\Cards\CardProperties.cs" />
     <Compile Include="Assets\Scripts\Cards\CardVizu.cs" />
-    <Compile Include="Assets\Scripts\Cards\CardVizuProp.cs" />
-    <Compile Include="Assets\Scripts\Cards\Element.cs" />
-    <Compile Include="Assets\Scripts\Cards\ElementImage.cs" />
-    <Compile Include="Assets\Scripts\Cards\ElementInt.cs" />
     <Compile Include="Assets\Scripts\CurrentSelected.cs" />
     <Compile Include="Assets\Scripts\CurrentSelected2.cs" />
     <Compile Include="Assets\Scripts\GameElements\Area.cs" />

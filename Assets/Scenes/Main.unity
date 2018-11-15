@@ -3350,6 +3350,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: daa0b90a180b3b84581b0164620916cb, type: 2}
   - {fileID: 11400000, guid: 67425f587da62714bba3975ade9e65fd, type: 2}
   - {fileID: 11400000, guid: 82bd9c5132fe8b645be08447e8252104, type: 2}
+  - {fileID: 11400000, guid: 957d0b1fa2afb5c4bae26a1ae693fe90, type: 2}
   cardPrefab: {fileID: 1748247249969324, guid: 08232f578e8c8224a8e11410d14fd7d6, type: 2}
   rewers: {fileID: 21300000, guid: 0b0f4a5560e52584b8561c67df8983c6, type: 3}
 --- !u!1001 &2088493642

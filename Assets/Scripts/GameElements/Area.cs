@@ -12,11 +12,6 @@ public class Area : MonoBehaviour
         {
             return;
         }
-        ////place card down
-        //currentCard.value.transform.SetParent(areaGrid.transform);
-        //currentCard.value.transform.localPosition = Vector3.zero;
-        //currentCard.value.transform.localEulerAngles = Vector3.zero;
-        //currentCard.value.transform.localScale = Vector3.one;
         Settings.SetParentCard(currentCard.value.transform, Settings.gameManager.currentPlayer.tableGrid.transform);
         currentCard.value.gameObject.SetActive(true);
         currentCard.value.currentLogic = cardDownLogic;

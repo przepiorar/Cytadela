@@ -23,9 +23,9 @@ public class GameManager : MonoBehaviour
     {
         Settings.gameManager = this;
         int a;
-        koniecTury = false;
-        currentPlayerId = 0;
-        currentPlayer = allPlayers[0];
+        koniecTury = true;
+        currentPlayerId = 1;
+        currentPlayer = allPlayers[1];
 
         for (int i = allCards.Count - 1; i >= 0; i--)
         {
@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
             player.PickCard();
             player.PickCard();
         }
-      //  allPlayers[1].OffLogic();
     }
 
     public void EndTurnButton()
@@ -57,7 +56,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentState.Tick(Time.deltaTime);
-        allPlayers[1 - currentPlayerId].OffLogic();
         if (koniecTury)
         {
             currentPlayer.OffLogic();

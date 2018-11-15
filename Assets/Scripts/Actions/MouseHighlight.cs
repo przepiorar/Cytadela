@@ -11,18 +11,13 @@ public class MouseHighlight : Actions
     public override void Execute(float d)
     {
         // PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
-       // while (true)
-       // {
        
         //   Czekaj();
          //   if (Input.mousePosition != currentCard.value.viz.transform.position)
           if(Input.GetMouseButton(0))
-            // Czekaj();
             {
                 //List<RaycastResult> results = Settings.GetUIObjects();
-
-            
-             //   currentCard.value.gameObject.SetActive(true);  //wracanie karty na rękę
+                
                 currentCard.value = null;
 
                 Settings.gameManager.SetState(playerControlState);
@@ -30,10 +25,7 @@ public class MouseHighlight : Actions
                 GameObject GameCard = GameObject.FindGameObjectWithTag("Selected2");
                 CurrentSelected2 c = GameCard.GetComponent<CurrentSelected2>();
                 c.CloseCard();
-               // break;
-                
             }
-     //   }
         return;
     }
 

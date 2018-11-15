@@ -20,7 +20,10 @@ public class CurrentSelected2 : MonoBehaviour
        // currentCard.value.gameObject.SetActive(false);
         cardViz.LoadCard(currentCard.value.viz.card);
         cardViz.gameObject.SetActive(true);
-        mTransform.position = Input.mousePosition+new Vector3(0,150,0);
+        //if (Input.mousePosition.y < -300)
+        //    mTransform.position = Input.mousePosition + new Vector3(0, 450, 0);
+        //else
+            mTransform.position = Input.mousePosition + new Vector3(0, 150, 0);  //zrobic sztuczke z sign
         Vector3 s = Vector3.one * 2;
         cardViz.gameObject.transform.localScale =s;
     }
