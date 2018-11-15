@@ -20,7 +20,12 @@ public class MouseHoldWithCard : Actions
                 Area a = r.gameObject.GetComponentInParent<Area>();
                 if (a !=null)
                 {
-                    a.OnDrop();
+                    if (Settings.gameManager.currentPlayer.currentGold >= currentCard.value.viz.card.value)
+                    {
+                        a.OnDrop();
+                        Settings.gameManager.currentPlayer.currentGold -= currentCard.value.viz.card.value;
+                        Settings.gameManager.currentPlayer.UpdateGold();
+                    }
                     break;
                 }
             }

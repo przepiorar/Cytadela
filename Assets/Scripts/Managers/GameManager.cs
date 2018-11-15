@@ -12,10 +12,14 @@ public class GameManager : MonoBehaviour
     public GameObject cardPrefab;
     public Sprite rewers;
 
+    public int startingGold;
+
     [System.NonSerialized]
     public Stack<Card> stackCards = new Stack<Card>();
     [System.NonSerialized]
     public bool koniecTury;
+    [System.NonSerialized]
+    public bool picked;
     [System.NonSerialized]
     public int currentPlayerId;
 
@@ -24,6 +28,7 @@ public class GameManager : MonoBehaviour
         Settings.gameManager = this;
         int a;
         koniecTury = true;
+        picked = false;
         currentPlayerId = 1;
         currentPlayer = allPlayers[1];
 
@@ -31,15 +36,16 @@ public class GameManager : MonoBehaviour
         {
             a = Random.Range(0, i + 1);
             stackCards.Push(allCards[a]);
-            stackCards.Push(allCards[a]);
             allCards.RemoveAt(a);
         }
         foreach (PlayerController player in allPlayers)
         {
+            player.currentGold = startingGold;
             player.PickCard();
             player.PickCard();
             player.PickCard();
             player.PickCard();
+            player.UpdateGold();
         }
     }
 
@@ -49,7 +55,20 @@ public class GameManager : MonoBehaviour
     }
     public void PickCardButton()
     {
-        currentPlayer.PickCard();
+        if (!picked)
+        {
+            currentPlayer.PickCard();
+            picked = true;
+        }
+    }
+    public void PickGoldButton()
+    {
+        if (!picked)
+        {
+            currentPlayer.currentGold += 2;
+            currentPlayer.UpdateGold();
+            picked = true;
+        }
     }
 
 
@@ -74,6 +93,7 @@ public class GameManager : MonoBehaviour
                 Settings.MirrorRotation(1);
             }
             koniecTury = false;
+            picked = false;
         }
     }
 

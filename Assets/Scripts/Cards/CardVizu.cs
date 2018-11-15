@@ -19,7 +19,6 @@ public class CardVizu : MonoBehaviour {
             return;
         }
         card = c;
-        art.sprite = c.sprite;
-        
+        art.sprite = c.sprite;        
     }
 }
