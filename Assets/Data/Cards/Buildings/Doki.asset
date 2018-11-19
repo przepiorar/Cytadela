@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0a7d21f2b32504d80b1f32c84be7b5, type: 3}
+  m_Name: Doki
+  m_EditorClassIdentifier: 
+  colour: green
+  value: 3
+  sprite: {fileID: 21300000, guid: 107eb703cf41f2446bde8fd74cf41cf4, type: 3}

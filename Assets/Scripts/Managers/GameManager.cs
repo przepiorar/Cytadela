@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
     public Sprite rewers;
 
     public int startingGold;
+    public int cardsToEndGame;
+    public Text endText;
 
     [System.NonSerialized]
     public Stack<Card> stackCards = new Stack<Card>();
@@ -22,13 +25,17 @@ public class GameManager : MonoBehaviour
     public bool picked;
     [System.NonSerialized]
     public int currentPlayerId;
+    [System.NonSerialized]
+    public bool endGame;
 
     private void Start()
     {
         Settings.gameManager = this;
         int a;
+        endText.text = "";
         koniecTury = true;
         picked = false;
+        endGame = false;
         currentPlayerId = 1;
         currentPlayer = allPlayers[1];
 
@@ -75,26 +82,47 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentState.Tick(Time.deltaTime);
-        if (koniecTury)
-        {
-            currentPlayer.OffLogic();
-            if (currentPlayerId<allPlayers.Count-1)
+        // if (!endGame)
+        // {
+            if (koniecTury)
             {
-                currentPlayerId++;
-                currentPlayer = allPlayers[currentPlayerId];
-                currentPlayer.OnLogic();
-                Settings.MirrorRotation(-1);
+                currentPlayer.OffLogic();
+                if (currentPlayerId < allPlayers.Count - 1)
+                {
+                    currentPlayerId++;
+                    currentPlayer = allPlayers[currentPlayerId];
+                    currentPlayer.OnLogic();
+                    Settings.MirrorRotation(-1);
+                }
+                else
+                {
+                if (endGame)
+                {
+                    int score = 0;
+                    int index = 0;
+                    endText.text = "Koniec gry! \n";
+                    foreach (PlayerController pl in allPlayers)
+                    {
+                        score = 0;
+                        for (int i = 0; i < pl.cardsDown.Count; i++)
+                        {
+                            score += pl.cardsDown[i].viz.card.value;
+                        }
+                        endText.text += "Gracz " +( index + 1) + " uzyskał: " + score  + " punktów \n";
+                        index++;
+                    }
+                }
+                else
+                {
+                    currentPlayerId = 0;
+                    currentPlayer = allPlayers[currentPlayerId];
+                    currentPlayer.OnLogic();
+                    Settings.MirrorRotation(1);
+                }
             }
-            else
-            {
-                currentPlayerId = 0;
-                currentPlayer = allPlayers[currentPlayerId];
-                currentPlayer.OnLogic();
-                Settings.MirrorRotation(1);
+                koniecTury = false;
+                picked = false;
             }
-            koniecTury = false;
-            picked = false;
-        }
     }
 
     public void SetState(State state)

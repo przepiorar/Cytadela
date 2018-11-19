@@ -17,6 +17,10 @@ public class Area : MonoBehaviour
         currentCard.value.currentLogic = cardDownLogic;
         Settings.gameManager.currentPlayer.cardsDown.Add(currentCard.value);
         Settings.gameManager.currentPlayer.cardsHand.Remove(currentCard.value);
+        if (Settings.gameManager.currentPlayer.cardsDown.Count == Settings.gameManager.cardsToEndGame)
+        {
+            Settings.gameManager.endGame = true;
+        }
         // Debug.Log("place card down");
     }
 }
