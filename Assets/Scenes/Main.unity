@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.98349965, b: 0.02352941, a: 1}
+    m_HighlightedColor: {r: 0.9150943, g: 0.54902494, b: 0.42733178, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5421413, g: 0.5666694, b: 0.8773585, a: 1}
+  m_Color: {r: 0.3962264, g: 0.016820924, b: 0.053850893, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2006,6 +2006,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114986987377960904, guid: 6b9d4069538c94444bcaa582db376019,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e436a7341a730bc49b781f00d6a9086e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9d4069538c94444bcaa582db376019, type: 2}
   m_IsPrefabAsset: 0
@@ -2667,6 +2673,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114986987377960904, guid: 6b9d4069538c94444bcaa582db376019,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e436a7341a730bc49b781f00d6a9086e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9d4069538c94444bcaa582db376019, type: 2}
   m_IsPrefabAsset: 0
@@ -2927,6 +2939,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114986987377960904, guid: 6b9d4069538c94444bcaa582db376019,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e436a7341a730bc49b781f00d6a9086e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9d4069538c94444bcaa582db376019, type: 2}
   m_IsPrefabAsset: 0
@@ -3009,7 +3027,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6759c2190d9de9b4bab3f991a1409592, type: 2}
   - {fileID: 11400000, guid: 963cdb9faa034ec4d9b815711f36a090, type: 2}
   cardPrefab: {fileID: 1748247249969324, guid: 08232f578e8c8224a8e11410d14fd7d6, type: 2}
-  rewers: {fileID: 21300000, guid: 0b0f4a5560e52584b8561c67df8983c6, type: 3}
+  rewers: {fileID: 21300000, guid: e436a7341a730bc49b781f00d6a9086e, type: 3}
   startingGold: 2
   cardsToEndGame: 2
   endText: {fileID: 1547184967}
