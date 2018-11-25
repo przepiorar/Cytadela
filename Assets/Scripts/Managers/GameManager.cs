@@ -105,8 +105,23 @@ public class GameManager : MonoBehaviour
                 currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
                 if (heroTurn)
                 {
-
-                    allPlayers[0].heroCard.art.sprite = rewersHero;
+                    endTurn = false;
+                    //usuniecie z puli bohaterow postaci wybranej przez gracza
+                    Card tmpCard = HeroPickGrid[HeroPickGrid.Count - 1].card;
+                    int index=0;
+                    for (int i = 0; i < HeroPickGrid.Count; i++)
+                    {
+                        if (HeroPickGrid[i].card == allPlayers[currentPlayerId-1].currentHero)
+                        {
+                            index = i;
+                            break;
+                        }
+                    }
+                    HeroPickGrid[index].card = tmpCard;
+                    HeroPickGrid[index].LoadCard(tmpCard);
+                    HeroPickGrid[5].gameObject.SetActive(false);
+                    //ukrycie wybranego bohatera 
+                    allPlayers[currentPlayerId-1].heroCard.art.sprite = rewersHero;
                     foreach (CardInstance inst in currentPlayer.cardsHand)
                     {
                         inst.currentLogic = null;
@@ -120,11 +135,11 @@ public class GameManager : MonoBehaviour
                 {
                     allPlayers[1].heroCard.art.sprite = rewersHero;
                     heroTurn = false;
-                    foreach (CardVizu item in HeroPickGrid)
+                    foreach (CardVizu item in HeroPickGrid) //ukrycie postaci do wybrania
                     {
                         item.gameObject.SetActive(false);
                     }
-                    currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
+                    currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza 1
                 }
                 else
                 {
@@ -143,10 +158,10 @@ public class GameManager : MonoBehaviour
                         }
                         for (int i = 0; i < 6; i++)
                         {
-                            HeroPickGrid[i].LoadCard(allHeroCards[cyfry[i]]);
                             HeroPickGrid[i].gameObject.SetActive(true);
+                            HeroPickGrid[i].LoadCard(allHeroCards[cyfry[i]]);
                         }
-                        foreach (PlayerController pc in allPlayers)
+                        foreach (PlayerController pc in allPlayers) //ukrycie bohaterow na rece
                         {
                             pc.heroCard.gameObject.SetActive(false);
                         }
