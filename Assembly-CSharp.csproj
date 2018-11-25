@@ -120,7 +120,9 @@
     <Compile Include="Assets\Scripts\GameElements\CardsDown.cs" />
     <Compile Include="Assets\Scripts\GameElements\GE_Logic.cs" />
     <Compile Include="Assets\Scripts\GameElements\HandCard.cs" />
+    <Compile Include="Assets\Scripts\GameElements\HeroCard.cs" />
     <Compile Include="Assets\Scripts\GameElements\State.cs" />
+    <Compile Include="Assets\Scripts\HeroCards.cs" />
     <Compile Include="Assets\Scripts\IClickable.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerController.cs" />

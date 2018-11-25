@@ -11,9 +11,6 @@ public class CardsDown: GE_Logic
     public override void OnClick(CardInstance inst)
     {
         Debug.Log("this card is on table");
-        //      currentCard.Set(card);
-        //      Setting.gameManager.UpdateState(holdingCard);
-        //     onCurrentCardSelected.Raise();
     }
 
     public override void OnHighlight(CardInstance inst)

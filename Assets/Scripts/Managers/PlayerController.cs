@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public GameObject handGrid;
     public GameObject tableGrid;
     public GE_Logic startingLogic;
+    public CardVizu heroCard;
     public Text goldText;
     [System.NonSerialized]
     public List<CardInstance> cardsHand = new List<CardInstance>();
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public List<CardInstance> cardsDown= new List<CardInstance>();
     [System.NonSerialized]
     public int currentGold;
+    [System.NonSerialized]
+    public Card currentHero;
 
 
     public void PickCard()
@@ -33,7 +36,7 @@ public class PlayerController : MonoBehaviour
         foreach (CardInstance inst in cardsHand)
         {
             inst.currentLogic = null;
-            inst.viz.art.sprite = Settings.gameManager.rewers;            
+            inst.viz.art.sprite = Settings.gameManager.rewersBud;            
         }
     }
     public void OnLogic()

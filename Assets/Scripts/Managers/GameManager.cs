@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
 
     public List<PlayerController> allPlayers = new List<PlayerController>();    
     public List<Card> allCards = new List<Card>();
+    public List<Card> allHeroCards = new List<Card>();
     public GameObject cardPrefab;
-    public Sprite rewers;
+    public Sprite rewersBud;
+    public Sprite rewersHero;
+    public List<CardVizu> HeroPickGrid = new List<CardVizu>();
 
     public int startingGold;
     public int cardsToEndGame;
@@ -20,22 +23,28 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized]
     public Stack<Card> stackCards = new Stack<Card>();
     [System.NonSerialized]
-    public bool koniecTury;
+    public bool endTurn;
     [System.NonSerialized]
-    public bool picked;
+    public bool picked; //gold or card
     [System.NonSerialized]
     public int currentPlayerId;
     [System.NonSerialized]
     public bool endGame;
+    [System.NonSerialized]
+    public bool heroTurn;
+
+    [System.NonSerialized]
+    List<int> cyfry = new List<int>();
 
     private void Start()
     {
         Settings.gameManager = this;
         int a;
         endText.text = "";
-        koniecTury = true;
+        endTurn = true;
         picked = false;
         endGame = false;
+        heroTurn = false;
         currentPlayerId = 1;
         currentPlayer = allPlayers[1];
 
@@ -53,12 +62,13 @@ public class GameManager : MonoBehaviour
             player.PickCard();
             player.PickCard();
             player.UpdateGold();
+            player.heroCard.gameObject.SetActive(false);
         }
     }
 
     public void EndTurnButton()
     {
-        koniecTury = true;
+        endTurn = true;
     }
     public void PickCardButton()
     {
@@ -82,52 +92,90 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentState.Tick(Time.deltaTime);
-        // if (!endGame)
-        // {
-            if (koniecTury)
+
+        if (endTurn)
+        {
+            currentPlayer.OffLogic();
+            if (currentPlayerId < allPlayers.Count - 1) //0<1
             {
-                currentPlayer.OffLogic();
-                if (currentPlayerId < allPlayers.Count - 1)
+                //currentPlayerId++;
+                //currentPlayer = allPlayers[currentPlayerId];
+                //currentPlayer.OnLogic();
+                Settings.MirrorRotation(-1); //zmienia gracza na 1
+                currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
+                if (heroTurn)
                 {
-                    currentPlayerId++;
-                    currentPlayer = allPlayers[currentPlayerId];
-                    currentPlayer.OnLogic();
-                    Settings.MirrorRotation(-1);
-                }
-                else
-                {
-                if (endGame)
-                {
-                    int score = 0;
-                    int index = 0;
-                    endText.text = "Koniec gry! \n";
-                    foreach (PlayerController pl in allPlayers)
+
+                    allPlayers[0].heroCard.art.sprite = rewersHero;
+                    foreach (CardInstance inst in currentPlayer.cardsHand)
                     {
-                        score = 0;
-                        for (int i = 0; i < pl.cardsDown.Count; i++)
-                        {
-                            score += pl.cardsDown[i].viz.card.value;
-                        }
-                        endText.text += "Gracz " +( index + 1) + " uzyskał: " + score  + " punktów \n";
-                        index++;
+                        inst.currentLogic = null;
                     }
                 }
+            }
+            else //1==1
+            {
+                Settings.MirrorRotation(1); //obraca karty i zmienia gracza na 0.
+                if (heroTurn)
+                {
+                    allPlayers[1].heroCard.art.sprite = rewersHero;
+                    heroTurn = false;
+                    foreach (CardVizu item in HeroPickGrid)
+                    {
+                        item.gameObject.SetActive(false);
+                    }
+                    currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
+                }
                 else
                 {
-                    currentPlayerId = 0;
-                    currentPlayer = allPlayers[currentPlayerId];
-                    currentPlayer.OnLogic();
-                    Settings.MirrorRotation(1);
+                    if (!endGame)
+                    {
+                        endTurn = false;
+                        heroTurn = true;
+                        cyfry = Settings.RandomHero();
+                        foreach (CardInstance inst in currentPlayer.cardsHand)
+                        {
+                            inst.currentLogic = null;
+                        }
+                        foreach (CardVizu item in HeroPickGrid)
+                        {
+                            item.gameObject.SetActive(true);
+                        }
+                        for (int i = 0; i < 6; i++)
+                        {
+                            HeroPickGrid[i].LoadCard(allHeroCards[cyfry[i]]);
+                            HeroPickGrid[i].gameObject.SetActive(true);
+                        }
+                        foreach (PlayerController pc in allPlayers)
+                        {
+                            pc.heroCard.gameObject.SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        int score = 0;
+                        int index = 0;
+                        endText.text = "Koniec gry! \n";
+                        foreach (PlayerController pl in allPlayers)
+                        {
+                            score = 0;
+                            for (int i = 0; i < pl.cardsDown.Count; i++)
+                            {
+                                score += pl.cardsDown[i].viz.card.value;
+                            }
+                            endText.text += "Gracz " + (index + 1) + " uzyskał: " + score + " punktów \n";
+                            index++;
+                        }
+                    }
                 }
             }
-                koniecTury = false;
-                picked = false;
-            }
+            endTurn = false;
+            picked = false;
+        }
     }
 
     public void SetState(State state)
     {
         currentState = state;
     }
-
 }
