@@ -27,11 +27,13 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized]
     public bool picked; //gold or card
     [System.NonSerialized]
-    public int currentPlayerId;
+    public int indeks;
     [System.NonSerialized]
     public bool endGame;
     [System.NonSerialized]
-    public bool heroTurn;
+    public bool heroTurn;    
+    [System.NonSerialized]
+    public List<PlayerController> kolejnosc = new List<PlayerController>();
 
     private void Start()
     {
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
         picked = false;
         endGame = false;
         heroTurn = false;
-        currentPlayerId = 1;
+        indeks = 1;
         currentPlayer = allPlayers[1];
 
         for (int i = allCards.Count - 1; i >= 0; i--)
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
             player.UpdateGold();
             player.heroCard.gameObject.SetActive(false);
         }
+        kolejnosc = allPlayers;
     }
 
     public void EndTurnButton()
@@ -95,19 +98,34 @@ public class GameManager : MonoBehaviour
             endTurn = false;
             currentPlayer.OffLogic();
             currentPlayer.OffGraphic();
-            if (currentPlayerId < allPlayers.Count - 1) //0<1
+            if (indeks < kolejnosc.Count - 1) //0<1
             {
                 if (heroTurn)
                 {
                     currentPlayer.heroCard.art.sprite = rewersHero; //ukrycie bohatera wybranego przez gracza
                     Settings.HidePickedHero(); //usuniecie z puli boh postaci wybranej przez gracza
-                    Settings.MirrorRotationAndOnLogic_Graph(-1); //zmienia gracza na 1   
+
+                    if (currentPlayer == allPlayers[0])
+                    {
+                        Settings.MirrorRotationAndOnLogic_Graph(-1);
+                    }
+                    else
+                    {
+                        Settings.MirrorRotationAndOnLogic_Graph(1); //zmienia gracza na 0
+                    }
                     currentPlayer.OffLogic();
                     picked = true;
                 }
                 else
                 {
-                    Settings.MirrorRotationAndOnLogic_Graph(-1); //zmienia gracza na 1
+                    if (currentPlayer == allPlayers[0])
+                    {
+                        Settings.MirrorRotationAndOnLogic_Graph(-1);
+                    }
+                    else
+                    {
+                        Settings.MirrorRotationAndOnLogic_Graph(1); //zmienia gracza na 0
+                    }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
                     picked = false;
                 }
@@ -119,7 +137,23 @@ public class GameManager : MonoBehaviour
                     currentPlayer.heroCard.art.sprite = rewersHero;
                     Settings.HeroPickFaze(false);
 
-                    Settings.MirrorRotationAndOnLogic_Graph(1); //obraca karty i zmienia gracza na 0.
+                    Settings.SortByHero();
+                    if (currentPlayer != kolejnosc[0])
+                    {
+                        if (kolejnosc[0]==allPlayers[0])
+                        {
+                            Settings.MirrorRotationAndOnLogic_Graph(1); //obraca karty i zmienia gracza.
+                        }
+                        else
+                        {
+                            Settings.MirrorRotationAndOnLogic_Graph(-1);
+                        }
+                    }
+                    else
+                    {
+                        indeks = 0;
+                        currentPlayer.OnLogicAndGraphic();
+                    }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza0
                     picked = false;
                 }
@@ -128,7 +162,16 @@ public class GameManager : MonoBehaviour
                     picked = true;
                     if (!endGame)
                     {
-                        Settings.MirrorRotationAndOnLogic_Graph(1); //obraca karty i zmienia gracza na 0.
+
+                        if (currentPlayer == allPlayers[0])
+                        {
+                            Settings.MirrorRotationAndOnLogic_Graph(-1);//zmienia gracza na 1
+                        }
+                        else
+                        {
+                            Settings.MirrorRotationAndOnLogic_Graph(1); 
+                        }
+                        currentPlayer.OffLogic();
                         Settings.HeroPickFaze(true);
                     }
                     //koniec gry

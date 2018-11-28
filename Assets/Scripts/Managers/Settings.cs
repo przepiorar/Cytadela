@@ -26,15 +26,15 @@ public static class Settings
 
     public static void MirrorRotationAndOnLogic_Graph(int a)
     {
-        if (gameManager.currentPlayerId + 1 == gameManager.allPlayers.Count)
+        if (gameManager.indeks + 1 == gameManager.kolejnosc.Count)
         {
-            gameManager.currentPlayerId = 0;
+            gameManager.indeks = 0;
         }
         else
         {
-            gameManager.currentPlayerId++;
+            gameManager.indeks++;
         }
-        gameManager.currentPlayer = gameManager.allPlayers[gameManager.currentPlayerId];
+        gameManager.currentPlayer = gameManager.kolejnosc[gameManager.indeks];
 
         GameObject[] test = GameObject.FindGameObjectsWithTag("test");
         foreach (GameObject item in test)
@@ -42,7 +42,7 @@ public static class Settings
             item.transform.localScale = new Vector3(item.transform.localScale.x, a * Mathf.Abs( item.transform.localScale.y), item.transform.localScale.z);
         }
         gameManager.currentPlayer.tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
-        gameManager.allPlayers[1-gameManager.currentPlayerId].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
+        gameManager.kolejnosc[gameManager.allPlayers.Count-1- gameManager.indeks].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
         GameObject.FindGameObjectWithTag("Selected").transform.localScale = new Vector3(1, a*1, 1);
         GameObject.FindGameObjectWithTag("Selected2").transform.localScale = new Vector3(1, a*1, 1);
 
@@ -98,9 +98,35 @@ public static class Settings
             foreach (PlayerController pc in gameManager.allPlayers) //ukrycie bohaterow na rece
             {
                 pc.heroCard.gameObject.SetActive(false);
+                
+                //pc.heroCard.art.color.a = 0;
             }
         }
 
     }
 
+    public static void SortByHero()
+    {
+        gameManager.kolejnosc = new List<PlayerController>();
+        gameManager.kolejnosc.Add(gameManager.allPlayers[0]);
+        for (int i = 1; i < gameManager.allPlayers.Count; i++)
+        {
+            for (int j = 0; j < gameManager.kolejnosc.Count; j++)
+            {
+                if (gameManager.allPlayers[i].currentHero.value < gameManager.kolejnosc[j].currentHero.value)
+                {
+                    gameManager.kolejnosc.Insert(j, gameManager.allPlayers[i]);
+                    break;
+                }
+                else
+                {
+                    if (j + 1 == gameManager.kolejnosc.Count)
+                    {
+                        gameManager.kolejnosc.Add(gameManager.allPlayers[i]);
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -13,9 +13,13 @@ public class HeroCard: GE_Logic
         Settings.gameManager.currentPlayer.heroCard.gameObject.SetActive(true);
         Settings.gameManager.currentPlayer.currentHero = inst.viz.card;
         Settings.gameManager.currentPlayer.heroCard.LoadCard(inst.viz.card);
-        if (Settings.gameManager.currentPlayerId ==1)
+        if (Settings.gameManager.allPlayers[1] == Settings.gameManager.currentPlayer)
         {
             Settings.gameManager.currentPlayer.heroCard.transform.localScale= new Vector3(0.8f, -0.8f, 0.8f);
+        }
+        else
+        {
+            Settings.gameManager.currentPlayer.heroCard.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         }
     }
 
