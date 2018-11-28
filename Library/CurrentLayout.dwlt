@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 105
+  controlID: 23
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -93,7 +93,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 998
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &5
 MonoBehaviour:
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 104
+  controlID: 22
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -425,9 +425,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c80f0000
-    m_LastClickedID: 4040
-    m_ExpandedIDs: 1a4affffe6fbffff00000000620f0000c00f0000
+    m_SelectedIDs: 760c0000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 4250fdfff8d9fdffdefbffff000000000a0f0000600f0000820f0000860f0000940f0000b80f0000061000002a100000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -567,20 +567,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Data/Actions
+    - Assets/Data/Cards/Heroes
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Data/Actions
+  - Assets/Data/Cards/Heroes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\VOBIS\Documents\GitHub\Cytadela
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 6.238885}
-    m_SelectedIDs: 380c0000
-    m_LastClickedID: 3128
-    m_ExpandedIDs: 000000002a0a00006e0b0000b80b0000d80b0000360e0000b030000000ca9a3b
+    scrollPos: {x: 0, y: 115.655556}
+    m_SelectedIDs: fa0b0000
+    m_LastClickedID: 3066
+    m_ExpandedIDs: 00000000340a0000860b0000d20b0000f20b0000580e00001831000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -608,7 +608,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 100}
     m_SelectedIDs: 663b0000
     m_LastClickedID: 15206
-    m_ExpandedIDs: 000000002a0a00006e0b0000b80b0000d80b0000360e0000b0300000
+    m_ExpandedIDs: 00000000340a0000860b0000d20b0000f20b0000580e000018310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

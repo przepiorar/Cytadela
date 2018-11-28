@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Magik
   m_EditorClassIdentifier: 
   colour: none
-  value: 0
+  value: 3
   sprite: {fileID: 21300000, guid: 638e9022f0a4a364186da91273fb637f, type: 3}

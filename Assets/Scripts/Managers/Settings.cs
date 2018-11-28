@@ -24,7 +24,7 @@ public static class Settings
         c.localScale = Vector3.one;
     }
 
-    public static void MirrorRotation(int a)
+    public static void MirrorRotationAndOnLogic_Graph(int a)
     {
         if (gameManager.currentPlayerId + 1 == gameManager.allPlayers.Count)
         {
@@ -35,7 +35,6 @@ public static class Settings
             gameManager.currentPlayerId++;
         }
         gameManager.currentPlayer = gameManager.allPlayers[gameManager.currentPlayerId];
-        gameManager.currentPlayer.OnLogic();
 
         GameObject[] test = GameObject.FindGameObjectsWithTag("test");
         foreach (GameObject item in test)
@@ -46,6 +45,8 @@ public static class Settings
         gameManager.allPlayers[1-gameManager.currentPlayerId].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
         GameObject.FindGameObjectWithTag("Selected").transform.localScale = new Vector3(1, a*1, 1);
         GameObject.FindGameObjectWithTag("Selected2").transform.localScale = new Vector3(1, a*1, 1);
+
+        gameManager.currentPlayer.OnLogicAndGraphic();
     }
 
     public static List<int> RandomHero()
@@ -63,5 +64,43 @@ public static class Settings
         return tmp;
     }
 
+    public static void HidePickedHero()
+    {
+        Card tmpCard = gameManager.HeroPickGrid[gameManager.HeroPickGrid.Count - 1].card;
+        int index = 0;
+        for (int i = 0; i < gameManager.HeroPickGrid.Count; i++)
+        {
+            if (gameManager.HeroPickGrid[i].card == gameManager.currentPlayer.currentHero)
+            {
+                index = i;
+                break;
+            }
+        }
+        gameManager.HeroPickGrid[index].card = tmpCard;
+        gameManager.HeroPickGrid[index].LoadCard(tmpCard);
+        gameManager.HeroPickGrid[gameManager.HeroPickGrid.Count - 1].gameObject.SetActive(false);
+    }
+
+    public static void HeroPickFaze(bool b)
+    {
+        gameManager.heroTurn = b;
+        foreach (CardVizu item in gameManager.HeroPickGrid) //ukrycie/pokazanie postaci do wybrania
+        {
+            item.gameObject.SetActive(b);
+        }
+        if (b)
+        {
+            List<int> cyfry = RandomHero();
+            for (int i = 0; i < gameManager.HeroPickGrid.Count; i++)
+            {
+                gameManager.HeroPickGrid[i].LoadCard(gameManager.allHeroCards[cyfry[i]]);
+            }
+            foreach (PlayerController pc in gameManager.allPlayers) //ukrycie bohaterow na rece
+            {
+                pc.heroCard.gameObject.SetActive(false);
+            }
+        }
+
+    }
 
 }

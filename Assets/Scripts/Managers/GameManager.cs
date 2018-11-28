@@ -33,9 +33,6 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized]
     public bool heroTurn;
 
-    [System.NonSerialized]
-    List<int> cyfry = new List<int>();
-
     private void Start()
     {
         Settings.gameManager = this;
@@ -95,77 +92,47 @@ public class GameManager : MonoBehaviour
 
         if (endTurn)
         {
+            endTurn = false;
             currentPlayer.OffLogic();
+            currentPlayer.OffGraphic();
             if (currentPlayerId < allPlayers.Count - 1) //0<1
             {
-                //currentPlayerId++;
-                //currentPlayer = allPlayers[currentPlayerId];
-                //currentPlayer.OnLogic();
-                Settings.MirrorRotation(-1); //zmienia gracza na 1
-                currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
                 if (heroTurn)
                 {
-                    endTurn = false;
-                    //usuniecie z puli bohaterow postaci wybranej przez gracza
-                    Card tmpCard = HeroPickGrid[HeroPickGrid.Count - 1].card;
-                    int index=0;
-                    for (int i = 0; i < HeroPickGrid.Count; i++)
-                    {
-                        if (HeroPickGrid[i].card == allPlayers[currentPlayerId-1].currentHero)
-                        {
-                            index = i;
-                            break;
-                        }
-                    }
-                    HeroPickGrid[index].card = tmpCard;
-                    HeroPickGrid[index].LoadCard(tmpCard);
-                    HeroPickGrid[5].gameObject.SetActive(false);
-                    //ukrycie wybranego bohatera 
-                    allPlayers[currentPlayerId-1].heroCard.art.sprite = rewersHero;
-                    foreach (CardInstance inst in currentPlayer.cardsHand)
-                    {
-                        inst.currentLogic = null;
-                    }
+                    currentPlayer.heroCard.art.sprite = rewersHero; //ukrycie bohatera wybranego przez gracza
+                    Settings.HidePickedHero(); //usuniecie z puli boh postaci wybranej przez gracza
+                    Settings.MirrorRotationAndOnLogic_Graph(-1); //zmienia gracza na 1   
+                    currentPlayer.OffLogic();
+                    picked = true;
+                }
+                else
+                {
+                    Settings.MirrorRotationAndOnLogic_Graph(-1); //zmienia gracza na 1
+                    currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
+                    picked = false;
                 }
             }
             else //1==1
             {
-                Settings.MirrorRotation(1); //obraca karty i zmienia gracza na 0.
-                if (heroTurn)
+                if (heroTurn) //ukrycie kart bohaterow i przejscie do fazy budowania budynkow
                 {
-                    allPlayers[1].heroCard.art.sprite = rewersHero;
-                    heroTurn = false;
-                    foreach (CardVizu item in HeroPickGrid) //ukrycie postaci do wybrania
-                    {
-                        item.gameObject.SetActive(false);
-                    }
-                    currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza 1
+                    currentPlayer.heroCard.art.sprite = rewersHero;
+                    Settings.HeroPickFaze(false);
+
+                    Settings.MirrorRotationAndOnLogic_Graph(1); //obraca karty i zmienia gracza na 0.
+                    currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza0
+                    picked = false;
                 }
                 else
                 {
+                    picked = true;
                     if (!endGame)
                     {
-                        endTurn = false;
-                        heroTurn = true;
-                        cyfry = Settings.RandomHero();
-                        foreach (CardInstance inst in currentPlayer.cardsHand)
-                        {
-                            inst.currentLogic = null;
-                        }
-                        foreach (CardVizu item in HeroPickGrid)
-                        {
-                            item.gameObject.SetActive(true);
-                        }
-                        for (int i = 0; i < 6; i++)
-                        {
-                            HeroPickGrid[i].gameObject.SetActive(true);
-                            HeroPickGrid[i].LoadCard(allHeroCards[cyfry[i]]);
-                        }
-                        foreach (PlayerController pc in allPlayers) //ukrycie bohaterow na rece
-                        {
-                            pc.heroCard.gameObject.SetActive(false);
-                        }
+                        Settings.MirrorRotationAndOnLogic_Graph(1); //obraca karty i zmienia gracza na 0.
+                        Settings.HeroPickFaze(true);
                     }
+                    //koniec gry
+                    // nie patrzec nizej !!!!
                     else
                     {
                         int score = 0;
@@ -173,6 +140,7 @@ public class GameManager : MonoBehaviour
                         endText.text = "Koniec gry! \n";
                         foreach (PlayerController pl in allPlayers)
                         {
+                            //pl.OnGraphic();
                             score = 0;
                             for (int i = 0; i < pl.cardsDown.Count; i++)
                             {
@@ -184,8 +152,6 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            endTurn = false;
-            picked = false;
         }
     }
 

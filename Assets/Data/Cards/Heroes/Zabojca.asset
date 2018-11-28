@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Zabojca
   m_EditorClassIdentifier: 
   colour: none
-  value: 0
+  value: 1
   sprite: {fileID: 21300000, guid: 4f7be84e5abf66246bf0a676272b7e2a, type: 3}

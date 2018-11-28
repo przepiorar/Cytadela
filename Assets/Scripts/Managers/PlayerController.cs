@@ -30,16 +30,21 @@ public class PlayerController : MonoBehaviour
         inst.currentLogic = startingLogic;
         Settings.SetParentCard(card.transform,handGrid.transform);
     }
-
+    public void OffGraphic()
+    {
+        foreach (CardInstance inst in cardsHand)
+        {
+            inst.viz.art.sprite = Settings.gameManager.rewersBud;
+        }
+    }
     public void OffLogic()
     {
         foreach (CardInstance inst in cardsHand)
         {
-            inst.currentLogic = null;
-            inst.viz.art.sprite = Settings.gameManager.rewersBud;            
+            inst.currentLogic = null;          
         }
     }
-    public void OnLogic()
+    public void OnLogicAndGraphic()
     {
         foreach (CardInstance inst in cardsHand)
         {

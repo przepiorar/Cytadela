@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: General
   m_EditorClassIdentifier: 
   colour: none
-  value: 0
+  value: 8
   sprite: {fileID: 21300000, guid: c9eba0120bffac64faa305c5eebafb5e, type: 3}

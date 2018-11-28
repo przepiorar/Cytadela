@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Architekt
   m_EditorClassIdentifier: 
   colour: none
-  value: 0
+  value: 7
   sprite: {fileID: 21300000, guid: 023c0cacc1417d3479e12eb12b254d57, type: 3}
