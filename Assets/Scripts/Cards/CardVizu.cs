@@ -7,11 +7,7 @@ public class CardVizu : MonoBehaviour {
 
     public Image art;
     public Card card;
-
-    //private void Start()
-    //{
-    //    LoadCard(card);
-    //}
+    
     public void LoadCard(Card c)
     {
         if (c==null)

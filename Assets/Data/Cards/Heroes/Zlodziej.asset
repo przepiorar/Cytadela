@@ -14,3 +14,4 @@ MonoBehaviour:
   colour: none
   value: 2
   sprite: {fileID: 21300000, guid: 13776f49b8753184d8882217c87d3219, type: 3}
+  logic: {fileID: 11400000, guid: ec6aacced4e34a242b88d307f115fdbf, type: 2}

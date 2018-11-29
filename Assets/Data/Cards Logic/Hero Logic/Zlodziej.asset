@@ -8,9 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e2cc3453b718c04ba47707c66029f76, type: 3}
-  m_Name: PickHeroState
+  m_Script: {fileID: 11500000, guid: 8b2d2304265400c4986a8c298d30d55f, type: 3}
+  m_Name: Zlodziej
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: 7f69864baea29214b86f0772a151c0a7, type: 2}
-  - {fileID: 11400000, guid: bb844caf1065afa4983d39d964c407cd, type: 2}

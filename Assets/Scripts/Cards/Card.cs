@@ -8,4 +8,5 @@ public class Card : ScriptableObject
     public string colour;
     public int value;
     public Sprite sprite;
+    public Hero_Logic logic;
 }

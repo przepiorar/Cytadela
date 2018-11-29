@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "My Card Down")]
-public class CardsDown: GE_Logic
+[CreateAssetMenu(menuName = "Cards Logic/Down Card ")]
+public class DownCard: GE_Logic
 {
     public CardVariable currentCard;
     public State highlightCard;  //na jaki state ma sie zmienic karta którą wezmiemy

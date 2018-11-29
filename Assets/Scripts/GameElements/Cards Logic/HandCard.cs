@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-[CreateAssetMenu(menuName = "My Card Hand ")]
+[CreateAssetMenu(menuName = "Cards Logic/Hand Card ")]
 public class HandCard : GE_Logic
 {
    public CardVariable currentCard;

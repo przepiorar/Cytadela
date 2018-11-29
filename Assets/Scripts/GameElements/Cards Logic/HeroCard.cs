@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Hero Card")]
+[CreateAssetMenu(menuName = "Cards Logic/Hero Card")]
 public class HeroCard: GE_Logic
 {
     public CardVariable currentCard;
