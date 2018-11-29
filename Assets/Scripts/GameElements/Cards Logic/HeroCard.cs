@@ -11,6 +11,7 @@ public class HeroCard: GE_Logic
     public override void OnClick(CardInstance inst)
     {
         Settings.gameManager.currentPlayer.heroCard.gameObject.SetActive(true);
+        Settings.gameManager.endButton.gameObject.SetActive(true);
         Settings.gameManager.currentPlayer.currentHero = inst.viz.card;
         Settings.gameManager.currentPlayer.heroCard.LoadCard(inst.viz.card);
         if (Settings.gameManager.allPlayers[1] == Settings.gameManager.currentPlayer)

@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public Button goldButton;
     public Button cardButton;
+    public Button actionButton;
+    public Button endButton;
 
     [System.NonSerialized]
     public Stack<Card> stackCards = new Stack<Card>();
@@ -73,7 +75,14 @@ public class GameManager : MonoBehaviour
 
     public void EndTurnButton()
     {
-        endTurn = true;
+        if (heroTurn && currentPlayer.heroCard.isActiveAndEnabled)
+        {
+            endTurn = true;
+        }
+        else
+        {
+            endTurn = true;
+        }
     }
     public void PickCardButton()
     {
@@ -95,6 +104,10 @@ public class GameManager : MonoBehaviour
             goldButton.gameObject.SetActive(false);
             cardButton.gameObject.SetActive(false);
         }
+    }
+    public void ActionButton()
+    {
+        currentPlayer.heroCard.card.logic.Active();
     }
 
 
@@ -126,6 +139,8 @@ public class GameManager : MonoBehaviour
                     picked = true;
                     goldButton.gameObject.SetActive(false);
                     cardButton.gameObject.SetActive(false);
+                    actionButton.gameObject.SetActive(false);
+                    endButton.gameObject.SetActive(false);
                 }
                 else
                 {
@@ -138,6 +153,7 @@ public class GameManager : MonoBehaviour
                         Settings.MirrorRotationAndOnLogic_Graph(1); //zmienia gracza na 0
                     }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
+                    currentPlayer.built = 1;
                     if (currentPlayer.heroCard.card.logic != null)
                     {
                         currentPlayer.heroCard.card.logic.OnStart();
@@ -145,6 +161,11 @@ public class GameManager : MonoBehaviour
                     picked = false;
                     cardButton.gameObject.SetActive(true);
                     goldButton.gameObject.SetActive(true);
+                    if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || currentPlayer.heroCard.card.value == 8)
+                    {
+                        actionButton.gameObject.SetActive(true);
+                    }
+                    else actionButton.gameObject.SetActive(false);
                 }
             }
             else //1==1
@@ -172,6 +193,7 @@ public class GameManager : MonoBehaviour
                         currentPlayer.OnLogicAndGraphic();
                     }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza0
+                    currentPlayer.built = 1;
                     if (currentPlayer.heroCard.card.logic!=null)
                     {
                         currentPlayer.heroCard.card.logic.OnStart();
@@ -179,12 +201,19 @@ public class GameManager : MonoBehaviour
                     picked = false;
                     cardButton.gameObject.SetActive(true);
                     goldButton.gameObject.SetActive(true);
+                    if (currentPlayer.heroCard.card.value==1 || currentPlayer.heroCard.card.value== 2 || currentPlayer.heroCard.card.value== 3 || currentPlayer.heroCard.card.value== 8)
+                    {
+                        actionButton.gameObject.SetActive(true);
+                    }
+                    else actionButton.gameObject.SetActive(false);
                 }
                 else//zaczyna sie wybieranie bohaterów
                 {
                     picked = true;
                     goldButton.gameObject.SetActive(false);
-                    cardButton.gameObject.SetActive(false);                    
+                    cardButton.gameObject.SetActive(false);
+                    actionButton.gameObject.SetActive(false);
+                    endButton.gameObject.SetActive(false);
                     if (!endGame)
                     {
                         Settings.SortByKing();

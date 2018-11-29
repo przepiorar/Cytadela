@@ -9,6 +9,7 @@ public class Architekt : Hero_Logic
     {
         Settings.gameManager.currentPlayer.PickCard();
         Settings.gameManager.currentPlayer.PickCard();
+        Settings.gameManager.currentPlayer.built = 3;
     }
 
     public override void Active()

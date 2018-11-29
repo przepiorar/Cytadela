@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public Card currentHero;
     [System.NonSerialized]
     public bool king;
+    [System.NonSerialized]
+    public int built;
 
 
     public void PickCard()

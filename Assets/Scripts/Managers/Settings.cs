@@ -98,8 +98,6 @@ public static class Settings
             foreach (PlayerController pc in gameManager.allPlayers) //ukrycie bohaterow na rece
             {
                 pc.heroCard.gameObject.SetActive(false);
-                
-                //pc.heroCard.art.color.a = 0;
             }
         }
 
