@@ -129,4 +129,27 @@ public static class Settings
             }
         }
     }
+    public static void SortByKing()
+    {
+        gameManager.kolejnosc = new List<PlayerController>();
+        int a = 0;
+        foreach (PlayerController pc in gameManager.allPlayers)
+        {
+            if (pc.king)
+            {
+                break;
+            }
+            a++;
+        }
+        gameManager.kolejnosc.Add(gameManager.allPlayers[a]);
+        a++;
+        for (int i = 1; i < gameManager.allPlayers.Count; i++)
+        {
+            if (a>= gameManager.allPlayers.Count)
+            {
+                a = 0;
+            }
+            gameManager.kolejnosc.Add(gameManager.allPlayers[a]);
+        }
+    }
 }

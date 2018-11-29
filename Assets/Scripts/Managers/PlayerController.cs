@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public int currentGold;
     [System.NonSerialized]
     public Card currentHero;
+    [System.NonSerialized]
+    public bool king;
 
 
     public void PickCard()

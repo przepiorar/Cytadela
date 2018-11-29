@@ -65,8 +65,10 @@ public class GameManager : MonoBehaviour
             player.PickCard();
             player.UpdateGold();
             player.heroCard.gameObject.SetActive(false);
+            player.king = false;
         }
         kolejnosc = allPlayers;
+        allPlayers[0].king = true;
     }
 
     public void EndTurnButton()
@@ -182,17 +184,25 @@ public class GameManager : MonoBehaviour
                 {
                     picked = true;
                     goldButton.gameObject.SetActive(false);
-                    cardButton.gameObject.SetActive(false);
+                    cardButton.gameObject.SetActive(false);                    
                     if (!endGame)
                     {
-
-                        if (currentPlayer == allPlayers[0])
+                        Settings.SortByKing();
+                        if (currentPlayer != kolejnosc[0])
                         {
-                            Settings.MirrorRotationAndOnLogic_Graph(-1);//zmienia gracza na 1
+                            if (currentPlayer == allPlayers[0])
+                            {
+                                Settings.MirrorRotationAndOnLogic_Graph(-1);//zmienia gracza na 0
+                            }
+                            else
+                            {
+                                Settings.MirrorRotationAndOnLogic_Graph(1);
+                            }
                         }
                         else
                         {
-                            Settings.MirrorRotationAndOnLogic_Graph(1); 
+                            indeks = 0;
+                            currentPlayer.OnLogicAndGraphic();
                         }
                         currentPlayer.OffLogic();
                         Settings.HeroPickFaze(true);

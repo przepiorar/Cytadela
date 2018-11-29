@@ -17,6 +17,11 @@ public class Krol : Hero_Logic
         }
         Settings.gameManager.currentPlayer.currentGold += count;
         Settings.gameManager.currentPlayer.UpdateGold();
+        foreach (PlayerController pc in Settings.gameManager.allPlayers)
+        {
+            pc.king = false;
+        }
+        Settings.gameManager.currentPlayer.king = true;
     }
 
 
