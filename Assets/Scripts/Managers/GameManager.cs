@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public Button cardButton;
     public Button actionButton;
     public Button endButton;
+    public List<Button> heroesButton;
 
     [System.NonSerialized]
     public Stack<Card> stackCards = new Stack<Card>();
@@ -109,6 +110,33 @@ public class GameManager : MonoBehaviour
     {
         currentPlayer.heroCard.card.logic.Active();
     }
+    public void KillButton(int a)
+    {
+        foreach (PlayerController pc in allPlayers)
+        {
+            if (pc.currentHero.value == a)
+            {
+                if (currentPlayer.currentHero.value == 1)
+                {
+                    pc.heroCard.LoadCard(pc.currentHero);
+                    kolejnosc.Remove(pc);
+                    break;
+                }
+                else
+                {
+                    currentPlayer.currentGold += pc.currentGold;
+                    pc.currentGold = 0;
+                    currentPlayer.UpdateGold();
+                    pc.UpdateGold();
+                }
+            }
+        }
+        foreach (Button bt in Settings.gameManager.heroesButton)
+        {
+            bt.gameObject.SetActive(false);
+        }        
+        actionButton.gameObject.SetActive(false);
+    }
 
 
     private void Update()
@@ -166,6 +194,10 @@ public class GameManager : MonoBehaviour
                         actionButton.gameObject.SetActive(true);
                     }
                     else actionButton.gameObject.SetActive(false);
+                    foreach (Button bt in heroesButton)
+                    {
+                        bt.gameObject.SetActive(false);
+                    }
                 }
             }
             else //1==1
@@ -214,6 +246,10 @@ public class GameManager : MonoBehaviour
                     cardButton.gameObject.SetActive(false);
                     actionButton.gameObject.SetActive(false);
                     endButton.gameObject.SetActive(false);
+                    foreach (Button bt in Settings.gameManager.heroesButton)
+                    {
+                        bt.gameObject.SetActive(false);
+                    }
                     if (!endGame)
                     {
                         Settings.SortByKing();

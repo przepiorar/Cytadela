@@ -40,8 +40,8 @@ MonoBehaviour:
     y: 672
     width: 1430
     height: 276
-  m_MinSize: {x: 104, y: 121}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 17}
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_MinSize: {x: 204, y: 342}
   m_MaxSize: {x: 4004, y: 8042}
   vertical: 1
-  controlID: 23
+  controlID: 67
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 342}
   m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
-  controlID: 22
+  controlID: 66
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -425,9 +425,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6cfbffff
-    m_LastClickedID: -1172
-    m_ExpandedIDs: 6efbffffdefbffff00000000000f00000a0f0000600f0000be0f000012100000
+    m_SelectedIDs: 3a100000
+    m_LastClickedID: 4154
+    m_ExpandedIDs: 620afeffe6fbffff00000000060f00007e0f0000820f0000ba0f00000e1000001e10000032100000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -567,20 +567,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Data/Cards Logic/Hero Logic
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Data/Cards Logic/Hero Logic
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\VOBIS\Documents\GitHub\Cytadela
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 86.06771}
-    m_SelectedIDs: 140b0000
-    m_LastClickedID: 2836
-    m_ExpandedIDs: 00000000340a0000860b0000d20b0000580e00002431000000ca9a3b
+    scrollPos: {x: 0, y: 96.36757}
+    m_SelectedIDs: 3c380000
+    m_LastClickedID: 14396
+    m_ExpandedIDs: 000000002e0a00008e0a00004a0b0000800b0000cc0b0000ec0b00002231000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -596,7 +596,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 2}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -608,7 +608,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 100}
     m_SelectedIDs: 663b0000
     m_LastClickedID: 15206
-    m_ExpandedIDs: 00000000340a0000860b0000d20b0000f20b0000580e000024310000
+    m_ExpandedIDs: 000000002e0a0000800b0000cc0b0000520e000022310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -633,24 +633,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 9cfbffff
-    m_LastClickedInstanceID: -1124
+    m_SelectedInstanceIDs: ac62fdff
+    m_LastClickedInstanceID: -171348
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 800900001cf3fbff863400002a0d0000e8730000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Szkola Magii
-      m_OriginalName: Szkola Magii
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 2650
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 2}
     m_CreateAssetUtility:

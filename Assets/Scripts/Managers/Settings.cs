@@ -56,7 +56,7 @@ public static class Settings
         List<int> tmp = new List<int>();
         for (int i = 0; i < 6; i++)
         {
-            int a =Random.Range(1, j);
+            int a =Random.Range(0, j);
             tmp.Add(list[a]);
             list.RemoveAt(a);
             j--;
