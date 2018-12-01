@@ -23,5 +23,4 @@ public class General : Hero_Logic
     {
 
     }
-
 }

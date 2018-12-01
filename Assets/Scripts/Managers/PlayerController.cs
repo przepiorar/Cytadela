@@ -19,8 +19,6 @@ public class PlayerController : MonoBehaviour
     [System.NonSerialized]
     public Card currentHero;
     [System.NonSerialized]
-    public bool king;
-    [System.NonSerialized]
     public int built;
 
 

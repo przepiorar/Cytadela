@@ -26,7 +26,7 @@ public static class Settings
 
     public static void MirrorRotationAndOnLogic_Graph(int a)
     {
-        if (gameManager.indeks + 1 == gameManager.kolejnosc.Count)
+        if (gameManager.indeks + 1 >= gameManager.kolejnosc.Count)
         {
             gameManager.indeks = 0;
         }
@@ -129,16 +129,16 @@ public static class Settings
     }
     public static void SortByKing()
     {
-        gameManager.kolejnosc = new List<PlayerController>();
-        int a = 0;
-        foreach (PlayerController pc in gameManager.allPlayers)
+        for (int i = 0; i < gameManager.allPlayers.Count; i++)  //sprawdzenie czy król nie był wybrany w ostatniej turze
         {
-            if (pc.king)
+            if (gameManager.allPlayers[i].currentHero != null && gameManager.allPlayers[i].currentHero.value == 4)
             {
+                gameManager.kingIndeks = i;
                 break;
             }
-            a++;
         }
+        gameManager.kolejnosc = new List<PlayerController>();
+        int a = Settings.gameManager.kingIndeks;
         gameManager.kolejnosc.Add(gameManager.allPlayers[a]);
         a++;
         for (int i = 1; i < gameManager.allPlayers.Count; i++)
@@ -149,5 +149,13 @@ public static class Settings
             }
             gameManager.kolejnosc.Add(gameManager.allPlayers[a]);
         }
+    }
+
+    public static void ActivateButtons(bool b)
+    {
+        gameManager.picked = !b;
+        gameManager.goldButton.gameObject.SetActive(b);
+        gameManager.cardButton.gameObject.SetActive(b);
+
     }
 }

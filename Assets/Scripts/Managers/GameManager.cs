@@ -40,6 +40,10 @@ public class GameManager : MonoBehaviour
     public bool heroTurn;    
     [System.NonSerialized]
     public List<PlayerController> kolejnosc = new List<PlayerController>();
+    [System.NonSerialized]
+    public int kingIndeks;
+    [System.NonSerialized]
+    public int robberyIndeks;
 
     private void Start()
     {
@@ -68,31 +72,24 @@ public class GameManager : MonoBehaviour
             player.PickCard();
             player.UpdateGold();
             player.heroCard.gameObject.SetActive(false);
-            player.king = false;
         }
         kolejnosc = allPlayers;
-        allPlayers[0].king = true;
+        kingIndeks = 0;
     }
 
     public void EndTurnButton()
     {
-        if (heroTurn && currentPlayer.heroCard.isActiveAndEnabled)
-        {
             endTurn = true;
-        }
-        else
-        {
-            endTurn = true;
-        }
     }
     public void PickCardButton()
     {
         if (!picked)
         {
             currentPlayer.PickCard();
-            picked = true;
-            goldButton.gameObject.SetActive(false);
-            cardButton.gameObject.SetActive(false);
+            //picked = true;
+            //goldButton.gameObject.SetActive(false);
+            //cardButton.gameObject.SetActive(false);
+            Settings.ActivateButtons(false);
         }
     }
     public void PickGoldButton()
@@ -101,9 +98,7 @@ public class GameManager : MonoBehaviour
         {
             currentPlayer.currentGold += 2;
             currentPlayer.UpdateGold();
-            picked = true;
-            goldButton.gameObject.SetActive(false);
-            cardButton.gameObject.SetActive(false);
+            Settings.ActivateButtons(false);
         }
     }
     public void ActionButton()
@@ -124,10 +119,8 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    currentPlayer.currentGold += pc.currentGold;
-                    pc.currentGold = 0;
-                    currentPlayer.UpdateGold();
-                    pc.UpdateGold();
+                    robberyIndeks = a;
+                    break;
                 }
             }
         }
@@ -164,9 +157,7 @@ public class GameManager : MonoBehaviour
                         Settings.MirrorRotationAndOnLogic_Graph(1); //zmienia gracza na 0
                     }
                     currentPlayer.OffLogic();
-                    picked = true;
-                    goldButton.gameObject.SetActive(false);
-                    cardButton.gameObject.SetActive(false);
+                    Settings.ActivateButtons(false);
                     actionButton.gameObject.SetActive(false);
                     endButton.gameObject.SetActive(false);
                 }
@@ -181,14 +172,22 @@ public class GameManager : MonoBehaviour
                         Settings.MirrorRotationAndOnLogic_Graph(1); //zmienia gracza na 0
                     }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
+                    if (currentPlayer.currentHero.value == robberyIndeks)
+                    {
+                        foreach (PlayerController pc in kolejnosc)
+                        {
+                            pc.currentGold += currentPlayer.currentGold;
+                            currentPlayer.currentGold = 0;
+                            pc.UpdateGold();
+                            currentPlayer.UpdateGold();
+                        }
+                    }
                     currentPlayer.built = 1;
                     if (currentPlayer.heroCard.card.logic != null)
                     {
                         currentPlayer.heroCard.card.logic.OnStart();
                     }
-                    picked = false;
-                    cardButton.gameObject.SetActive(true);
-                    goldButton.gameObject.SetActive(true);
+                    Settings.ActivateButtons(true);
                     if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || currentPlayer.heroCard.card.value == 8)
                     {
                         actionButton.gameObject.SetActive(true);
@@ -230,9 +229,7 @@ public class GameManager : MonoBehaviour
                     {
                         currentPlayer.heroCard.card.logic.OnStart();
                     }
-                    picked = false;
-                    cardButton.gameObject.SetActive(true);
-                    goldButton.gameObject.SetActive(true);
+                    Settings.ActivateButtons(true);
                     if (currentPlayer.heroCard.card.value==1 || currentPlayer.heroCard.card.value== 2 || currentPlayer.heroCard.card.value== 3 || currentPlayer.heroCard.card.value== 8)
                     {
                         actionButton.gameObject.SetActive(true);
@@ -241,9 +238,7 @@ public class GameManager : MonoBehaviour
                 }
                 else//zaczyna sie wybieranie bohaterów
                 {
-                    picked = true;
-                    goldButton.gameObject.SetActive(false);
-                    cardButton.gameObject.SetActive(false);
+                    Settings.ActivateButtons(false);
                     actionButton.gameObject.SetActive(false);
                     endButton.gameObject.SetActive(false);
                     foreach (Button bt in Settings.gameManager.heroesButton)
@@ -251,17 +246,18 @@ public class GameManager : MonoBehaviour
                         bt.gameObject.SetActive(false);
                     }
                     if (!endGame)
-                    {
+                    {                       
                         Settings.SortByKing();
+                        indeks = kolejnosc.Count;
                         if (currentPlayer != kolejnosc[0])
                         {
-                            if (currentPlayer == allPlayers[0])
+                            if (kolejnosc[0] == allPlayers[0])
                             {
-                                Settings.MirrorRotationAndOnLogic_Graph(-1);//zmienia gracza na 0
+                                Settings.MirrorRotationAndOnLogic_Graph(1);//zmienia gracza na 0
                             }
                             else
                             {
-                                Settings.MirrorRotationAndOnLogic_Graph(1);
+                                Settings.MirrorRotationAndOnLogic_Graph(-1);
                             }
                         }
                         else
