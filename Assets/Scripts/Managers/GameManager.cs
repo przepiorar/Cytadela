@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public Button actionButton;
     public Button endButton;
     public List<Button> heroesButton;
+    public Canvas[] canvases;
 
     [System.NonSerialized]
     public Stack<Card> stackCards = new Stack<Card>();
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
     public int robberyIndeks;
     [System.NonSerialized]
     public bool destroyBuilding;
+    [System.NonSerialized]
+    public bool nextPlayer;
 
     private void Start()
     {
@@ -58,6 +61,7 @@ public class GameManager : MonoBehaviour
         endGame = false;
         heroTurn = false;
         destroyBuilding = false;
+        nextPlayer = false;
         indeks = 1;
         currentPlayer = allPlayers[1];
 
@@ -84,6 +88,10 @@ public class GameManager : MonoBehaviour
     public void EndTurnButton()
     {
             endTurn = true;
+    }
+    public void NextPlayerButton()
+    {
+        nextPlayer = true;
     }
     public void PickCardButton()
     {
@@ -140,11 +148,21 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentState.Tick(Time.deltaTime);
-        
+
 
         if (endTurn)
         {
+            canvases[0].gameObject.SetActive(false);
+            canvases[1].gameObject.SetActive(false);
+            canvases[2].gameObject.SetActive(true);
             endTurn = false;
+        }
+        if (nextPlayer)
+        {
+            nextPlayer = false;
+            canvases[0].gameObject.SetActive(true);
+            canvases[1].gameObject.SetActive(false);
+            canvases[2].gameObject.SetActive(false);
             currentPlayer.OffLogic();
             currentPlayer.OffGraphic();
 
@@ -216,7 +234,7 @@ public class GameManager : MonoBehaviour
                     Settings.SortByHero();
                     if (currentPlayer != kolejnosc[0])
                     {
-                        if (kolejnosc[0]==allPlayers[0])
+                        if (kolejnosc[0] == allPlayers[0])
                         {
                             Settings.MirrorRotationAndOnLogic_Graph(1); //obraca karty i zmienia gracza.
                         }
@@ -225,19 +243,19 @@ public class GameManager : MonoBehaviour
                             Settings.MirrorRotationAndOnLogic_Graph(-1);
                         }
                     }
-                    else 
+                    else
                     {
                         indeks = 0;
                         currentPlayer.OnLogicAndGraphic();
                     }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza0
                     currentPlayer.built = 1;
-                    if (currentPlayer.heroCard.card.logic!=null)
+                    if (currentPlayer.heroCard.card.logic != null)
                     {
                         currentPlayer.heroCard.card.logic.OnStart();
                     }
                     Settings.ActivateButtons(true);
-                    if (currentPlayer.heroCard.card.value==1 || currentPlayer.heroCard.card.value== 2 || currentPlayer.heroCard.card.value== 3 || currentPlayer.heroCard.card.value== 8)
+                    if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || currentPlayer.heroCard.card.value == 8)
                     {
                         actionButton.gameObject.SetActive(true);
                     }
@@ -253,7 +271,7 @@ public class GameManager : MonoBehaviour
                         bt.gameObject.SetActive(false);
                     }
                     if (!endGame)
-                    {                       
+                    {
                         Settings.SortByKing();
                         indeks = kolejnosc.Count;
                         if (currentPlayer != kolejnosc[0])
