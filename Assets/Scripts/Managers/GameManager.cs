@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -139,12 +140,14 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentState.Tick(Time.deltaTime);
+        
 
         if (endTurn)
         {
             endTurn = false;
             currentPlayer.OffLogic();
             currentPlayer.OffGraphic();
+
             if (indeks < kolejnosc.Count - 1) //0<1
             {
                 if (heroTurn)

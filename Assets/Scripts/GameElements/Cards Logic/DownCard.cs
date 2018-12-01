@@ -16,9 +16,7 @@ public class DownCard: GE_Logic
             {
                 Settings.gameManager.kolejnosc[0].cardsDown.Remove(inst);
                 inst.viz.gameObject.SetActive(false);
-                Destroy(inst);
                // GameObject card =inst.GetComponent<GameObject>();
-               // card.SetActive(false);
                 //Destroy(card);
 
                 Settings.gameManager.actionButton.gameObject.SetActive(false);
