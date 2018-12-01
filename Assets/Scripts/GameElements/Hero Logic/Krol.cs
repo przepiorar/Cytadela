@@ -32,5 +32,4 @@ public class Krol : Hero_Logic
     public override void Active()
     {
     }
-
 }

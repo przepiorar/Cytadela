@@ -21,6 +21,6 @@ public class General : Hero_Logic
 
     public override void Active()
     {
-
+        Settings.gameManager.destroyBuilding = true;
     }
 }

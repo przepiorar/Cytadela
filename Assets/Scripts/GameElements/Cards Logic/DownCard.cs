@@ -10,6 +10,23 @@ public class DownCard: GE_Logic
 
     public override void OnClick(CardInstance inst)
     {
+        if (Settings.gameManager.currentPlayer.currentHero.value ==8 && Settings.gameManager.destroyBuilding)
+        {
+            if (Settings.gameManager.currentPlayer.currentGold >= inst.viz.card.value-1) //dopisac warunek na nieburzenie jesli ma sie max ilosc budynkow
+            {
+                Settings.gameManager.kolejnosc[0].cardsDown.Remove(inst);
+                inst.viz.gameObject.SetActive(false);
+                Destroy(inst);
+               // GameObject card =inst.GetComponent<GameObject>();
+               // card.SetActive(false);
+                //Destroy(card);
+
+                Settings.gameManager.actionButton.gameObject.SetActive(false);
+                Settings.gameManager.currentPlayer.currentGold -= inst.viz.card.value - 1;
+                Settings.gameManager.currentPlayer.UpdateGold();
+            }
+            Settings.gameManager.destroyBuilding = false;
+        }
         Debug.Log("this card is on table");
     }
 

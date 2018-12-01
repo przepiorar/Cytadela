@@ -19,7 +19,7 @@ public class MouseOverDetection : Actions
             {
                // if (Settings.lastCard == r)
                 //Settings.lastCard = r;
-                Settings.time += Time.deltaTime;
+                Settings.time += d;
                 if (Settings.time >=2f)
                 {
                     Settings.time = 0;

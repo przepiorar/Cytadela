@@ -156,6 +156,5 @@ public static class Settings
         gameManager.picked = !b;
         gameManager.goldButton.gameObject.SetActive(b);
         gameManager.cardButton.gameObject.SetActive(b);
-
     }
 }

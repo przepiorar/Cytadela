@@ -44,16 +44,19 @@ public class GameManager : MonoBehaviour
     public int kingIndeks;
     [System.NonSerialized]
     public int robberyIndeks;
+    [System.NonSerialized]
+    public bool destroyBuilding;
 
     private void Start()
     {
         Settings.gameManager = this;
         int a;
-        endText.text = "";
+        endText.gameObject.SetActive(false);
         endTurn = true;
         picked = false;
         endGame = false;
         heroTurn = false;
+        destroyBuilding = false;
         indeks = 1;
         currentPlayer = allPlayers[1];
 
@@ -103,6 +106,7 @@ public class GameManager : MonoBehaviour
     }
     public void ActionButton()
     {
+        Debug.Log("test");
         currentPlayer.heroCard.card.logic.Active();
     }
     public void KillButton(int a)
@@ -274,6 +278,7 @@ public class GameManager : MonoBehaviour
                     {
                         int score = 0;
                         int index = 0;
+                        endText.gameObject.SetActive(true);
                         endText.text = "Koniec gry! \n";
                         foreach (PlayerController pl in allPlayers)
                         {
