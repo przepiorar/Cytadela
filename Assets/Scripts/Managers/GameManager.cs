@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized]
     public int kingIndeks;
     [System.NonSerialized]
+    public int killedIndeks;
+    [System.NonSerialized]
     public int robberyIndeks;
     [System.NonSerialized]
     public bool destroyBuilding;
@@ -83,6 +85,8 @@ public class GameManager : MonoBehaviour
         }
         kolejnosc = allPlayers;
         kingIndeks = 0;
+        killedIndeks = -1;
+        robberyIndeks = -1;
     }
 
     public void EndTurnButton()
@@ -98,6 +102,20 @@ public class GameManager : MonoBehaviour
         if (heroTurn)
         {
             currentPlayer.OffLogic();
+        }
+        else
+        {
+            if (currentPlayer.currentHero != null && currentPlayer.currentHero.value == killedIndeks)
+            {
+                endTurn = true;
+            }
+            else
+            {
+                if (currentPlayer.heroCard.card.logic != null)
+                {
+                    currentPlayer.heroCard.card.logic.OnStart();
+                }
+            }
         }
     }
     public void PickCardButton()
@@ -134,7 +152,8 @@ public class GameManager : MonoBehaviour
                 if (currentPlayer.currentHero.value == 1)
                 {
                     pc.heroCard.LoadCard(pc.currentHero);
-                    kolejnosc.Remove(pc);
+                    killedIndeks = a;
+                   // kolejnosc.Remove(pc);
                     break;
                 }
                 else
@@ -146,11 +165,11 @@ public class GameManager : MonoBehaviour
         }
         if (currentPlayer.currentHero.value == 1)
         {
-            info += "\n zabójca zabija postać numer " + a;
+            info += "\nzabójca zabija postać numer " + a;
         }
         else
         {
-            info += "\n złodziej okrada postać numer " + a;
+            info += "\nzłodziej okrada postać numer " + a;
         }
         foreach (Button bt in Settings.gameManager.heroesButton)
         {
@@ -204,17 +223,17 @@ public class GameManager : MonoBehaviour
                     {
                         foreach (PlayerController pc in kolejnosc)
                         {
-                            pc.currentGold += currentPlayer.currentGold;
-                            currentPlayer.currentGold = 0;
-                            pc.UpdateGold();
-                            currentPlayer.UpdateGold();
+                            if (pc.currentHero.value == 2)
+                            {
+                                pc.currentGold += currentPlayer.currentGold;
+                                currentPlayer.currentGold = 0;
+                                pc.UpdateGold();
+                                currentPlayer.UpdateGold();
+                                break;
+                            }
                         }
                     }
                     currentPlayer.built = 1;
-                    if (currentPlayer.heroCard.card.logic != null)
-                    {
-                        currentPlayer.heroCard.card.logic.OnStart();
-                    }
                     Settings.ActivateButtons(true);
                     if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || (currentPlayer.heroCard.card.value == 8 && kolejnosc[0].heroCard.card.value !=5))
                     {
@@ -266,6 +285,8 @@ public class GameManager : MonoBehaviour
                 }
                 else//zaczyna sie wybieranie bohaterów
                 {
+                    killedIndeks = -1;
+                    robberyIndeks = -1;
                     Settings.ActivateButtons(false);
                     actionButton.gameObject.SetActive(false);
                     endButton.gameObject.SetActive(false);
