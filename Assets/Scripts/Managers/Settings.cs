@@ -45,6 +45,7 @@ public static class Settings
         gameManager.kolejnosc[gameManager.allPlayers.Count-1- gameManager.indeks].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
         GameObject.FindGameObjectWithTag("Selected").transform.localScale = new Vector3(1, a*1, 1);
         GameObject.FindGameObjectWithTag("Selected2").transform.localScale = new Vector3(1, a*1, 1);
+        gameManager.currentPlayer.PlayerCrown.transform.localScale = new Vector3(gameManager.currentPlayer.PlayerCrown.transform.localScale.x, a * gameManager.currentPlayer.PlayerCrown.transform.localScale.y, gameManager.currentPlayer.PlayerCrown.transform.localScale.z);
     }
 
     public static List<int> RandomHero()
@@ -130,7 +131,9 @@ public static class Settings
         {
             if (gameManager.allPlayers[i].currentHero != null && gameManager.allPlayers[i].currentHero.value == 4)
             {
+                gameManager.allPlayers[gameManager.kingIndeks].PlayerCrown.gameObject.SetActive(false);
                 gameManager.kingIndeks = i;
+                gameManager.allPlayers[gameManager.kingIndeks].PlayerCrown.gameObject.SetActive(true);
                 break;
             }
         }

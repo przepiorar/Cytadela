@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public CardVizu heroCard;
     public Text goldText;
     public Text PlayerNameText;
+    public Image PlayerCrown;
     [System.NonSerialized]
     public List<CardInstance> cardsHand = new List<CardInstance>();
     [System.NonSerialized]
