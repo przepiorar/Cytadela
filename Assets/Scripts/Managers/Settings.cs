@@ -24,7 +24,7 @@ public static class Settings
         c.localScale = Vector3.one;
     }
 
-    public static void MirrorRotationAndOnLogic_Graph(int a)
+    public static void MirrorRotation(int a)
     {
         if (gameManager.indeks + 1 >= gameManager.kolejnosc.Count)
         {
@@ -45,8 +45,6 @@ public static class Settings
         gameManager.kolejnosc[gameManager.allPlayers.Count-1- gameManager.indeks].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
         GameObject.FindGameObjectWithTag("Selected").transform.localScale = new Vector3(1, a*1, 1);
         GameObject.FindGameObjectWithTag("Selected2").transform.localScale = new Vector3(1, a*1, 1);
-
-        gameManager.currentPlayer.OnLogicAndGraphic();
     }
 
     public static List<int> RandomHero()
@@ -100,7 +98,6 @@ public static class Settings
                 pc.heroCard.gameObject.SetActive(false);
             }
         }
-
     }
 
     public static void SortByHero()

@@ -2055,6 +2055,7 @@ MonoBehaviour:
   startingLogic: {fileID: 11400000, guid: dcc148854224630468b4ad751f029498, type: 2}
   heroCard: {fileID: 975303144}
   goldText: {fileID: 477582959}
+  PlayerNameText: {fileID: 686993564}
 --- !u!4 &661868302
 Transform:
   m_ObjectHideFlags: 0
@@ -4662,7 +4663,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 330, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1340179036
 MonoBehaviour:
@@ -5816,6 +5817,7 @@ MonoBehaviour:
   startingLogic: {fileID: 11400000, guid: dcc148854224630468b4ad751f029498, type: 2}
   heroCard: {fileID: 1274344932}
   goldText: {fileID: 1646282070}
+  PlayerNameText: {fileID: 1118578345}
 --- !u!4 &2009884328
 Transform:
   m_ObjectHideFlags: 0
@@ -6111,6 +6113,7 @@ MonoBehaviour:
   - {fileID: 1222141344}
   - {fileID: 138842957}
   - {fileID: 1960904171}
+  windowText: {fileID: 1340179036}
 --- !u!1 &2090410148
 GameObject:
   m_ObjectHideFlags: 0

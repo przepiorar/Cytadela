@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public GE_Logic startingLogic;
     public CardVizu heroCard;
     public Text goldText;
+    public Text PlayerNameText;
     [System.NonSerialized]
     public List<CardInstance> cardsHand = new List<CardInstance>();
     [System.NonSerialized]

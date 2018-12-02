@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public Button endButton;
     public List<Button> heroesButton;
     public Canvas[] canvases;
+    public Text windowText;
 
     [System.NonSerialized]
     public Stack<Card> stackCards = new Stack<Card>();
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized]
     public bool destroyBuilding;
     [System.NonSerialized]
-    public bool nextPlayer;
+    public string info;
 
     private void Start()
     {
@@ -61,7 +62,6 @@ public class GameManager : MonoBehaviour
         endGame = false;
         heroTurn = false;
         destroyBuilding = false;
-        nextPlayer = false;
         indeks = 1;
         currentPlayer = allPlayers[1];
 
@@ -91,7 +91,14 @@ public class GameManager : MonoBehaviour
     }
     public void NextPlayerButton()
     {
-        nextPlayer = true;
+        canvases[0].gameObject.SetActive(true);
+        canvases[1].gameObject.SetActive(true);
+        canvases[2].gameObject.SetActive(false);
+        currentPlayer.OnLogicAndGraphic();
+        if (heroTurn)
+        {
+            currentPlayer.OffLogic();
+        }
     }
     public void PickCardButton()
     {
@@ -137,10 +144,18 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        if (currentPlayer.currentHero.value == 1)
+        {
+            info += "\n zabójca zabija postać numer " + a;
+        }
+        else
+        {
+            info += "\n złodziej okrada postać numer " + a;
+        }
         foreach (Button bt in Settings.gameManager.heroesButton)
         {
             bt.gameObject.SetActive(false);
-        }        
+        }
         actionButton.gameObject.SetActive(false);
     }
 
@@ -148,21 +163,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentState.Tick(Time.deltaTime);
-
-
+        
         if (endTurn)
         {
-            canvases[0].gameObject.SetActive(false);
-            canvases[1].gameObject.SetActive(false);
-            canvases[2].gameObject.SetActive(true);
             endTurn = false;
-        }
-        if (nextPlayer)
-        {
-            nextPlayer = false;
-            canvases[0].gameObject.SetActive(true);
-            canvases[1].gameObject.SetActive(false);
-            canvases[2].gameObject.SetActive(false);
             currentPlayer.OffLogic();
             currentPlayer.OffGraphic();
 
@@ -175,13 +179,12 @@ public class GameManager : MonoBehaviour
 
                     if (currentPlayer == allPlayers[0])
                     {
-                        Settings.MirrorRotationAndOnLogic_Graph(-1);
+                        Settings.MirrorRotation(-1);
                     }
                     else
                     {
-                        Settings.MirrorRotationAndOnLogic_Graph(1); //zmienia gracza na 0
+                        Settings.MirrorRotation(1); //zmienia gracza na 0
                     }
-                    currentPlayer.OffLogic();
                     Settings.ActivateButtons(false);
                     actionButton.gameObject.SetActive(false);
                     endButton.gameObject.SetActive(false);
@@ -190,11 +193,11 @@ public class GameManager : MonoBehaviour
                 {
                     if (currentPlayer == allPlayers[0])
                     {
-                        Settings.MirrorRotationAndOnLogic_Graph(-1);
+                        Settings.MirrorRotation(-1);
                     }
                     else
                     {
-                        Settings.MirrorRotationAndOnLogic_Graph(1); //zmienia gracza na 0
+                        Settings.MirrorRotation(1); //zmienia gracza na 0
                     }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
                     if (currentPlayer.currentHero.value == robberyIndeks)
@@ -213,7 +216,7 @@ public class GameManager : MonoBehaviour
                         currentPlayer.heroCard.card.logic.OnStart();
                     }
                     Settings.ActivateButtons(true);
-                    if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || currentPlayer.heroCard.card.value == 8)
+                    if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || (currentPlayer.heroCard.card.value == 8 && kolejnosc[0].heroCard.card.value !=5))
                     {
                         actionButton.gameObject.SetActive(true);
                     }
@@ -228,6 +231,7 @@ public class GameManager : MonoBehaviour
             {
                 if (heroTurn) //ukrycie kart bohaterow i przejscie do fazy budowania budynkow
                 {
+                    info = "";
                     currentPlayer.heroCard.art.sprite = rewersHero;
                     Settings.HeroPickFaze(false);
 
@@ -236,17 +240,16 @@ public class GameManager : MonoBehaviour
                     {
                         if (kolejnosc[0] == allPlayers[0])
                         {
-                            Settings.MirrorRotationAndOnLogic_Graph(1); //obraca karty i zmienia gracza.
+                            Settings.MirrorRotation(1); //obraca karty i zmienia gracza.
                         }
                         else
                         {
-                            Settings.MirrorRotationAndOnLogic_Graph(-1);
+                            Settings.MirrorRotation(-1);
                         }
                     }
                     else
                     {
                         indeks = 0;
-                        currentPlayer.OnLogicAndGraphic();
                     }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza0
                     currentPlayer.built = 1;
@@ -278,28 +281,33 @@ public class GameManager : MonoBehaviour
                         {
                             if (kolejnosc[0] == allPlayers[0])
                             {
-                                Settings.MirrorRotationAndOnLogic_Graph(1);//zmienia gracza na 0
+                                Settings.MirrorRotation(1);//zmienia gracza na 0
                             }
                             else
                             {
-                                Settings.MirrorRotationAndOnLogic_Graph(-1);
+                                Settings.MirrorRotation(-1);
                             }
                         }
                         else
                         {
                             indeks = 0;
-                            currentPlayer.OnLogicAndGraphic();
                         }
-                        currentPlayer.OffLogic();
                         Settings.HeroPickFaze(true);
                     }
-                    //koniec gry
                     // nie patrzec nizej !!!!
-                    else
+                    else //koniec gry
                     {
                         int score = 0;
                         int index = 0;
                         endText.gameObject.SetActive(true);
+                        if (currentPlayer == allPlayers[0])
+                        {
+                            Settings.MirrorRotation(-1);
+                        }
+                        else
+                        {
+                            Settings.MirrorRotation(1); //zmienia gracza na 0
+                        }
                         endText.text = "Koniec gry! \n";
                         foreach (PlayerController pl in allPlayers)
                         {
@@ -314,6 +322,15 @@ public class GameManager : MonoBehaviour
                         }
                     }
                 }
+            }
+            canvases[0].gameObject.SetActive(false);
+            canvases[1].gameObject.SetActive(false);
+            canvases[2].gameObject.SetActive(true);
+            //if(endGame){ windowText.text= koniec gry } // lub pominąć ten fragment
+            windowText.text = "nastepny gracz: " + currentPlayer.PlayerNameText.text;
+            if (!heroTurn)
+            {
+                windowText.text += "\nbohater o numerze " + currentPlayer.currentHero.value.ToString() + info;
             }
         }
     }
