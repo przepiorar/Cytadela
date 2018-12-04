@@ -11,7 +11,11 @@ public class MouseOverDetection : Actions
         List<RaycastResult> results = Settings.GetUIObjects();
         IClickable c = null;
         GameObject GameCard = GameObject.FindGameObjectWithTag("Selected2");
-        CurrentSelected2 card = GameCard.GetComponent<CurrentSelected2>();
+        CurrentSelected2 card = null;
+        if (GameCard != null)
+        {
+            card = GameCard.GetComponent<CurrentSelected2>();
+        }
         foreach (RaycastResult r in results)
         {
             c = r.gameObject.GetComponentInParent<IClickable>();
@@ -26,7 +30,10 @@ public class MouseOverDetection : Actions
             }
             else
             {
-                card.CloseCard();
+                if (card !=null)
+                {
+                    card.CloseCard();
+                }
             }
         }
     }
