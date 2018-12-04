@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Smocza Brama
   m_EditorClassIdentifier: 
   colour: purple
-  value: 6
+  value: 8
   sprite: {fileID: 21300000, guid: 5e29386695a64ca4ba570e77adbf0905, type: 3}
   logic: {fileID: 0}

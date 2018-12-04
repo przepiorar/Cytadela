@@ -22,10 +22,15 @@ public class MouseHoldWithCard : Actions
                 {
                     if (Settings.gameManager.currentPlayer.currentGold >= currentCard.value.viz.card.value && Settings.gameManager.currentPlayer.built>0)
                     {
-                        a.OnDrop();
                         Settings.gameManager.currentPlayer.currentGold -= currentCard.value.viz.card.value;
                         Settings.gameManager.currentPlayer.UpdateGold();
                         Settings.gameManager.currentPlayer.built--;
+                        if (currentCard.value.viz.card.colour == "bonus")
+                        {
+                            currentCard.value.viz.card.value = 8;
+                            currentCard.value.viz.card.colour = "purple";
+                        }
+                        a.OnDrop();
                     }
                     break;
                 }

@@ -13,7 +13,6 @@ public class HandCard : GE_Logic
 
     public override void OnClick(CardInstance inst)
     {
-        //  Debug.Log("this card is in hand");
         currentCard.Set(inst);
         Settings.gameManager.SetState(holdingCard);
 

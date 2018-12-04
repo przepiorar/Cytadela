@@ -21,6 +21,5 @@ public class Area : MonoBehaviour
         {
             Settings.gameManager.endGame = true;
         }
-        // Debug.Log("place card down");
     }
 }
