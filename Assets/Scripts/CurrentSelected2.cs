@@ -37,10 +37,4 @@ public class CurrentSelected2 : MonoBehaviour
         mTransform = this.transform;
         CloseCard(); //bo na początku nie mamy wybranej zadnej karty
     }
-
-    //public void Update()
-    //{
-    //    mTransform.position = Input.mousePosition;
-    //}
-
 }

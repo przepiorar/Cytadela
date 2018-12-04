@@ -107,7 +107,6 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Scripts\Actions\Actions.cs" />
-    <Compile Include="Assets\Scripts\Actions\MouseHighlight.cs" />
     <Compile Include="Assets\Scripts\Actions\MouseHoldWithCard.cs" />
     <Compile Include="Assets\Scripts\Actions\MouseOverDetection.cs" />
     <Compile Include="Assets\Scripts\Actions\OnMouseClick.cs" />

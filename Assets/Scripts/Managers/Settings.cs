@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 public static class Settings
 {
     public static GameManager gameManager;
-    public static float time;
-    //public static RaycastResult lastCard;
     public static List<RaycastResult> GetUIObjects()  // zwraca liste obiektów w które klikniemy
     {
         PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
@@ -45,7 +43,6 @@ public static class Settings
         gameManager.kolejnosc[gameManager.allPlayers.Count-1- gameManager.indeks].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
         GameObject.FindGameObjectWithTag("Selected").transform.localScale = new Vector3(1, a*1, 1);
         GameObject.FindGameObjectWithTag("Selected2").transform.localScale = new Vector3(1, a*1, 1);
-       // gameManager.currentPlayer.PlayerCrown.transform.localScale = new Vector3(2, a * 1.5f, 1.5f);
     }
 
     public static List<int> RandomHero()

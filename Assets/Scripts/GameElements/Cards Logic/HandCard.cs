@@ -21,6 +21,10 @@ public class HandCard : GE_Logic
         CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
         c.LoadCard();
 
+        GameObject GameCard1 = GameObject.FindGameObjectWithTag("Selected2");
+        CurrentSelected2 c1 = GameCard1.GetComponent<CurrentSelected2>();
+        c1.CloseCard();
+
         GameObject GameArea = GameObject.FindGameObjectWithTag("AreaParent");
         GameArea.SetActiveRecursively(true);
 
@@ -28,14 +32,7 @@ public class HandCard : GE_Logic
 
     public override void OnHighlight(CardInstance inst)
     {
-        if (currentCard.value !=null)
-        {
-            return;
-        }
-        currentCard.Set(inst);
-        Settings.gameManager.SetState(highlightCard);
-
-        
+        currentCard.Set(inst);        
         GameObject GameCard = GameObject.FindGameObjectWithTag("Selected2");
         CurrentSelected2 c = GameCard.GetComponent<CurrentSelected2>();
         c.LoadCard();
