@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         CardVizu viz = card.GetComponent<CardVizu>();
         viz.LoadCard(Settings.gameManager.stackCards.Pop());
         CardInstance inst = card.GetComponent<CardInstance>();
+        inst.player = this;
         cardsHand.Add(inst);
         inst.currentLogic = startingLogic;
         Settings.SetParentCard(card.transform,handGrid.transform);

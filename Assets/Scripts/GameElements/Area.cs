@@ -20,6 +20,10 @@ public class Area : MonoBehaviour
         if (Settings.gameManager.currentPlayer.cardsDown.Count == Settings.gameManager.cardsToEndGame)
         {
             Settings.gameManager.endGame = true;
+            if (Settings.gameManager.firstEnd == null)
+            {
+                Settings.gameManager.firstEnd = Settings.gameManager.currentPlayer;
+            }
         }
     }
 }

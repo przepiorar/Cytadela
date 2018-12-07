@@ -21,7 +21,7 @@ public class CurrentSelected2 : MonoBehaviour
         cardViz.gameObject.SetActive(true);
         mTransform.position = Input.mousePosition;  //zrobic sztuczke z sign
       // Debug.Log(mTransform.position.x); // pozycja myszki jest określana na podstawie rozdzielczości !!!!
-         int w = Screen.width;
+         float w = Screen.width;
         int h = Screen.height;
         if (mTransform.position.y <640*h/1020)
         {
@@ -35,11 +35,7 @@ public class CurrentSelected2 : MonoBehaviour
         {
           mTransform.position += new Vector3(200*w/1920, 0, 0);
         }
-        Vector3 s;
-        if (w < 1000)
-           s = Vector3.one * 1.5f;
-        else
-             s = Vector3.one * 2;
+        Vector3 s= Vector3.one *  (1.0f+(w/1920f));
         cardViz.gameObject.transform.localScale =s;
     }
 

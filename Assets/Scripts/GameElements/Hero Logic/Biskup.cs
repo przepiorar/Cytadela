@@ -10,7 +10,7 @@ public class Biskup : Hero_Logic
         int count = 0;
         foreach (CardInstance item in Settings.gameManager.currentPlayer.cardsDown)
         {
-            if (item.viz.card.colour == "blue")
+            if (item.viz.card.colour == "blue" || item.viz.card.sprite.name == "szkolaMagii")
             {
                 count++;
             }
