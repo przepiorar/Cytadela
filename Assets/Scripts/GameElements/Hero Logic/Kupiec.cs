@@ -10,7 +10,7 @@ public class Kupiec : Hero_Logic
         int count = 0;
         foreach (CardInstance item in Settings.gameManager.currentPlayer.cardsDown)
         {
-            if (item.viz.card.colour == "green")
+            if (item.viz.card.colour == "green" || item.viz.card.sprite.name == "szkolaMagii")
             {
                 count++;
             }            

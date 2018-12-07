@@ -1283,11 +1283,11 @@ RectTransform:
   m_Father: {fileID: 2013315446}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -550, y: -430}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -450, y: -450}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &477582959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,11 +2031,11 @@ RectTransform:
   m_Father: {fileID: 2013315446}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -800, y: -430}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -700, y: -450}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686993564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3125,11 +3125,11 @@ RectTransform:
   m_Father: {fileID: 2013315446}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -800, y: 430}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -700, y: 450}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1118578345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5257,11 +5257,11 @@ RectTransform:
   m_Father: {fileID: 2013315446}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -550, y: 430}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -450, y: 450}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646282070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6194,7 +6194,7 @@ MonoBehaviour:
   - {fileID: 71337471}
   - {fileID: 1061945633}
   startingGold: 2
-  cardsToEndGame: 2
+  cardsToEndGame: 5
   endText: {fileID: 1547184967}
   goldButton: {fileID: 1588211863}
   cardButton: {fileID: 708538480}

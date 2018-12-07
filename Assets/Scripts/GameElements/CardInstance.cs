@@ -6,6 +6,7 @@ public class CardInstance : MonoBehaviour, IClickable
 {
     public CardVizu viz;
     public GE_Logic currentLogic;
+    public PlayerController player;
 
     void Start()
     {

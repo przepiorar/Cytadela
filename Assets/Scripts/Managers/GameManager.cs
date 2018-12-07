@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     public bool destroyBuilding;
     [System.NonSerialized]
     public string info;
+    [System.NonSerialized]
+    public PlayerController firstEnd;
 
     private void Start()
     {
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
         destroyBuilding = false;
         indeks = 1;
         currentPlayer = allPlayers[1];
+        firstEnd = null;
 
         for (int i = allCards.Count - 1; i >= 0; i--)
         {
@@ -153,7 +156,6 @@ public class GameManager : MonoBehaviour
                 {
                     pc.heroCard.LoadCard(pc.currentHero);
                     killedIndeks = a;
-                   // kolejnosc.Remove(pc);
                     break;
                 }
                 else
@@ -272,10 +274,6 @@ public class GameManager : MonoBehaviour
                     }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza0
                     currentPlayer.built = 1;
-                    if (currentPlayer.heroCard.card.logic != null)
-                    {
-                        currentPlayer.heroCard.card.logic.OnStart();
-                    }
                     Settings.ActivateButtons(true);
                     if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || currentPlayer.heroCard.card.value == 8)
                     {
@@ -321,22 +319,57 @@ public class GameManager : MonoBehaviour
                         int score = 0;
                         int index = 0;
                         endText.gameObject.SetActive(true);
-                        if (currentPlayer == allPlayers[0])
+                        if (currentPlayer == allPlayers[1])
                         {
-                            Settings.MirrorRotation(-1);
-                        }
-                        else
-                        {
-                            Settings.MirrorRotation(1); //zmienia gracza na 0
+                            endText.transform.localScale = new Vector3(endText.transform.localScale.x, -1 * endText.transform.localScale.y, endText.transform.localScale.z);
                         }
                         endText.text = "Koniec gry! \n";
                         foreach (PlayerController pl in allPlayers)
                         {
-                            //pl.OnGraphic();
+                            pl.OnLogicAndGraphic();
+                            pl.OffLogic();
                             score = 0;
+                            bool[] colors = new bool[5];
+                            if (pl== firstEnd)
+                            {
+                                score += 2;
+                            }
+                            if (pl.cardsDown.Count >= cardsToEndGame)
+                            {
+                                score += 2;
+                            }
                             for (int i = 0; i < pl.cardsDown.Count; i++)
                             {
                                 score += pl.cardsDown[i].viz.card.value;
+                                switch (pl.cardsDown[i].viz.card.colour)
+                                {
+                                    case "red":
+                                        colors[0] = true;
+                                            break;
+                                    case "yellow":
+                                        colors[1] = true;
+                                        break;
+                                    case "green":
+                                        colors[2] = true;
+                                        break;
+                                    case "blue":
+                                        colors[3] = true;
+                                        break;
+                                    case "purple":
+                                        colors[4] = true;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            score += 3;
+                            for (int i = 0; i < colors.Length; i++)
+                            {
+                                if (colors[i] == false)
+                                {
+                                    score -= 3;
+                                    break;
+                                }
                             }
                             endText.text += "Gracz " + (index + 1) + " uzyskał: " + score + " punktów \n";
                             index++;
