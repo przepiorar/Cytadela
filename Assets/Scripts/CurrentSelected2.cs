@@ -19,7 +19,7 @@ public class CurrentSelected2 : MonoBehaviour
         
         cardViz.LoadCard(currentCard.value.viz.card);
         cardViz.gameObject.SetActive(true);
-        mTransform.position = Input.mousePosition;  //zrobic sztuczke z sign
+        mTransform.position = Input.mousePosition; 
       // Debug.Log(mTransform.position.x); // pozycja myszki jest określana na podstawie rozdzielczości !!!!
          float w = Screen.width;
         int h = Screen.height;

@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public Canvas[] canvases;
     public Text windowText;
 
+    public InputField[] inputs;
+
     [System.NonSerialized]
     public Stack<Card> stackCards = new Stack<Card>();
     [System.NonSerialized]
@@ -55,13 +57,28 @@ public class GameManager : MonoBehaviour
     public string info;
     [System.NonSerialized]
     public PlayerController firstEnd;
+    [System.NonSerialized]
+    public bool started;
 
     private void Start()
     {
         Settings.gameManager = this;
+        canvases[2].gameObject.SetActive(false);
+        canvases[3].gameObject.SetActive(true);
+        canvases[4].gameObject.SetActive(false);
+        canvases[5].gameObject.SetActive(false);
+        canvases[0].gameObject.SetActive(true);
+        canvases[1].gameObject.SetActive(true);
+
+        Init();
+
+    }
+
+    public void Init()
+    {
         int a;
         endText.gameObject.SetActive(false);
-        endTurn = true;
+        //endTurn = true;
         picked = false;
         endGame = false;
         heroTurn = false;
@@ -84,13 +101,20 @@ public class GameManager : MonoBehaviour
             player.PickCard();
             player.PickCard();
             player.UpdateGold();
-            player.heroCard.gameObject.SetActive(false);
+            player.heroCard.gameObject.SetActive(false);            
         }
         kolejnosc = allPlayers;
         kingIndeks = 0;
         killedIndeks = -1;
         robberyIndeks = -1;
-    }
+       // StartCoroutine(Wait());
+        endTurn = true;
+        started = false;
+        }
+    //IEnumerator Wait()
+    //{
+    //    yield return new WaitForSeconds(3);
+    //}
 
     public void EndTurnButton()
     {
@@ -180,11 +204,47 @@ public class GameManager : MonoBehaviour
         actionButton.gameObject.SetActive(false);
     }
 
+    public void EndPanel()
+    {
+        canvases[5].gameObject.SetActive(true);
+    }
+
+    public void EndGameButton()
+    {
+        Application.Quit();
+    }
+    public void LeftInGameButton()
+    {
+        canvases[5].gameObject.SetActive(false);
+    }
+    public void NewGameButton()
+    {
+        canvases[3].gameObject.SetActive(false);
+        canvases[4].gameObject.SetActive(true);
+    }
+    public void StartGameButton()
+    {
+        if (inputs[0].text !="" && inputs[1].text != "" && inputs[0].text.Length<11 && inputs[1].text.Length < 11 && inputs[0].text != inputs[1].text)
+        {
+            canvases[2].gameObject.SetActive(true);
+            canvases[4].gameObject.SetActive(false);
+            started = true;
+            allPlayers[0].PlayerNameText.text = inputs[0].text;
+            allPlayers[1].PlayerNameText.text = inputs[1].text;
+            windowText.text = "nastepny gracz: " + inputs[0].text;
+        }
+    }
+
 
     private void Update()
     {
         currentState.Tick(Time.deltaTime);
-        
+
+        if (Input.GetKey("escape"))
+        {
+            EndPanel();
+        }
+
         if (endTurn)
         {
             endTurn = false;
@@ -379,12 +439,19 @@ public class GameManager : MonoBehaviour
             }
             canvases[0].gameObject.SetActive(false);
             canvases[1].gameObject.SetActive(false);
-            canvases[2].gameObject.SetActive(true);
-            //if(endGame){ windowText.text= koniec gry } // lub pominąć ten fragment
-            windowText.text = "nastepny gracz: " + currentPlayer.PlayerNameText.text;
-            if (!heroTurn)
+            if (!started)
             {
-                windowText.text += "\nbohater o numerze " + currentPlayer.currentHero.value.ToString() + info;
+
+            }
+            else
+            {
+                canvases[2].gameObject.SetActive(true);
+                //if(endGame){ windowText.text= koniec gry } // lub pominąć ten fragment
+                windowText.text = "nastepny gracz: " + currentPlayer.PlayerNameText.text;
+                if (!heroTurn)
+                {
+                    windowText.text += "\nbohater o numerze " + currentPlayer.currentHero.value.ToString() + info;
+                }
             }
         }
     }
