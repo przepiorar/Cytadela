@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public Canvas[] canvases;
     public Text windowText;
     public InputField[] inputs;
+    public Text generalText;
 
     [System.NonSerialized]
     public Stack<Card> stackCards = new Stack<Card>();
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
         currentPlayer = allPlayers[1];
         firstEnd = null;
         actionStarted = false;
+        generalText.gameObject.SetActive(false);
 
         for (int i = allCards.Count - 1; i >= 0; i--)
         {
@@ -167,6 +169,11 @@ public class GameManager : MonoBehaviour
         {
             actionStarted = true;
             currentPlayer.heroCard.card.logic.Active();
+            if (currentPlayer.currentHero.value == 8)
+            {
+                generalText.gameObject.SetActive(true);
+                generalText.text = "burzenie aktywne";
+            }
         }
         else
         {
@@ -176,7 +183,12 @@ public class GameManager : MonoBehaviour
             {
                 bt.gameObject.SetActive(false);
             }
+            if (currentPlayer.currentHero.value == 8)
+            {
+                generalText.text = "burzenie nieaktywne";
+            }
         }
+
     }
     public void KillButton(int a)
     {
@@ -358,6 +370,7 @@ public class GameManager : MonoBehaviour
                     Settings.ActivateButtons(false);
                     actionButton.gameObject.SetActive(false);
                     endButton.gameObject.SetActive(false);
+                    generalText.gameObject.SetActive(false);
                     foreach (Button bt in Settings.gameManager.heroesButton)
                     {
                         bt.gameObject.SetActive(false);

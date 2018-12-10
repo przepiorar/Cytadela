@@ -24,6 +24,7 @@ public class DownCard: GE_Logic
                 Settings.gameManager.currentPlayer.currentGold -= (inst.viz.card.value - 1);
                 Settings.gameManager.currentPlayer.UpdateGold();
                 Settings.gameManager.destroyBuilding = false;
+                Settings.gameManager.generalText.gameObject.SetActive(false);
             }
         }
         Debug.Log("this card is on table");
