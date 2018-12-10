@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     public List<Button> heroesButton;
     public Canvas[] canvases;
     public Text windowText;
-
     public InputField[] inputs;
 
     [System.NonSerialized]
@@ -59,6 +58,8 @@ public class GameManager : MonoBehaviour
     public PlayerController firstEnd;
     [System.NonSerialized]
     public bool started;
+    [System.NonSerialized]
+    public bool actionStarted;
 
     private void Start()
     {
@@ -71,14 +72,12 @@ public class GameManager : MonoBehaviour
         canvases[1].gameObject.SetActive(true);
 
         Init();
-
     }
 
     public void Init()
     {
         int a;
         endText.gameObject.SetActive(false);
-        //endTurn = true;
         picked = false;
         endGame = false;
         heroTurn = false;
@@ -86,6 +85,7 @@ public class GameManager : MonoBehaviour
         indeks = 1;
         currentPlayer = allPlayers[1];
         firstEnd = null;
+        actionStarted = false;
 
         for (int i = allCards.Count - 1; i >= 0; i--)
         {
@@ -101,20 +101,15 @@ public class GameManager : MonoBehaviour
             player.PickCard();
             player.PickCard();
             player.UpdateGold();
-            player.heroCard.gameObject.SetActive(false);            
+            player.heroCard.gameObject.SetActive(false);
         }
         kolejnosc = allPlayers;
         kingIndeks = 0;
         killedIndeks = -1;
         robberyIndeks = -1;
-       // StartCoroutine(Wait());
         endTurn = true;
         started = false;
-        }
-    //IEnumerator Wait()
-    //{
-    //    yield return new WaitForSeconds(3);
-    //}
+    }
 
     public void EndTurnButton()
     {
@@ -168,7 +163,20 @@ public class GameManager : MonoBehaviour
     public void ActionButton()
     {
         Debug.Log("test");
-        currentPlayer.heroCard.card.logic.Active();
+        if (!actionStarted)
+        {
+            actionStarted = true;
+            currentPlayer.heroCard.card.logic.Active();
+        }
+        else
+        {
+            actionStarted = false;
+            Settings.gameManager.destroyBuilding = false;
+            foreach (Button bt in Settings.gameManager.heroesButton)
+            {
+                bt.gameObject.SetActive(false);
+            }
+        }
     }
     public void KillButton(int a)
     {
@@ -300,6 +308,7 @@ public class GameManager : MonoBehaviour
                     if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || (currentPlayer.heroCard.card.value == 8 && kolejnosc[0].heroCard.card.value !=5))
                     {
                         actionButton.gameObject.SetActive(true);
+                        actionStarted = false;
                     }
                     else actionButton.gameObject.SetActive(false);
                     foreach (Button bt in heroesButton)
@@ -338,6 +347,7 @@ public class GameManager : MonoBehaviour
                     if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || currentPlayer.heroCard.card.value == 8)
                     {
                         actionButton.gameObject.SetActive(true);
+                        actionStarted = false;
                     }
                     else actionButton.gameObject.SetActive(false);
                 }
