@@ -35,7 +35,7 @@ public class CurrentSelected2 : MonoBehaviour
         {
           mTransform.position += new Vector3(200*w/1920, 0, 0);
         }
-        Vector3 s= Vector3.one *  (1.0f+(w/1920f));
+        Vector3 s = Vector3.one * 1.5f;// (1.0f+(w/1920f));
         cardViz.gameObject.transform.localScale =s;
     }
 

@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
         canvases[5].gameObject.SetActive(false);
         canvases[0].gameObject.SetActive(true);
         canvases[1].gameObject.SetActive(true);
-
         Init();
     }
 
@@ -113,10 +112,12 @@ public class GameManager : MonoBehaviour
         started = false;
     }
 
+    //poczatek buttonow
     public void EndTurnButton()
     {
             endTurn = true;
     }
+
     public void NextPlayerButton()
     {
         canvases[0].gameObject.SetActive(true);
@@ -142,6 +143,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     public void PickCardButton()
     {
         if (!picked)
@@ -153,6 +155,7 @@ public class GameManager : MonoBehaviour
             Settings.ActivateButtons(false);
         }
     }
+
     public void PickGoldButton()
     {
         if (!picked)
@@ -162,6 +165,7 @@ public class GameManager : MonoBehaviour
             Settings.ActivateButtons(false);
         }
     }
+
     public void ActionButton()
     {
         Debug.Log("test");
@@ -190,6 +194,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
     public void KillButton(int a)
     {
         foreach (PlayerController pc in allPlayers)
@@ -200,28 +205,28 @@ public class GameManager : MonoBehaviour
                 {
                     pc.heroCard.LoadCard(pc.currentHero);
                     killedIndeks = a;
-                    break;
                 }
                 else
-                {
                     robberyIndeks = a;
-                    break;
-                }
+                break;
             }
         }
         if (currentPlayer.currentHero.value == 1)
-        {
             info += "\nzabójca zabija postać numer " + a;
-        }
         else
-        {
             info += "\nzłodziej okrada postać numer " + a;
-        }
+
         foreach (Button bt in Settings.gameManager.heroesButton)
         {
             bt.gameObject.SetActive(false);
         }
         actionButton.gameObject.SetActive(false);
+    }
+
+    public void NewGameButton()
+    {
+        canvases[3].gameObject.SetActive(false);
+        canvases[4].gameObject.SetActive(true);
     }
 
     public void EndPanel()
@@ -233,15 +238,12 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
-    public void LeftInGameButton()
+
+    public void StayInGameButton()
     {
         canvases[5].gameObject.SetActive(false);
     }
-    public void NewGameButton()
-    {
-        canvases[3].gameObject.SetActive(false);
-        canvases[4].gameObject.SetActive(true);
-    }
+
     public void StartGameButton()
     {
         if (inputs[0].text !="" && inputs[1].text != "" && inputs[0].text.Length<11 && inputs[1].text.Length < 11 && inputs[0].text != inputs[1].text)
@@ -254,7 +256,7 @@ public class GameManager : MonoBehaviour
             windowText.text = "nastepny gracz: " + inputs[0].text;
         }
     }
-
+    //koniec buttonow
 
     private void Update()
     {
@@ -317,7 +319,7 @@ public class GameManager : MonoBehaviour
                     }
                     currentPlayer.built = 1;
                     Settings.ActivateButtons(true);
-                    if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || (currentPlayer.heroCard.card.value == 8 && kolejnosc[0].heroCard.card.value !=5))
+                    if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || (currentPlayer.heroCard.card.value == 8 && kolejnosc[0].heroCard.card.value != 5))
                     {
                         actionButton.gameObject.SetActive(true);
                         actionStarted = false;
@@ -413,7 +415,7 @@ public class GameManager : MonoBehaviour
                             pl.OffLogic();
                             score = 0;
                             bool[] colors = new bool[5];
-                            if (pl== firstEnd)
+                            if (pl == firstEnd)
                             {
                                 score += 2;
                             }
@@ -428,7 +430,7 @@ public class GameManager : MonoBehaviour
                                 {
                                     case "red":
                                         colors[0] = true;
-                                            break;
+                                        break;
                                     case "yellow":
                                         colors[1] = true;
                                         break;
@@ -462,11 +464,7 @@ public class GameManager : MonoBehaviour
             }
             canvases[0].gameObject.SetActive(false);
             canvases[1].gameObject.SetActive(false);
-            if (!started)
-            {
-
-            }
-            else
+            if (started)
             {
                 canvases[2].gameObject.SetActive(true);
                 //if(endGame){ windowText.text= koniec gry } // lub pominąć ten fragment
