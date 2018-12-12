@@ -6320,7 +6320,7 @@ GameObject:
   - component: {fileID: 1496945265}
   m_Layer: 5
   m_Name: Current Highlighted Card
-  m_TagString: Selected2
+  m_TagString: Highlighted
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8342,7 +8342,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: b833ca67f5c1f0f4e8588f55dfd4585c, type: 2}
-  currentPlayer: {fileID: 661868301}
   allPlayers:
   - {fileID: 661868301}
   - {fileID: 2009884327}
@@ -8406,7 +8405,7 @@ MonoBehaviour:
   goldButton: {fileID: 1588211863}
   cardButton: {fileID: 708538480}
   actionButton: {fileID: 1608434328}
-  endButton: {fileID: 500768016}
+  endTurnButton: {fileID: 500768016}
   heroesButton:
   - {fileID: 1150895973}
   - {fileID: 520427048}
@@ -8423,10 +8422,8 @@ MonoBehaviour:
   - {fileID: 1042623668}
   - {fileID: 1105979532}
   windowText: {fileID: 1340179036}
-  inputs:
-  - {fileID: 639669141}
-  - {fileID: 2067155993}
-  generalText: {fileID: 62973113}
+  inputs: []
+  textForGeneral: {fileID: 62973113}
 --- !u!1 &2090410148
 GameObject:
   m_ObjectHideFlags: 0

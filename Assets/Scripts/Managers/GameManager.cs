@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public State currentState;
-    public PlayerController currentPlayer;
 
     public List<PlayerController> allPlayers = new List<PlayerController>();    
     public List<Card> allCards = new List<Card>();
@@ -16,25 +14,29 @@ public class GameManager : MonoBehaviour
     public Sprite rewersBud;
     public Sprite rewersHero;
     public List<CardVizu> HeroPickGrid = new List<CardVizu>();
-
     public int startingGold;
     public int cardsToEndGame;
-    public Text endText;
 
+    public Text endText;
     public Button goldButton;
     public Button cardButton;
     public Button actionButton;
-    public Button endButton;
+    public Button endTurnButton;
     public List<Button> heroesButton;
     public Canvas[] canvases;
     public Text windowText;
     public InputField[] inputs;
-    public Text generalText;
+    public Text textForGeneral;
 
     [System.NonSerialized]
-    public Stack<Card> stackCards = new Stack<Card>();
+    public PlayerController currentPlayer;
     [System.NonSerialized]
-    public bool endTurn;
+    public Stack<Card> stackCards = new Stack<Card>();
+    bool started;
+    bool endTurn;
+    bool actionStarted;
+    int killedIndeks;
+    int robberyIndeks;
     [System.NonSerialized]
     public bool picked; //gold or card
     [System.NonSerialized]
@@ -44,27 +46,19 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized]
     public bool heroTurn;    
     [System.NonSerialized]
-    public List<PlayerController> kolejnosc = new List<PlayerController>();
+    public List<PlayerController> order = new List<PlayerController>();
     [System.NonSerialized]
     public int kingIndeks;
     [System.NonSerialized]
-    public int killedIndeks;
-    [System.NonSerialized]
-    public int robberyIndeks;
-    [System.NonSerialized]
     public bool destroyBuilding;
-    [System.NonSerialized]
-    public string info;
     [System.NonSerialized]
     public PlayerController firstEnd;
     [System.NonSerialized]
-    public bool started;
-    [System.NonSerialized]
-    public bool actionStarted;
+    public string info;
 
     private void Start()
     {
-        Settings.gameManager = this;
+        Library.gameManager = this;
         canvases[2].gameObject.SetActive(false);
         canvases[3].gameObject.SetActive(true);
         canvases[4].gameObject.SetActive(false);
@@ -76,21 +70,25 @@ public class GameManager : MonoBehaviour
 
     public void Init()
     {
-        int a;
         endText.gameObject.SetActive(false);
+        textForGeneral.gameObject.SetActive(false);
+        endTurn = true;
+        started = false;
         picked = false;
         endGame = false;
         heroTurn = false;
         destroyBuilding = false;
         indeks = 1;
-        currentPlayer = allPlayers[1];
+        currentPlayer = allPlayers[indeks];
         firstEnd = null;
         actionStarted = false;
-        generalText.gameObject.SetActive(false);
+        kingIndeks = 0;
+        killedIndeks = -1;
+        robberyIndeks = -1;
 
         for (int i = allCards.Count - 1; i >= 0; i--)
         {
-            a = Random.Range(0, i + 1);
+            int a = Random.Range(0, i + 1);
             stackCards.Push(allCards[a]);
             allCards.RemoveAt(a);
         }
@@ -104,18 +102,13 @@ public class GameManager : MonoBehaviour
             player.UpdateGold();
             player.heroCard.gameObject.SetActive(false);
         }
-        kolejnosc = allPlayers;
-        kingIndeks = 0;
-        killedIndeks = -1;
-        robberyIndeks = -1;
-        endTurn = true;
-        started = false;
+        order = allPlayers;
     }
 
     //poczatek buttonow
     public void EndTurnButton()
     {
-            endTurn = true;
+        endTurn = true;
     }
 
     public void NextPlayerButton()
@@ -131,16 +124,10 @@ public class GameManager : MonoBehaviour
         else
         {
             if (currentPlayer.currentHero != null && currentPlayer.currentHero.value == killedIndeks)
-            {
                 endTurn = true;
-            }
             else
-            {
                 if (currentPlayer.heroCard.card.logic != null)
-                {
                     currentPlayer.heroCard.card.logic.OnStart();
-                }
-            }
         }
     }
 
@@ -149,7 +136,7 @@ public class GameManager : MonoBehaviour
         if (!picked)
         {
             currentPlayer.PickCard();
-            Settings.PickButtons(false);
+            Library.PickButtons(false);
         }
     }
 
@@ -159,7 +146,7 @@ public class GameManager : MonoBehaviour
         {
             currentPlayer.currentGold += 2;
             currentPlayer.UpdateGold();
-            Settings.PickButtons(false);
+            Library.PickButtons(false);
         }
     }
 
@@ -171,47 +158,47 @@ public class GameManager : MonoBehaviour
             currentPlayer.heroCard.card.logic.Active();
             if (currentPlayer.currentHero.value == 8)
             {
-                generalText.gameObject.SetActive(true);
-                generalText.text = "burzenie aktywne";
+                textForGeneral.gameObject.SetActive(true);
+                textForGeneral.text = "burzenie aktywne";
             }
         }
         else
         {
             actionStarted = false;
-            Settings.gameManager.destroyBuilding = false;
-            foreach (Button bt in Settings.gameManager.heroesButton)
+            destroyBuilding = false;
+            foreach (Button bt in heroesButton)
             {
                 bt.gameObject.SetActive(false);
             }
             if (currentPlayer.currentHero.value == 8)
             {
-                generalText.text = "burzenie nieaktywne";
+                textForGeneral.text = "burzenie nieaktywne";
             }
         }
     }
 
     public void KillButton(int a)
     {
-        foreach (PlayerController pc in allPlayers)
+        if (currentPlayer.currentHero.value == 1)
         {
-            if (pc.currentHero.value == a)
+            foreach (PlayerController pc in allPlayers)
             {
-                if (currentPlayer.currentHero.value == 1)
+                if (pc.currentHero.value == a)
                 {
                     pc.heroCard.LoadCard(pc.currentHero);
-                    killedIndeks = a;
+                    break;
                 }
-                else
-                    robberyIndeks = a;
-                break;
             }
-        }
-        if (currentPlayer.currentHero.value == 1)
+            killedIndeks = a;
             info += "\nzabójca zabija postać numer " + a;
+        }
         else
+        {
+            robberyIndeks = a;
             info += "\nzłodziej okrada postać numer " + a;
+        }       
 
-        foreach (Button bt in Settings.gameManager.heroesButton)
+        foreach (Button bt in heroesButton)
         {
             bt.gameObject.SetActive(false);
         }
@@ -222,21 +209,6 @@ public class GameManager : MonoBehaviour
     {
         canvases[3].gameObject.SetActive(false);
         canvases[4].gameObject.SetActive(true);
-    }
-
-    public void EndPanel()
-    {
-        canvases[5].gameObject.SetActive(true);
-    }
-
-    public void EndGameButton()
-    {
-        Application.Quit();
-    }
-
-    public void StayInGameButton()
-    {
-        canvases[5].gameObject.SetActive(false);
     }
 
     public void StartGameButton()
@@ -250,6 +222,21 @@ public class GameManager : MonoBehaviour
             allPlayers[1].PlayerNameText.text = inputs[1].text;
             windowText.text = "nastepny gracz: " + inputs[0].text;
         }
+    }
+
+    public void EndPanel()
+    {
+        canvases[5].gameObject.SetActive(true);
+    }
+
+    public void StayInGameButton()
+    {
+        canvases[5].gameObject.SetActive(false);
+    }
+
+    public void EndGameButton()
+    {
+        Application.Quit();
     }
     //koniec buttonow
 
@@ -268,27 +255,27 @@ public class GameManager : MonoBehaviour
             currentPlayer.OffLogic();
             currentPlayer.OffGraphic();
 
-            if (indeks < kolejnosc.Count - 1) //0<1
+            if (indeks < order.Count - 1) //0<1
             {
                 if (heroTurn)
                 {
                     currentPlayer.heroCard.art.sprite = rewersHero; //ukrycie bohatera wybranego przez gracza
-                    Settings.HidePickedHero(); //usuniecie z puli boh postaci wybranej przez gracza
+                    Library.HidePickedHero(); //usuniecie z puli boh postaci wybranej przez gracza
 
-                    Settings.MirrorRotation(); //zmienia gracza
+                    Library.MirrorRotation(); //zmienia gracza
 
-                    Settings.PickButtons(false);
+                    Library.PickButtons(false);
                     actionButton.gameObject.SetActive(false);
-                    endButton.gameObject.SetActive(false);
+                    endTurnButton.gameObject.SetActive(false);
                 }
                 else
                 {
-                    Settings.MirrorRotation(); //zmienia gracza
+                    Library.MirrorRotation(); //zmienia gracza
 
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
                     if (currentPlayer.currentHero.value == robberyIndeks)
                     {
-                        foreach (PlayerController pc in kolejnosc)
+                        foreach (PlayerController pc in order)
                         {
                             if (pc.currentHero.value == 2)
                             {
@@ -301,8 +288,8 @@ public class GameManager : MonoBehaviour
                         }
                     }
                     currentPlayer.built = 1;
-                    Settings.PickButtons(true);
-                    if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || (currentPlayer.heroCard.card.value == 8 && kolejnosc[0].heroCard.card.value != 5))
+                    Library.PickButtons(true);
+                    if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || (currentPlayer.heroCard.card.value == 8 && order[0].heroCard.card.value != 5))
                     {
                         actionButton.gameObject.SetActive(true);
                         actionStarted = false;
@@ -320,12 +307,12 @@ public class GameManager : MonoBehaviour
                 {
                     info = "";
                     currentPlayer.heroCard.art.sprite = rewersHero;
-                    Settings.HeroPickFaze(false);
+                    Library.HeroPickFaze(false);
 
-                    Settings.SortByHero();
-                    if (currentPlayer != kolejnosc[0])
+                    Library.SortByHero();
+                    if (currentPlayer != order[0])
                     {
-                        Settings.MirrorRotation(); //zmienia gracza
+                        Library.MirrorRotation(); //zmienia gracza
                     }
                     else
                     {
@@ -333,7 +320,7 @@ public class GameManager : MonoBehaviour
                     }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza0
                     currentPlayer.built = 1;
-                    Settings.PickButtons(true);
+                    Library.PickButtons(true);
                     if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || currentPlayer.heroCard.card.value == 8)
                     {
                         actionButton.gameObject.SetActive(true);
@@ -345,89 +332,31 @@ public class GameManager : MonoBehaviour
                 {
                     killedIndeks = -1;
                     robberyIndeks = -1;
-                    Settings.PickButtons(false);
+                    Library.PickButtons(false);
                     actionButton.gameObject.SetActive(false);
-                    endButton.gameObject.SetActive(false);
-                    generalText.gameObject.SetActive(false);
-                    foreach (Button bt in Settings.gameManager.heroesButton)
+                    endTurnButton.gameObject.SetActive(false);
+                    textForGeneral.gameObject.SetActive(false);
+                    foreach (Button bt in heroesButton)
                     {
                         bt.gameObject.SetActive(false);
                     }
                     if (!endGame)
                     {
-                        Settings.SortByKing();
-                        indeks = kolejnosc.Count;
-                        if (currentPlayer != kolejnosc[0])
+                        Library.SortByKing();
+                        indeks = order.Count;
+                        if (currentPlayer != order[0])
                         {
-                            Settings.MirrorRotation(); //zmienia gracza
+                            Library.MirrorRotation(); //zmienia gracza
                         }
                         else
                         {
                             indeks = 0;
                         }
-                        Settings.HeroPickFaze(true);
+                        Library.HeroPickFaze(true);
                     }
-                    // nie patrzec nizej !!!!
-                    else //koniec gry
+                    else
                     {
-                        int score = 0;
-                        int index = 0;
-                        endText.gameObject.SetActive(true);
-                        if (currentPlayer == allPlayers[1])
-                        {
-                            endText.transform.localScale = new Vector3(endText.transform.localScale.x, -1 * endText.transform.localScale.y, endText.transform.localScale.z);
-                        }
-                        endText.text = "Koniec gry! \n";
-                        foreach (PlayerController pl in allPlayers)
-                        {
-                            pl.OnLogicAndGraphic();
-                            pl.OffLogic();
-                            score = 0;
-                            bool[] colors = new bool[5];
-                            if (pl == firstEnd)
-                            {
-                                score += 2;
-                            }
-                            if (pl.cardsDown.Count >= cardsToEndGame)
-                            {
-                                score += 2;
-                            }
-                            for (int i = 0; i < pl.cardsDown.Count; i++)
-                            {
-                                score += pl.cardsDown[i].viz.card.value;
-                                switch (pl.cardsDown[i].viz.card.colour)
-                                {
-                                    case "red":
-                                        colors[0] = true;
-                                        break;
-                                    case "yellow":
-                                        colors[1] = true;
-                                        break;
-                                    case "green":
-                                        colors[2] = true;
-                                        break;
-                                    case "blue":
-                                        colors[3] = true;
-                                        break;
-                                    case "purple":
-                                        colors[4] = true;
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-                            score += 3;
-                            for (int i = 0; i < colors.Length; i++)
-                            {
-                                if (colors[i] == false)
-                                {
-                                    score -= 3;
-                                    break;
-                                }
-                            }
-                            endText.text += "Gracz " + (index + 1) + " uzyskał: " + score + " punktów \n";
-                            index++;
-                        }
+                        Library.EndGame();
                     }
                 }
             }
@@ -444,10 +373,5 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void SetState(State state)
-    {
-        currentState = state;
     }
 }

@@ -8,15 +8,15 @@ public class Krol : Hero_Logic
     public override void OnStart()
     {
         int count = 0;
-        foreach (CardInstance item in Settings.gameManager.currentPlayer.cardsDown)
+        foreach (CardInstance item in Library.gameManager.currentPlayer.cardsDown)
         {
             if (item.viz.card.colour == "yellow" || item.viz.card.sprite.name == "szkolaMagii")
             {
                 count++;
             }
         }
-        Settings.gameManager.currentPlayer.currentGold += count;
-        Settings.gameManager.currentPlayer.UpdateGold();
+        Library.gameManager.currentPlayer.currentGold += count;
+        Library.gameManager.currentPlayer.UpdateGold();
         // niepotrzebne
         //for (int i = 0; i < Settings.gameManager.allPlayers.Count; i++)
         //{

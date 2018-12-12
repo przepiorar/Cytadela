@@ -26,20 +26,20 @@ public class PlayerController : MonoBehaviour
 
     public void PickCard()
     {
-        GameObject card = Instantiate(Settings.gameManager.cardPrefab);// as GameObject;
+        GameObject card = Instantiate(Library.gameManager.cardPrefab);// as GameObject;
         CardVizu viz = card.GetComponent<CardVizu>();
-        viz.LoadCard(Settings.gameManager.stackCards.Pop());
+        viz.LoadCard(Library.gameManager.stackCards.Pop());
         CardInstance inst = card.GetComponent<CardInstance>();
         inst.player = this;
         cardsHand.Add(inst);
         inst.currentLogic = startingLogic;
-        Settings.SetParentCard(card.transform,handGrid.transform);
+        Library.SetParentCard(card.transform,handGrid.transform);
     }
     public void OffGraphic()
     {
         foreach (CardInstance inst in cardsHand)
         {
-            inst.viz.art.sprite = Settings.gameManager.rewersBud;
+            inst.viz.art.sprite = Library.gameManager.rewersBud;
         }
     }
     public void OffLogic()

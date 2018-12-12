@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public static class Settings
+public static class Library
 {
     public static GameManager gameManager;
     public static List<RaycastResult> GetUIObjects()  // zwraca liste obiektów w które klikniemy
@@ -12,6 +12,11 @@ public static class Settings
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerData, results);
         return results;
+    }
+
+    public static void SetState(State state)
+    {
+        gameManager.currentState = state;
     }
 
     public static void SetParentCard(Transform c, Transform p)
@@ -30,11 +35,11 @@ public static class Settings
         else
             a = 1;
 
-        if (gameManager.indeks + 1 >= gameManager.kolejnosc.Count)
+        if (gameManager.indeks + 1 >= gameManager.order.Count)
             gameManager.indeks = 0;
         else
             gameManager.indeks++;
-        gameManager.currentPlayer = gameManager.kolejnosc[gameManager.indeks];
+        gameManager.currentPlayer = gameManager.order[gameManager.indeks];
 
         GameObject[] test = GameObject.FindGameObjectsWithTag("test");
         foreach (GameObject item in test)
@@ -42,7 +47,7 @@ public static class Settings
             item.transform.localScale = new Vector3(item.transform.localScale.x, a * Mathf.Abs( item.transform.localScale.y), item.transform.localScale.z);
         }
         gameManager.currentPlayer.tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
-        gameManager.kolejnosc[gameManager.allPlayers.Count-1- gameManager.indeks].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
+        gameManager.order[gameManager.allPlayers.Count-1- gameManager.indeks].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
         GameObject.FindGameObjectWithTag("Selected").transform.localScale = new Vector3(1, a*1, 1);
         GameObject.FindGameObjectWithTag("Highlighted").transform.localScale = new Vector3(1, a*1, 1);
     }
@@ -102,22 +107,22 @@ public static class Settings
 
     public static void SortByHero()
     {
-        gameManager.kolejnosc = new List<PlayerController>();
-        gameManager.kolejnosc.Add(gameManager.allPlayers[0]);
+        gameManager.order = new List<PlayerController>();
+        gameManager.order.Add(gameManager.allPlayers[0]);
         for (int i = 1; i < gameManager.allPlayers.Count; i++)
         {
-            for (int j = 0; j < gameManager.kolejnosc.Count; j++)
+            for (int j = 0; j < gameManager.order.Count; j++)
             {
-                if (gameManager.allPlayers[i].currentHero.value < gameManager.kolejnosc[j].currentHero.value)
+                if (gameManager.allPlayers[i].currentHero.value < gameManager.order[j].currentHero.value)
                 {
-                    gameManager.kolejnosc.Insert(j, gameManager.allPlayers[i]);
+                    gameManager.order.Insert(j, gameManager.allPlayers[i]);
                     break;
                 }
                 else
                 {
-                    if (j + 1 == gameManager.kolejnosc.Count)
+                    if (j + 1 == gameManager.order.Count)
                     {
-                        gameManager.kolejnosc.Add(gameManager.allPlayers[i]);
+                        gameManager.order.Add(gameManager.allPlayers[i]);
                         break;
                     }
                 }
@@ -136,9 +141,9 @@ public static class Settings
                 break;
             }
         }
-        gameManager.kolejnosc = new List<PlayerController>();
-        int a = Settings.gameManager.kingIndeks;
-        gameManager.kolejnosc.Add(gameManager.allPlayers[a]);
+        gameManager.order = new List<PlayerController>();
+        int a = Library.gameManager.kingIndeks;
+        gameManager.order.Add(gameManager.allPlayers[a]);
         a++;
         for (int i = 1; i < gameManager.allPlayers.Count; i++)
         {
@@ -146,7 +151,7 @@ public static class Settings
             {
                 a = 0;
             }
-            gameManager.kolejnosc.Add(gameManager.allPlayers[a]);
+            gameManager.order.Add(gameManager.allPlayers[a]);
         }
     }
 
@@ -155,5 +160,67 @@ public static class Settings
         gameManager.picked = !b;
         gameManager.goldButton.gameObject.SetActive(b);
         gameManager.cardButton.gameObject.SetActive(b);
+    }
+
+    public static void EndGame()
+    {
+        int score = 0;
+        int index = 0;
+        gameManager.endText.gameObject.SetActive(true);
+        if (gameManager.currentPlayer == gameManager.allPlayers[1])
+        {
+            gameManager.endText.transform.localScale = new Vector3(gameManager.endText.transform.localScale.x, -1 * gameManager.endText.transform.localScale.y, gameManager.endText.transform.localScale.z);
+        }
+        gameManager.endText.text = "Koniec gry! \n";
+        foreach (PlayerController pl in gameManager.allPlayers)
+        {
+            pl.OnLogicAndGraphic();
+            pl.OffLogic();
+            score = 0;
+            bool[] colors = new bool[5];
+            if (pl == gameManager.firstEnd)
+            {
+                score += 2;
+            }
+            if (pl.cardsDown.Count >= gameManager.cardsToEndGame)
+            {
+                score += 2;
+            }
+            for (int i = 0; i < pl.cardsDown.Count; i++)
+            {
+                score += pl.cardsDown[i].viz.card.value;
+                switch (pl.cardsDown[i].viz.card.colour)
+                {
+                    case "red":
+                        colors[0] = true;
+                        break;
+                    case "yellow":
+                        colors[1] = true;
+                        break;
+                    case "green":
+                        colors[2] = true;
+                        break;
+                    case "blue":
+                        colors[3] = true;
+                        break;
+                    case "purple":
+                        colors[4] = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            score += 3;
+            for (int i = 0; i < colors.Length; i++)
+            {
+                if (colors[i] == false)
+                {
+                    score -= 3;
+                    break;
+                }
+            }
+            gameManager.endText.text += "Gracz " + (index + 1) + " uzyskał: " + score + " punktów \n";
+            index++;
+        }
     }
 }

@@ -8,15 +8,15 @@ public class Kupiec : Hero_Logic
     public override void OnStart()
     {
         int count = 0;
-        foreach (CardInstance item in Settings.gameManager.currentPlayer.cardsDown)
+        foreach (CardInstance item in Library.gameManager.currentPlayer.cardsDown)
         {
             if (item.viz.card.colour == "green" || item.viz.card.sprite.name == "szkolaMagii")
             {
                 count++;
             }            
         }
-        Settings.gameManager.currentPlayer.currentGold += count+1;
-        Settings.gameManager.currentPlayer.UpdateGold();
+        Library.gameManager.currentPlayer.currentGold += count+1;
+        Library.gameManager.currentPlayer.UpdateGold();
     }
 
     public override void Active()

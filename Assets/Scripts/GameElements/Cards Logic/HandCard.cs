@@ -14,7 +14,7 @@ public class HandCard : GE_Logic
     public override void OnClick(CardInstance inst)
     {
         currentCard.Set(inst);
-        Settings.gameManager.SetState(holdingCard);
+        Library.SetState(holdingCard);
 
         GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
         CurrentSelected c = GameCard.GetComponent<CurrentSelected>();

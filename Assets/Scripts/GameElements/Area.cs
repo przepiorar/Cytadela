@@ -12,17 +12,17 @@ public class Area : MonoBehaviour
         {
             return;
         }
-        Settings.SetParentCard(currentCard.value.transform, Settings.gameManager.currentPlayer.tableGrid.transform);
+        Library.SetParentCard(currentCard.value.transform, Library.gameManager.currentPlayer.tableGrid.transform);
         currentCard.value.gameObject.SetActive(true);
         currentCard.value.currentLogic = cardDownLogic;
-        Settings.gameManager.currentPlayer.cardsDown.Add(currentCard.value);
-        Settings.gameManager.currentPlayer.cardsHand.Remove(currentCard.value);
-        if (Settings.gameManager.currentPlayer.cardsDown.Count == Settings.gameManager.cardsToEndGame)
+        Library.gameManager.currentPlayer.cardsDown.Add(currentCard.value);
+        Library.gameManager.currentPlayer.cardsHand.Remove(currentCard.value);
+        if (Library.gameManager.currentPlayer.cardsDown.Count == Library.gameManager.cardsToEndGame)
         {
-            Settings.gameManager.endGame = true;
-            if (Settings.gameManager.firstEnd == null)
+            Library.gameManager.endGame = true;
+            if (Library.gameManager.firstEnd == null)
             {
-                Settings.gameManager.firstEnd = Settings.gameManager.currentPlayer;
+                Library.gameManager.firstEnd = Library.gameManager.currentPlayer;
             }
         }
     }

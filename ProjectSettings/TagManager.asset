@@ -9,6 +9,7 @@ TagManager:
   - AreaParent
   - Selected2
   - test
+  - Highlighted
   layers:
   - Default
   - TransparentFX

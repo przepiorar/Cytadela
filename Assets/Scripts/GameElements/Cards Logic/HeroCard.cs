@@ -10,17 +10,17 @@ public class HeroCard: GE_Logic
 
     public override void OnClick(CardInstance inst)
     {
-        Settings.gameManager.currentPlayer.heroCard.gameObject.SetActive(true);
-        Settings.gameManager.endButton.gameObject.SetActive(true);
-        Settings.gameManager.currentPlayer.currentHero = inst.viz.card;
-        Settings.gameManager.currentPlayer.heroCard.LoadCard(inst.viz.card);
-        if (Settings.gameManager.allPlayers[1] == Settings.gameManager.currentPlayer)
+        Library.gameManager.currentPlayer.heroCard.gameObject.SetActive(true);
+        Library.gameManager.endTurnButton.gameObject.SetActive(true);
+        Library.gameManager.currentPlayer.currentHero = inst.viz.card;
+        Library.gameManager.currentPlayer.heroCard.LoadCard(inst.viz.card);
+        if (Library.gameManager.allPlayers[1] == Library.gameManager.currentPlayer)
         {
-            Settings.gameManager.currentPlayer.heroCard.transform.localScale= new Vector3(0.8f, -0.8f, 0.8f);
+            Library.gameManager.currentPlayer.heroCard.transform.localScale= new Vector3(0.8f, -0.8f, 0.8f);
         }
         else
         {
-            Settings.gameManager.currentPlayer.heroCard.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            Library.gameManager.currentPlayer.heroCard.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         }
     }
 

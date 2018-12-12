@@ -8,19 +8,19 @@ public class General : Hero_Logic
     public override void OnStart()
     {
         int count = 0;
-        foreach (CardInstance item in Settings.gameManager.currentPlayer.cardsDown)
+        foreach (CardInstance item in Library.gameManager.currentPlayer.cardsDown)
         {
             if (item.viz.card.colour == "red" || item.viz.card.sprite.name == "szkolaMagii")
             {
                 count++;
             }
         }
-        Settings.gameManager.currentPlayer.currentGold += count;
-        Settings.gameManager.currentPlayer.UpdateGold();
+        Library.gameManager.currentPlayer.currentGold += count;
+        Library.gameManager.currentPlayer.UpdateGold();
     }
 
     public override void Active()
     {
-        Settings.gameManager.destroyBuilding = true;
+        Library.gameManager.destroyBuilding = true;
     }
 }

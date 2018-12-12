@@ -15,7 +15,7 @@ public class CurrentSelected : MonoBehaviour
             return;
         }
         
-        currentCard.value.gameObject.SetActive(false);
+        currentCard.value.gameObject.SetActive(false); //ukrycie karty na ręce
         cardViz.LoadCard(currentCard.value.viz.card);
         cardViz.gameObject.SetActive(true);
     }
@@ -29,7 +29,6 @@ public class CurrentSelected : MonoBehaviour
         mTransform = this.transform;
         CloseCard(); //bo na początku nie mamy wybranej zadnej karty
     }
-
     public void Update()
     {
         mTransform.position = Input.mousePosition;

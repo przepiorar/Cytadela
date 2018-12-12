@@ -12,7 +12,7 @@ public class Zabojca : Hero_Logic
 
     public override void Active()
     {
-        foreach (Button bt in Settings.gameManager.heroesButton)
+        foreach (Button bt in Library.gameManager.heroesButton)
         {
             bt.gameObject.SetActive(true);
         }

@@ -10,19 +10,19 @@ public class DownCard: GE_Logic
 
     public override void OnClick(CardInstance inst)
     {
-        if (Settings.gameManager.currentPlayer.currentHero.value ==8 && Settings.gameManager.destroyBuilding)
+        if (Library.gameManager.currentPlayer.currentHero.value ==8 && Library.gameManager.destroyBuilding)
         {
-            if (Settings.gameManager.currentPlayer.currentGold >= inst.viz.card.value-1 && inst.player.currentHero.value !=5 && inst.viz.card.sprite.name != "fort" &&
-                inst.player.cardsDown.Count < Settings.gameManager.cardsToEndGame)
+            if (Library.gameManager.currentPlayer.currentGold >= inst.viz.card.value-1 && inst.player.currentHero.value !=5 && inst.viz.card.sprite.name != "fort" &&
+                inst.player.cardsDown.Count < Library.gameManager.cardsToEndGame)
             {
                 inst.player.cardsDown.Remove(inst);
                 inst.viz.gameObject.SetActive(false);
 
-                Settings.gameManager.actionButton.gameObject.SetActive(false);
-                Settings.gameManager.currentPlayer.currentGold -= (inst.viz.card.value - 1);
-                Settings.gameManager.currentPlayer.UpdateGold();
-                Settings.gameManager.destroyBuilding = false;
-                Settings.gameManager.generalText.gameObject.SetActive(false);
+                Library.gameManager.actionButton.gameObject.SetActive(false);
+                Library.gameManager.currentPlayer.currentGold -= (inst.viz.card.value - 1);
+                Library.gameManager.currentPlayer.UpdateGold();
+                Library.gameManager.destroyBuilding = false;
+                Library.gameManager.textForGeneral.gameObject.SetActive(false);
             }
         }
     }

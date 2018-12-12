@@ -12,9 +12,9 @@ public class Zlodziej : Hero_Logic
 
     public override void Active()
     {
-        for (int i = 1 ; i < Settings.gameManager.heroesButton.Count; i++)
+        for (int i = 1 ; i < Library.gameManager.heroesButton.Count; i++)
         {
-            Settings.gameManager.heroesButton[i].gameObject.SetActive(true);
+            Library.gameManager.heroesButton[i].gameObject.SetActive(true);
         }
     }
 

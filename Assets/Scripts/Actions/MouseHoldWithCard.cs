@@ -12,18 +12,18 @@ public class MouseHoldWithCard : Actions
     {
         if (!Input.GetMouseButton(0))
         {
-            List<RaycastResult> results = Settings.GetUIObjects();
+            List<RaycastResult> results = Library.GetUIObjects();
             
             foreach (RaycastResult r in results)
             {
                 Area a = r.gameObject.GetComponentInParent<Area>();
                 if (a !=null)
                 {
-                    if (Settings.gameManager.currentPlayer.currentGold >= currentCard.value.viz.card.value && Settings.gameManager.currentPlayer.built>0)
+                    if (Library.gameManager.currentPlayer.currentGold >= currentCard.value.viz.card.value && Library.gameManager.currentPlayer.built>0)
                     {
-                        Settings.gameManager.currentPlayer.currentGold -= currentCard.value.viz.card.value;
-                        Settings.gameManager.currentPlayer.UpdateGold();
-                        Settings.gameManager.currentPlayer.built--;
+                        Library.gameManager.currentPlayer.currentGold -= currentCard.value.viz.card.value;
+                        Library.gameManager.currentPlayer.UpdateGold();
+                        Library.gameManager.currentPlayer.built--;
                         if (currentCard.value.viz.card.colour == "bonus")
                         {
                             currentCard.value.viz.card.value = 8;
@@ -37,7 +37,7 @@ public class MouseHoldWithCard : Actions
             currentCard.value.gameObject.SetActive(true);  //wracanie karty na rękę
             currentCard.value = null; 
             
-            Settings.gameManager.SetState(playerControlState);
+            Library.SetState(playerControlState);
 
             GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
             CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
