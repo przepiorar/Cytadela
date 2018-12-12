@@ -36,7 +36,7 @@ public static class Library
             gameManager.indeks++;
         gameManager.currentPlayer = gameManager.order[gameManager.indeks];
 
-        GameObject[] test = GameObject.FindGameObjectsWithTag("test");
+        GameObject[] test = GameObject.FindGameObjectsWithTag("Rotate");
         foreach (GameObject item in test)
         {
             item.transform.localScale = new Vector3(item.transform.localScale.x, a * Mathf.Abs( item.transform.localScale.y), item.transform.localScale.z);

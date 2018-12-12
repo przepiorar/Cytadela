@@ -1565,7 +1565,7 @@ GameObject:
   - component: {fileID: 477582959}
   m_Layer: 5
   m_Name: Player1Gold
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2125,7 +2125,7 @@ GameObject:
   - component: {fileID: 572404590}
   m_Layer: 5
   m_Name: Buttons
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2723,7 +2723,7 @@ GameObject:
   - component: {fileID: 686993564}
   m_Layer: 5
   m_Name: Player1Name
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3144,7 +3144,7 @@ GameObject:
   - component: {fileID: 800924918}
   m_Layer: 5
   m_Name: HeroPanel
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4086,7 +4086,7 @@ GameObject:
   - component: {fileID: 1118578345}
   m_Layer: 5
   m_Name: Player2Name
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4480,7 +4480,7 @@ GameObject:
   - component: {fileID: 1157642901}
   m_Layer: 5
   m_Name: 'Reverse '
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4516,7 +4516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1158541416}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Scaling objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4732,7 +4732,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1748247249969324, guid: 08232f578e8c8224a8e11410d14fd7d6, type: 2}
       propertyPath: m_TagString
-      value: test
+      value: Rotate
       objectReference: {fileID: 0}
     - target: {fileID: 224281214260890286, guid: 08232f578e8c8224a8e11410d14fd7d6,
         type: 2}
@@ -6008,7 +6008,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1748247249969324, guid: 08232f578e8c8224a8e11410d14fd7d6, type: 2}
       propertyPath: m_TagString
-      value: test
+      value: Rotate
       objectReference: {fileID: 0}
     - target: {fileID: 224281214260890286, guid: 08232f578e8c8224a8e11410d14fd7d6,
         type: 2}
@@ -6516,7 +6516,7 @@ GameObject:
   - component: {fileID: 1547184967}
   m_Layer: 5
   m_Name: Text
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6912,7 +6912,7 @@ GameObject:
   - component: {fileID: 1646282070}
   m_Layer: 5
   m_Name: Player2Gold
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7201,7 +7201,7 @@ GameObject:
   - component: {fileID: 1721843755}
   m_Layer: 5
   m_Name: Player2Crown
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7937,8 +7937,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2013315446}
   m_Layer: 5
-  m_Name: GameObject
-  m_TagString: test
+  m_Name: Scaling objects
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7986,7 +7986,7 @@ GameObject:
   - component: {fileID: 2014650864}
   m_Layer: 5
   m_Name: Player1Crown
-  m_TagString: test
+  m_TagString: Rotate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

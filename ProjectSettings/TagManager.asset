@@ -7,9 +7,8 @@ TagManager:
   - Selected
   - Area
   - AreaParent
-  - Selected2
-  - test
   - Highlighted
+  - Rotate
   layers:
   - Default
   - TransparentFX
