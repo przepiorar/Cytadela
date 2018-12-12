@@ -165,7 +165,6 @@ public class GameManager : MonoBehaviour
 
     public void ActionButton()
     {
-        Debug.Log("test");
         if (!actionStarted)
         {
             actionStarted = true;
