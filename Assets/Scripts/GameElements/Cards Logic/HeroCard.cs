@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Cards Logic/Hero Card")]
-public class HeroCard: GE_Logic
+public class HeroCard: CardLogic
 {
     public override void OnClick(CardInstance inst)
     {

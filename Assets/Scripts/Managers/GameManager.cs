@@ -347,13 +347,9 @@ public class GameManager : MonoBehaviour
                         Library.SortByKing();
                         indeks = order.Count;
                         if (currentPlayer != order[0])
-                        {
                             Library.MirrorRotation(); //zmienia gracza
-                        }
                         else
-                        {
                             indeks = 0;
-                        }
                         Library.HeroPickFaze(true);
                     }
                     else

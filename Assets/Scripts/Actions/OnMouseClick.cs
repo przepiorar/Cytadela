@@ -10,7 +10,7 @@ public class OnMouseClick : Actions
     {
         if (Input.GetMouseButtonDown(0))
         {
-            List<RaycastResult> results = Library.GetUIObjects();
+            List<RaycastResult> results = Library.GetUIElements();
             IClickable c = null;
             foreach (RaycastResult r in results)
             {

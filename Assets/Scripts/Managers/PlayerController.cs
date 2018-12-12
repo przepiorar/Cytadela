@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject handGrid;
     public GameObject tableGrid;
-    public GE_Logic startingLogic;
+    public CardLogic startingLogic;
     public CardVizu heroCard;
     public Text goldText;
     public Text PlayerNameText;

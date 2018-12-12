@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CurrentSelected : MonoBehaviour
 {
-   // public CardVariable currentCard;
     public CardVizu cardViz;
-    Transform mTransform;
+    Transform cardTransform;
 
     public void LoadCard()
     {
@@ -26,11 +25,11 @@ public class CurrentSelected : MonoBehaviour
     }
     private void Start()
     {
-        mTransform = this.transform;
+        cardTransform = this.transform;
         CloseCard(); //bo na początku nie mamy wybranej zadnej karty
     }
     public void Update()
     {
-        mTransform.position = Input.mousePosition;
+        cardTransform.position = Input.mousePosition;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public static class Library
 {
     public static GameManager gameManager;
-    public static List<RaycastResult> GetUIObjects()  // zwraca liste obiektów w które klikniemy
+    public static List<RaycastResult> GetUIElements()  // zwraca liste obiektów w które klikniemy
     {
         PointerEventData pointerData = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
         List<RaycastResult> results = new List<RaycastResult>();

@@ -6,12 +6,13 @@ using UnityEngine.EventSystems;
 [CreateAssetMenu(menuName = "Action/MouseHoldWithCard")]
 public class MouseHoldWithCard : Actions
 {
-    public State playerControlState;
+    public State newState;
+
     public override void Execute()
     {
         if (!Input.GetMouseButton(0))
         {
-            List<RaycastResult> results = Library.GetUIObjects();
+            List<RaycastResult> results = Library.GetUIElements();
             
             foreach (RaycastResult r in results)
             {
@@ -36,7 +37,7 @@ public class MouseHoldWithCard : Actions
             Library.gameManager.cardVariable.gameObject.SetActive(true);  //wracanie karty na rękę
             Library.gameManager.cardVariable = null; 
             
-            Library.gameManager.currentState = playerControlState;
+            Library.gameManager.currentState = newState;
 
             GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
             CurrentSelected c = GameCard.GetComponent<CurrentSelected>();

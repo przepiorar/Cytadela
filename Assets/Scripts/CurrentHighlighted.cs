@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CurrentHighlighted : MonoBehaviour
 {
-    //public CardVariable currentCard;
     public CardVizu cardViz;
-    Transform mTransform;
+    Transform cardTransform;
 
     public void LoadCard()
     {
@@ -17,21 +16,21 @@ public class CurrentHighlighted : MonoBehaviour
         
         cardViz.LoadCard(Library.gameManager.cardVariable.viz.card);
         cardViz.gameObject.SetActive(true);
-        mTransform.position = Input.mousePosition; 
-      // Debug.Log(mTransform.position.x); // pozycja myszki jest określana na podstawie rozdzielczości !!!!
+        cardTransform.position = Input.mousePosition; 
+        // pozycja myszki jest określana na podstawie rozdzielczości !!!!
         float w = Screen.width;
         float h = Screen.height;
-        if (mTransform.position.y <640*h/1020)
+        if (cardTransform.position.y <640*h/1020)
         {
-            mTransform.position += new Vector3(0, 150*h/1020, 0);
+            cardTransform.position += new Vector3(0, 150*h/1020, 0);
         }
         else
         {
-            mTransform.position += new Vector3(0, -150*h/1020, 0);
+            cardTransform.position += new Vector3(0, -150*h/1020, 0);
         }
-        if (mTransform.position.x<430*w/1920)
+        if (cardTransform.position.x<430*w/1920)
         {
-          mTransform.position += new Vector3(200*w/1920, 0, 0);
+          cardTransform.position += new Vector3(200*w/1920, 0, 0);
         }
         Vector3 s = Vector3.one * 1.5f;
         cardViz.gameObject.transform.localScale =s;
@@ -43,7 +42,7 @@ public class CurrentHighlighted : MonoBehaviour
     }
     private void Start()
     {
-        mTransform = this.transform;
+        cardTransform = this.transform;
         CloseCard(); //bo na początku nie mamy wybranej zadnej karty
     }
 }

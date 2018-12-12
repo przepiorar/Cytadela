@@ -1,18 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 [CreateAssetMenu(menuName = "Cards Logic/Hand Card ")]
-public class HandCard : GE_Logic
+public class HandCard : CardLogic
 {
-    public State holdingCard;  //na jaki state ma sie zmienic karta którą wezmiemy
+    public State newState;  //na jaki state ma sie zmienic karta którą wezmiemy
 
     public override void OnClick(CardInstance inst)
     {
         Library.gameManager.cardVariable = inst;
-        Library.gameManager.currentState = holdingCard;
+        Library.gameManager.currentState = newState;
 
         GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
         CurrentSelected c = GameCard.GetComponent<CurrentSelected>();

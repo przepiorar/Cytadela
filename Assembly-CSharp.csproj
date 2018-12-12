@@ -71,8 +71,8 @@
     <Compile Include="Assets\Scripts\CurrentSelected.cs" />
     <Compile Include="Assets\Scripts\GameElements\Area.cs" />
     <Compile Include="Assets\Scripts\GameElements\CardInstance.cs" />
+    <Compile Include="Assets\Scripts\GameElements\Cards Logic\CardLogic.cs" />
     <Compile Include="Assets\Scripts\GameElements\Cards Logic\DownCard.cs" />
-    <Compile Include="Assets\Scripts\GameElements\Cards Logic\GE_Logic.cs" />
     <Compile Include="Assets\Scripts\GameElements\Cards Logic\HandCard.cs" />
     <Compile Include="Assets\Scripts\GameElements\Cards Logic\HeroCard.cs" />
     <Compile Include="Assets\Scripts\GameElements\Hero Logic\Architekt.cs" />

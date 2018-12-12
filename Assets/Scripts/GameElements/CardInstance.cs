@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardInstance : MonoBehaviour, IClickable
 {
     public CardVizu viz;
-    public GE_Logic currentLogic;
+    public CardLogic currentLogic;
     public PlayerController player;
 
     void Start()
