@@ -14,11 +14,6 @@ public static class Library
         return results;
     }
 
-    public static void SetState(State state)
-    {
-        gameManager.currentState = state;
-    }
-
     public static void SetParentCard(Transform c, Transform p)
     {
         c.SetParent(p.transform);

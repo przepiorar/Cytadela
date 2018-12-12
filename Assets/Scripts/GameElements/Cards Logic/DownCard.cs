@@ -5,9 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Cards Logic/Down Card ")]
 public class DownCard: GE_Logic
 {
-    public CardVariable currentCard;
-    public State highlightCard;  //na jaki state ma sie zmienic karta którą wezmiemy
-
     public override void OnClick(CardInstance inst)
     {
         if (Library.gameManager.currentPlayer.currentHero.value ==8 && Library.gameManager.destroyBuilding)
@@ -24,12 +21,16 @@ public class DownCard: GE_Logic
                 Library.gameManager.destroyBuilding = false;
                 Library.gameManager.textForGeneral.gameObject.SetActive(false);
             }
+            else
+            {
+                Library.gameManager.ActionButton();
+            }
         }
     }
 
     public override void OnHighlight(CardInstance inst)
     {
-        currentCard.Set(inst);
+        Library.gameManager.cardVariable= inst;
         GameObject GameCard = GameObject.FindGameObjectWithTag("Highlighted");
         CurrentHighlighted c = GameCard.GetComponent<CurrentHighlighted>();
         c.LoadCard();

@@ -3,20 +3,19 @@ using System.Collections;
 
 public class Area : MonoBehaviour
 {
-    public CardVariable currentCard;
     public GE_Logic cardDownLogic;
 
     public void OnDrop()
     {
-        if (currentCard.value == null)
+        if (Library.gameManager.cardVariable == null)
         {
             return;
         }
-        Library.SetParentCard(currentCard.value.transform, Library.gameManager.currentPlayer.tableGrid.transform);
-        currentCard.value.gameObject.SetActive(true);
-        currentCard.value.currentLogic = cardDownLogic;
-        Library.gameManager.currentPlayer.cardsDown.Add(currentCard.value);
-        Library.gameManager.currentPlayer.cardsHand.Remove(currentCard.value);
+        Library.SetParentCard(Library.gameManager.cardVariable.transform, Library.gameManager.currentPlayer.tableGrid.transform);
+        Library.gameManager.cardVariable.gameObject.SetActive(true);
+        Library.gameManager.cardVariable.currentLogic = cardDownLogic;
+        Library.gameManager.currentPlayer.cardsDown.Add(Library.gameManager.cardVariable);
+        Library.gameManager.currentPlayer.cardsHand.Remove(Library.gameManager.cardVariable);
         if (Library.gameManager.currentPlayer.cardsDown.Count == Library.gameManager.cardsToEndGame)
         {
             Library.gameManager.endGame = true;

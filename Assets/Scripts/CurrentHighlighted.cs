@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class CurrentHighlighted : MonoBehaviour
 {
-    public CardVariable currentCard;
+    //public CardVariable currentCard;
     public CardVizu cardViz;
     Transform mTransform;
 
     public void LoadCard()
     {
-        if (currentCard.value == null)
+        if (Library.gameManager.cardVariable == null)
         {
             return;
         }
         
-        cardViz.LoadCard(currentCard.value.viz.card);
+        cardViz.LoadCard(Library.gameManager.cardVariable.viz.card);
         cardViz.gameObject.SetActive(true);
         mTransform.position = Input.mousePosition; 
       // Debug.Log(mTransform.position.x); // pozycja myszki jest określana na podstawie rozdzielczości !!!!

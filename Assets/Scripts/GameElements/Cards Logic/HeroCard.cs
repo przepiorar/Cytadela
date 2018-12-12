@@ -5,9 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Cards Logic/Hero Card")]
 public class HeroCard: GE_Logic
 {
-    public CardVariable currentCard;
-    public State highlightCard;  //na jaki state ma sie zmienic karta którą wezmiemy
-
     public override void OnClick(CardInstance inst)
     {
         Library.gameManager.currentPlayer.heroCard.gameObject.SetActive(true);
@@ -26,7 +23,7 @@ public class HeroCard: GE_Logic
 
     public override void OnHighlight(CardInstance inst)
     {
-        currentCard.Set(inst);
+        Library.gameManager.cardVariable = inst;
         GameObject GameCard = GameObject.FindGameObjectWithTag("Highlighted");
         CurrentHighlighted c = GameCard.GetComponent<CurrentHighlighted>();
         c.LoadCard();

@@ -3678,7 +3678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7706f5e68b4aee4eb32f49a87aa77e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCard: {fileID: 11400000, guid: 8b314642f446c624eb1d90d4e02f8f78, type: 2}
   cardViz: {fileID: 640111358}
 --- !u!1 &1009507264
 GameObject:
@@ -6307,7 +6306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06dd444a551ec1b4ba5419d93d43b831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCard: {fileID: 11400000, guid: 8b314642f446c624eb1d90d4e02f8f78, type: 2}
   cardDownLogic: {fileID: 11400000, guid: f81d6c9dfdf7b214e873fe1d6259ceab, type: 2}
 --- !u!1 &1496945263
 GameObject:
@@ -6355,7 +6353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c7d8f7eab0428459eff87e771fd8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCard: {fileID: 11400000, guid: 8b314642f446c624eb1d90d4e02f8f78, type: 2}
   cardViz: {fileID: 686182283}
 --- !u!1 &1503058375
 GameObject:
@@ -8422,7 +8419,9 @@ MonoBehaviour:
   - {fileID: 1042623668}
   - {fileID: 1105979532}
   windowText: {fileID: 1340179036}
-  inputs: []
+  inputs:
+  - {fileID: 639669141}
+  - {fileID: 2067155993}
   textForGeneral: {fileID: 62973113}
 --- !u!1 &2090410148
 GameObject:

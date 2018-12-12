@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
     public PlayerController firstEnd;
     [System.NonSerialized]
     public string info;
+    [System.NonSerialized]
+    public CardInstance cardVariable;
 
     private void Start()
     {

@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class CurrentSelected : MonoBehaviour
 {
-    public CardVariable currentCard;
+   // public CardVariable currentCard;
     public CardVizu cardViz;
     Transform mTransform;
 
     public void LoadCard()
     {
-        if (currentCard.value == null)
+        if (Library.gameManager.cardVariable == null)
         {
             return;
         }
-        
-        currentCard.value.gameObject.SetActive(false); //ukrycie karty na ręce
-        cardViz.LoadCard(currentCard.value.viz.card);
+
+        Library.gameManager.cardVariable.gameObject.SetActive(false); //ukrycie karty na ręce
+        cardViz.LoadCard(Library.gameManager.cardVariable.viz.card);
         cardViz.gameObject.SetActive(true);
     }
 

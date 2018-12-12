@@ -87,9 +87,8 @@
     <Compile Include="Assets\Scripts\GameElements\State.cs" />
     <Compile Include="Assets\Scripts\IClickable.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Managers\Library.cs" />
-    <Compile Include="Assets\Scripts\Variables\CardVariable.cs" />
+    <Compile Include="Assets\Scripts\Managers\PlayerController.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/VOBIS/Documents/GitHub/Cytadela/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

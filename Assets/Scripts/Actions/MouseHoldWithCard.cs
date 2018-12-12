@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class MouseHoldWithCard : Actions
 {
     public State playerControlState;
-    public CardVariable currentCard;
     public override void Execute()
     {
         if (!Input.GetMouseButton(0))
@@ -19,25 +18,25 @@ public class MouseHoldWithCard : Actions
                 Area a = r.gameObject.GetComponentInParent<Area>();
                 if (a !=null)
                 {
-                    if (Library.gameManager.currentPlayer.currentGold >= currentCard.value.viz.card.value && Library.gameManager.currentPlayer.built>0)
+                    if (Library.gameManager.currentPlayer.currentGold >= Library.gameManager.cardVariable.viz.card.value && Library.gameManager.currentPlayer.built>0)
                     {
-                        Library.gameManager.currentPlayer.currentGold -= currentCard.value.viz.card.value;
+                        Library.gameManager.currentPlayer.currentGold -= Library.gameManager.cardVariable.viz.card.value;
                         Library.gameManager.currentPlayer.UpdateGold();
                         Library.gameManager.currentPlayer.built--;
-                        if (currentCard.value.viz.card.colour == "bonus")
+                        if (Library.gameManager.cardVariable.viz.card.colour == "bonus")
                         {
-                            currentCard.value.viz.card.value = 8;
-                            currentCard.value.viz.card.colour = "purple";
+                            Library.gameManager.cardVariable.viz.card.value = 8;
+                            Library.gameManager.cardVariable.viz.card.colour = "purple";
                         }
                         a.OnDrop();
                     }
                     break;
                 }
             }
-            currentCard.value.gameObject.SetActive(true);  //wracanie karty na rękę
-            currentCard.value = null; 
+            Library.gameManager.cardVariable.gameObject.SetActive(true);  //wracanie karty na rękę
+            Library.gameManager.cardVariable = null; 
             
-            Library.SetState(playerControlState);
+            Library.gameManager.currentState = playerControlState;
 
             GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
             CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
@@ -45,8 +44,6 @@ public class MouseHoldWithCard : Actions
 
             GameObject GameArea= GameObject.FindGameObjectWithTag("Area");
             GameArea.SetActive(false);
-
-            return;
         }
     }
 }

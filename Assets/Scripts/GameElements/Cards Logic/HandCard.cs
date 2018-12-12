@@ -7,14 +7,12 @@ using UnityEngine.EventSystems;
 [CreateAssetMenu(menuName = "Cards Logic/Hand Card ")]
 public class HandCard : GE_Logic
 {
-   public CardVariable currentCard;
     public State holdingCard;  //na jaki state ma sie zmienic karta którą wezmiemy
-    public State highlightCard;  //na jaki state ma sie zmienic karta którą wezmiemy
 
     public override void OnClick(CardInstance inst)
     {
-        currentCard.Set(inst);
-        Library.SetState(holdingCard);
+        Library.gameManager.cardVariable = inst;
+        Library.gameManager.currentState = holdingCard;
 
         GameObject GameCard = GameObject.FindGameObjectWithTag("Selected");
         CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
@@ -31,7 +29,7 @@ public class HandCard : GE_Logic
 
     public override void OnHighlight(CardInstance inst)
     {
-        currentCard.Set(inst);        
+        Library.gameManager.cardVariable = inst;        
         GameObject GameCard = GameObject.FindGameObjectWithTag("Highlighted");
         CurrentHighlighted c = GameCard.GetComponent<CurrentHighlighted>();
         c.LoadCard();
