@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject cardPrefab;
     public Sprite rewersBud;
     public Sprite rewersHero;
-    public List<CardVizu> HeroPickGrid = new List<CardVizu>();
+    public List<CardVizual> HeroPickGrid = new List<CardVizual>();
     public int startingGold;
     public int cardsToEndGame;
 
@@ -244,7 +244,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        currentState.Tick();
+        currentState.Perform();
 
         if (Input.GetKey("escape"))
         {

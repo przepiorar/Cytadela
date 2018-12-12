@@ -7,12 +7,11 @@ public class State : ScriptableObject
 {
     public Actions[] actions;
 
-    public void Tick()
+    public void Perform()
     {
         for (int i = 0; i < actions.Length; i++)
         {
             actions[i].Execute();
         }
     }
-
 }

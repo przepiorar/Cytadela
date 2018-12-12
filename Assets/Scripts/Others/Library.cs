@@ -82,7 +82,7 @@ public static class Library
     public static void HeroPickFaze(bool b)
     {
         gameManager.heroTurn = b;
-        foreach (CardVizu item in gameManager.HeroPickGrid) //ukrycie/pokazanie postaci do wybrania
+        foreach (CardVizual item in gameManager.HeroPickGrid) //ukrycie/pokazanie postaci do wybrania
         {
             item.gameObject.SetActive(b);
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CurrentSelected : MonoBehaviour
 {
-    public CardVizu cardViz;
+    public CardVizual cardViz;
     Transform cardTransform;
 
     public void LoadCard()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardVizu : MonoBehaviour {
+public class CardVizual : MonoBehaviour {
 
     public Image art;
     public Card card;

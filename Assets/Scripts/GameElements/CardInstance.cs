@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CardInstance : MonoBehaviour, IClickable
 {
-    public CardVizu viz;
+    public CardVizual viz;
     public CardLogic currentLogic;
     public PlayerController player;
 
     void Start()
     {
-        viz = GetComponent<CardVizu>();
+        viz = GetComponent<CardVizual>();
     }
 
     public void OnClick()

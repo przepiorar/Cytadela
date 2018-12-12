@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public GameObject handGrid;
     public GameObject tableGrid;
     public CardLogic startingLogic;
-    public CardVizu heroCard;
+    public CardVizual heroCard;
     public Text goldText;
     public Text PlayerNameText;
     public Image PlayerCrown;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public void PickCard()
     {
         GameObject card = Instantiate(Library.gameManager.cardPrefab);// as GameObject;
-        CardVizu viz = card.GetComponent<CardVizu>();
+        CardVizual viz = card.GetComponent<CardVizual>();
         viz.LoadCard(Library.gameManager.stackCards.Pop());
         CardInstance inst = card.GetComponent<CardInstance>();
         inst.player = this;
