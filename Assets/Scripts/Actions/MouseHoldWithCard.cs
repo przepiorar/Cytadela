@@ -8,10 +8,9 @@ public class MouseHoldWithCard : Actions
 {
     public State playerControlState;
     public CardVariable currentCard;
-    public override void Execute(float d)
+    public override void Execute()
     {
-        bool mouseIsDown = Input.GetMouseButton(0);
-        if (!mouseIsDown)
+        if (!Input.GetMouseButton(0))
         {
             List<RaycastResult> results = Settings.GetUIObjects();
             

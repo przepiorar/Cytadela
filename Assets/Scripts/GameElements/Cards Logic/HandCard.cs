@@ -20,8 +20,8 @@ public class HandCard : GE_Logic
         CurrentSelected c = GameCard.GetComponent<CurrentSelected>();
         c.LoadCard();
 
-        GameObject GameCard1 = GameObject.FindGameObjectWithTag("Selected2");
-        CurrentSelected2 c1 = GameCard1.GetComponent<CurrentSelected2>();
+        GameObject GameCard1 = GameObject.FindGameObjectWithTag("Highlighted");
+        CurrentHighlighted c1 = GameCard1.GetComponent<CurrentHighlighted>();
         c1.CloseCard();
 
         GameObject GameArea = GameObject.FindGameObjectWithTag("AreaParent");
@@ -32,8 +32,8 @@ public class HandCard : GE_Logic
     public override void OnHighlight(CardInstance inst)
     {
         currentCard.Set(inst);        
-        GameObject GameCard = GameObject.FindGameObjectWithTag("Selected2");
-        CurrentSelected2 c = GameCard.GetComponent<CurrentSelected2>();
+        GameObject GameCard = GameObject.FindGameObjectWithTag("Highlighted");
+        CurrentHighlighted c = GameCard.GetComponent<CurrentHighlighted>();
         c.LoadCard();
     }
 }

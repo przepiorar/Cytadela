@@ -6,14 +6,15 @@ using UnityEngine.EventSystems;
 [CreateAssetMenu(menuName = "Action/OnMouseClick")]
 public class OnMouseClick : Actions
 {
-    public override void Execute(float d)
+    public override void Execute()
     {
         if (Input.GetMouseButtonDown(0))
         {
             List<RaycastResult> results = Settings.GetUIObjects();
+            IClickable c = null;
             foreach (RaycastResult r in results)
             {
-                IClickable c = r.gameObject.GetComponentInParent<IClickable>();
+                 c = r.gameObject.GetComponentInParent<IClickable>();
                 if (c != null)
                 {
                     c.OnClick();

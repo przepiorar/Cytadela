@@ -6,16 +6,18 @@ using UnityEngine.EventSystems;
 [CreateAssetMenu(menuName = "Action/MouseOverDetection")]
 public class MouseOverDetection : Actions
 {
-    public override void Execute(float d)
+    public override void Execute()
     {
         List<RaycastResult> results = Settings.GetUIObjects();
         IClickable c = null;
-        GameObject GameCard = GameObject.FindGameObjectWithTag("Selected2");
-        CurrentSelected2 card = null;
+
+        GameObject GameCard = GameObject.FindGameObjectWithTag("Highlighted");
+        CurrentHighlighted card = null;
         if (GameCard != null)
         {
-            card = GameCard.GetComponent<CurrentSelected2>();
+            card = GameCard.GetComponent<CurrentHighlighted>();
         }
+
         foreach (RaycastResult r in results)
         {
             c = r.gameObject.GetComponentInParent<IClickable>();

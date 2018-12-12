@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CurrentSelected2 : MonoBehaviour
+public class CurrentHighlighted : MonoBehaviour
 {
-
     public CardVariable currentCard;
     public CardVizu cardViz;
-
     Transform mTransform;
 
     public void LoadCard()
@@ -21,8 +19,8 @@ public class CurrentSelected2 : MonoBehaviour
         cardViz.gameObject.SetActive(true);
         mTransform.position = Input.mousePosition; 
       // Debug.Log(mTransform.position.x); // pozycja myszki jest określana na podstawie rozdzielczości !!!!
-         float w = Screen.width;
-        int h = Screen.height;
+        float w = Screen.width;
+        float h = Screen.height;
         if (mTransform.position.y <640*h/1020)
         {
             mTransform.position += new Vector3(0, 150*h/1020, 0);
@@ -35,7 +33,7 @@ public class CurrentSelected2 : MonoBehaviour
         {
           mTransform.position += new Vector3(200*w/1920, 0, 0);
         }
-        Vector3 s = Vector3.one * 1.5f;// (1.0f+(w/1920f));
+        Vector3 s = Vector3.one * 1.5f;
         cardViz.gameObject.transform.localScale =s;
     }
 

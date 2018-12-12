@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Actions : ScriptableObject
 {
-    public abstract void Execute(float d);
+    public abstract void Execute();
 }

@@ -22,16 +22,18 @@ public static class Settings
         c.localScale = Vector3.one;
     }
 
-    public static void MirrorRotation(int a)
+    public static void MirrorRotation()
     {
-        if (gameManager.indeks + 1 >= gameManager.kolejnosc.Count)
-        {
-            gameManager.indeks = 0;
-        }
+        int a;
+        if (gameManager.currentPlayer == gameManager.allPlayers[0])
+            a = -1;
         else
-        {
+            a = 1;
+
+        if (gameManager.indeks + 1 >= gameManager.kolejnosc.Count)
+            gameManager.indeks = 0;
+        else
             gameManager.indeks++;
-        }
         gameManager.currentPlayer = gameManager.kolejnosc[gameManager.indeks];
 
         GameObject[] test = GameObject.FindGameObjectsWithTag("test");
@@ -42,7 +44,7 @@ public static class Settings
         gameManager.currentPlayer.tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
         gameManager.kolejnosc[gameManager.allPlayers.Count-1- gameManager.indeks].tableGrid.transform.localScale = new Vector3(0.8f, a*0.8f, 0.8f);
         GameObject.FindGameObjectWithTag("Selected").transform.localScale = new Vector3(1, a*1, 1);
-        GameObject.FindGameObjectWithTag("Selected2").transform.localScale = new Vector3(1, a*1, 1);
+        GameObject.FindGameObjectWithTag("Highlighted").transform.localScale = new Vector3(1, a*1, 1);
     }
 
     public static List<int> RandomHero()
@@ -148,7 +150,7 @@ public static class Settings
         }
     }
 
-    public static void ActivateButtons(bool b)
+    public static void PickButtons(bool b)
     {
         gameManager.picked = !b;
         gameManager.goldButton.gameObject.SetActive(b);

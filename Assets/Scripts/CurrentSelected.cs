@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class CurrentSelected : MonoBehaviour
 {
-
     public CardVariable currentCard;
     public CardVizu cardViz;
-
     Transform mTransform;
 
     public void LoadCard()
@@ -36,5 +34,4 @@ public class CurrentSelected : MonoBehaviour
     {
         mTransform.position = Input.mousePosition;
     }
-
 }

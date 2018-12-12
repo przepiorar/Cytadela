@@ -27,8 +27,8 @@ public class HeroCard: GE_Logic
     public override void OnHighlight(CardInstance inst)
     {
         currentCard.Set(inst);
-        GameObject GameCard = GameObject.FindGameObjectWithTag("Selected2");
-        CurrentSelected2 c = GameCard.GetComponent<CurrentSelected2>();
+        GameObject GameCard = GameObject.FindGameObjectWithTag("Highlighted");
+        CurrentHighlighted c = GameCard.GetComponent<CurrentHighlighted>();
         c.LoadCard();
     }
 }

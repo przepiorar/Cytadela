@@ -149,10 +149,7 @@ public class GameManager : MonoBehaviour
         if (!picked)
         {
             currentPlayer.PickCard();
-            //picked = true;
-            //goldButton.gameObject.SetActive(false);
-            //cardButton.gameObject.SetActive(false);
-            Settings.ActivateButtons(false);
+            Settings.PickButtons(false);
         }
     }
 
@@ -162,7 +159,7 @@ public class GameManager : MonoBehaviour
         {
             currentPlayer.currentGold += 2;
             currentPlayer.UpdateGold();
-            Settings.ActivateButtons(false);
+            Settings.PickButtons(false);
         }
     }
 
@@ -192,7 +189,6 @@ public class GameManager : MonoBehaviour
                 generalText.text = "burzenie nieaktywne";
             }
         }
-
     }
 
     public void KillButton(int a)
@@ -260,7 +256,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        currentState.Tick(Time.deltaTime);
+        currentState.Tick();
 
         if (Input.GetKey("escape"))
         {
@@ -280,28 +276,16 @@ public class GameManager : MonoBehaviour
                     currentPlayer.heroCard.art.sprite = rewersHero; //ukrycie bohatera wybranego przez gracza
                     Settings.HidePickedHero(); //usuniecie z puli boh postaci wybranej przez gracza
 
-                    if (currentPlayer == allPlayers[0])
-                    {
-                        Settings.MirrorRotation(-1);
-                    }
-                    else
-                    {
-                        Settings.MirrorRotation(1); //zmienia gracza na 0
-                    }
-                    Settings.ActivateButtons(false);
+                    Settings.MirrorRotation(); //zmienia gracza
+
+                    Settings.PickButtons(false);
                     actionButton.gameObject.SetActive(false);
                     endButton.gameObject.SetActive(false);
                 }
                 else
                 {
-                    if (currentPlayer == allPlayers[0])
-                    {
-                        Settings.MirrorRotation(-1);
-                    }
-                    else
-                    {
-                        Settings.MirrorRotation(1); //zmienia gracza na 0
-                    }
+                    Settings.MirrorRotation(); //zmienia gracza
+
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
                     if (currentPlayer.currentHero.value == robberyIndeks)
                     {
@@ -318,7 +302,7 @@ public class GameManager : MonoBehaviour
                         }
                     }
                     currentPlayer.built = 1;
-                    Settings.ActivateButtons(true);
+                    Settings.PickButtons(true);
                     if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || (currentPlayer.heroCard.card.value == 8 && kolejnosc[0].heroCard.card.value != 5))
                     {
                         actionButton.gameObject.SetActive(true);
@@ -342,14 +326,7 @@ public class GameManager : MonoBehaviour
                     Settings.SortByHero();
                     if (currentPlayer != kolejnosc[0])
                     {
-                        if (kolejnosc[0] == allPlayers[0])
-                        {
-                            Settings.MirrorRotation(1); //obraca karty i zmienia gracza.
-                        }
-                        else
-                        {
-                            Settings.MirrorRotation(-1);
-                        }
+                        Settings.MirrorRotation(); //zmienia gracza
                     }
                     else
                     {
@@ -357,7 +334,7 @@ public class GameManager : MonoBehaviour
                     }
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza0
                     currentPlayer.built = 1;
-                    Settings.ActivateButtons(true);
+                    Settings.PickButtons(true);
                     if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || currentPlayer.heroCard.card.value == 8)
                     {
                         actionButton.gameObject.SetActive(true);
@@ -369,7 +346,7 @@ public class GameManager : MonoBehaviour
                 {
                     killedIndeks = -1;
                     robberyIndeks = -1;
-                    Settings.ActivateButtons(false);
+                    Settings.PickButtons(false);
                     actionButton.gameObject.SetActive(false);
                     endButton.gameObject.SetActive(false);
                     generalText.gameObject.SetActive(false);
@@ -383,14 +360,7 @@ public class GameManager : MonoBehaviour
                         indeks = kolejnosc.Count;
                         if (currentPlayer != kolejnosc[0])
                         {
-                            if (kolejnosc[0] == allPlayers[0])
-                            {
-                                Settings.MirrorRotation(1);//zmienia gracza na 0
-                            }
-                            else
-                            {
-                                Settings.MirrorRotation(-1);
-                            }
+                            Settings.MirrorRotation(); //zmienia gracza
                         }
                         else
                         {

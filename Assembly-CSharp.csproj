@@ -67,8 +67,8 @@
     <Compile Include="Assets\Scripts\Actions\OnMouseClick.cs" />
     <Compile Include="Assets\Scripts\Cards\Card.cs" />
     <Compile Include="Assets\Scripts\Cards\CardVizu.cs" />
+    <Compile Include="Assets\Scripts\CurrentHighlighted.cs" />
     <Compile Include="Assets\Scripts\CurrentSelected.cs" />
-    <Compile Include="Assets\Scripts\CurrentSelected2.cs" />
     <Compile Include="Assets\Scripts\GameElements\Area.cs" />
     <Compile Include="Assets\Scripts\GameElements\CardInstance.cs" />
     <Compile Include="Assets\Scripts\GameElements\Cards Logic\DownCard.cs" />

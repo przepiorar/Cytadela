@@ -11,5 +11,4 @@ public class CardVariable : ScriptableObject
     {
         this.value = value;
     }
-
 }

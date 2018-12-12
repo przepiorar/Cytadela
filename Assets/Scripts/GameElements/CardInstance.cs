@@ -21,13 +21,13 @@ public class CardInstance : MonoBehaviour, IClickable
         }
         currentLogic.OnClick(this);
     }
+
     public void OnHighlight()
     {
         if (currentLogic == null)
         {
             return;
         }
-        Debug.Log("highlights");
         currentLogic.OnHighlight(this);
     }
 }

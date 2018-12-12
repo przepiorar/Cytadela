@@ -12,13 +12,11 @@ public class DownCard: GE_Logic
     {
         if (Settings.gameManager.currentPlayer.currentHero.value ==8 && Settings.gameManager.destroyBuilding)
         {
-            if (Settings.gameManager.currentPlayer.currentGold >= inst.viz.card.value-1 && inst.player.currentHero.value !=5 && inst.viz.card.sprite.name != "fort" && inst.player.cardsDown.Count < Settings.gameManager.cardsToEndGame)
+            if (Settings.gameManager.currentPlayer.currentGold >= inst.viz.card.value-1 && inst.player.currentHero.value !=5 && inst.viz.card.sprite.name != "fort" &&
+                inst.player.cardsDown.Count < Settings.gameManager.cardsToEndGame)
             {
                 inst.player.cardsDown.Remove(inst);
                 inst.viz.gameObject.SetActive(false);
-
-                //GameObject card =inst.GetComponent<GameObject>();
-                //Destroy(card);
 
                 Settings.gameManager.actionButton.gameObject.SetActive(false);
                 Settings.gameManager.currentPlayer.currentGold -= (inst.viz.card.value - 1);
@@ -27,14 +25,13 @@ public class DownCard: GE_Logic
                 Settings.gameManager.generalText.gameObject.SetActive(false);
             }
         }
-        Debug.Log("this card is on table");
     }
 
     public override void OnHighlight(CardInstance inst)
     {
         currentCard.Set(inst);
-        GameObject GameCard = GameObject.FindGameObjectWithTag("Selected2");
-        CurrentSelected2 c = GameCard.GetComponent<CurrentSelected2>();
+        GameObject GameCard = GameObject.FindGameObjectWithTag("Highlighted");
+        CurrentHighlighted c = GameCard.GetComponent<CurrentHighlighted>();
         c.LoadCard();
     }
 }
