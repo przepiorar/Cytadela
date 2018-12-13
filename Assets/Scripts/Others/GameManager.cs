@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public List<CardVizual> HeroPickGrid = new List<CardVizual>();
     public int startingGold;
     public int cardsToEndGame;
+    public int maxCardsInHand;
 
     public Text endText;
     public Button goldButton;
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
 
     public void PickCardButton()
     {
-        if (!picked)
+        if (!picked && currentPlayer.cardsHand.Count < maxCardsInHand)
         {
             currentPlayer.PickCard();
             Library.PickButtons(false);
