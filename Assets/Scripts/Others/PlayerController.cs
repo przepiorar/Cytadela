@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     public void PickCard()
     {
-        GameObject card = Instantiate(Library.gameManager.cardPrefab);// as GameObject;
+        GameObject card = Instantiate(Library.gameManager.cardPrefab);
         CardVizual viz = card.GetComponent<CardVizual>();
         viz.LoadCard(Library.gameManager.stackCards.Pop());
         CardInstance inst = card.GetComponent<CardInstance>();

@@ -107,8 +107,7 @@ public class GameManager : MonoBehaviour
         }
         order = allPlayers;
     }
-
-    //poczatek buttonow
+    
     public void EndTurnButton()
     {
         endTurn = true;
@@ -241,7 +240,6 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
-    //koniec buttonow
 
     private void Update()
     {
@@ -258,7 +256,7 @@ public class GameManager : MonoBehaviour
             currentPlayer.OffLogic();
             currentPlayer.OffGraphic();
 
-            if (indeks < order.Count - 1) //0<1
+            if (indeks < order.Count - 1) 
             {
                 if (heroTurn)
                 {
@@ -304,7 +302,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            else //1==1
+            else
             {
                 if (heroTurn) //ukrycie kart bohaterow i przejscie do fazy budowania budynkow
                 {
@@ -364,11 +362,14 @@ public class GameManager : MonoBehaviour
             if (started)
             {
                 canvases[2].gameObject.SetActive(true);
-                //if(endGame){ windowText.text= koniec gry } // lub pominąć ten fragment
-                windowText.text = "nastepny gracz: " + currentPlayer.PlayerNameText.text;
-                if (!heroTurn)
+                if (endGame) { windowText.text = "koniec gry"; } // lub pominąć ten fragment
+                else
                 {
-                    windowText.text += "\nbohater o numerze " + currentPlayer.currentHero.value.ToString() + info;
+                    windowText.text = "nastepny gracz: " + currentPlayer.PlayerNameText.text;
+                    if (!heroTurn)
+                    {
+                        windowText.text += "\nbohater o numerze " + currentPlayer.currentHero.value.ToString() + info;
+                    }
                 }
             }
         }

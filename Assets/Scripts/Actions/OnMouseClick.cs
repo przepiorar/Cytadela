@@ -14,7 +14,7 @@ public class OnMouseClick : Actions
             IClickable c = null;
             foreach (RaycastResult r in results)
             {
-                 c = r.gameObject.GetComponentInParent<IClickable>();
+                c = r.gameObject.GetComponentInParent<IClickable>();
                 if (c != null)
                 {
                     c.OnClick();

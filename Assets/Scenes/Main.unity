@@ -4599,7 +4599,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Czy napewno chcesz wyj\u015B\u0107 ?"
+  m_Text: "Czy na pewno chcesz wyj\u015B\u0107 ?"
 --- !u!222 &1148852742
 CanvasRenderer:
   m_ObjectHideFlags: 0

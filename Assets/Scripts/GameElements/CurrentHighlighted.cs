@@ -17,7 +17,7 @@ public class CurrentHighlighted : MonoBehaviour
         cardViz.LoadCard(Library.gameManager.cardVariable.viz.card);
         cardViz.gameObject.SetActive(true);
         cardTransform.position = Input.mousePosition; 
-        // pozycja myszki jest określana na podstawie rozdzielczości !!!!
+        // pozycja myszki jest określana na podstawie rozdzielczości
         float w = Screen.width;
         float h = Screen.height;
         if (cardTransform.position.y <640*h/1020)
@@ -43,6 +43,6 @@ public class CurrentHighlighted : MonoBehaviour
     private void Start()
     {
         cardTransform = this.transform;
-        CloseCard(); //bo na początku nie mamy wybranej zadnej karty
+        CloseCard(); //na początku nie mamy wybranej zadnej karty
     }
 }
