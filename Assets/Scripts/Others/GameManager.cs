@@ -260,10 +260,10 @@ public class GameManager : MonoBehaviour
             {
                 if (heroTurn)
                 {
-                    currentPlayer.heroCard.art.sprite = rewersHero; //ukrycie bohatera wybranego przez gracza
-                    Library.HidePickedHero(); //usuniecie z puli boh postaci wybranej przez gracza
+                    currentPlayer.heroCard.art.sprite = rewersHero; 
+                    Library.HidePickedHero(); 
 
-                    Library.MirrorRotation(); //zmienia gracza
+                    Library.MirrorRotation(); 
 
                     Library.PickButtons(false);
                     actionButton.gameObject.SetActive(false);
@@ -271,7 +271,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    Library.MirrorRotation(); //zmienia gracza
+                    Library.MirrorRotation(); 
 
                     currentPlayer.heroCard.LoadCard(currentPlayer.currentHero);
                     if (currentPlayer.currentHero.value == robberyIndeks)
@@ -304,7 +304,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (heroTurn) //ukrycie kart bohaterow i przejscie do fazy budowania budynkow
+                if (heroTurn) 
                 {
                     info = "";
                     currentPlayer.heroCard.art.sprite = rewersHero;
@@ -313,13 +313,13 @@ public class GameManager : MonoBehaviour
                     Library.SortByHero();
                     if (currentPlayer != order[0])
                     {
-                        Library.MirrorRotation(); //zmienia gracza
+                        Library.MirrorRotation(); 
                     }
                     else
                     {
                         indeks = 0;
                     }
-                    currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); //wczytanie bohatera gracza0
+                    currentPlayer.heroCard.LoadCard(currentPlayer.currentHero); 
                     currentPlayer.built = 1;
                     Library.PickButtons(true);
                     if (currentPlayer.heroCard.card.value == 1 || currentPlayer.heroCard.card.value == 2 || currentPlayer.heroCard.card.value == 3 || currentPlayer.heroCard.card.value == 8)
@@ -329,7 +329,7 @@ public class GameManager : MonoBehaviour
                     }
                     else actionButton.gameObject.SetActive(false);
                 }
-                else//zaczyna sie wybieranie bohaterów
+                else
                 {
                     killedIndeks = -1;
                     robberyIndeks = -1;
@@ -346,7 +346,7 @@ public class GameManager : MonoBehaviour
                         Library.SortByKing();
                         indeks = order.Count;
                         if (currentPlayer != order[0])
-                            Library.MirrorRotation(); //zmienia gracza
+                            Library.MirrorRotation(); 
                         else
                             indeks = 0;
                         Library.HeroPickFaze(true);
@@ -362,7 +362,7 @@ public class GameManager : MonoBehaviour
             if (started)
             {
                 canvases[2].gameObject.SetActive(true);
-                if (endGame) { windowText.text = "koniec gry"; } // lub pominąć ten fragment
+                if (endGame) { windowText.text = "koniec gry"; } 
                 else
                 {
                     windowText.text = "nastepny gracz: " + currentPlayer.PlayerNameText.text;
