@@ -1,0 +1,33 @@
+﻿zółte:
+dwór
+zamek
+palac
+
+niebieskie:
+świątynia  jasne
+kościół
+klasztor
+katedra
+
+czerwone:
+strażnica 
+więzienie
+pole bitwy --
+forteca
+
+zielone:
+tawerna
+skład
+targowisko --  roz
+doki roz
+port jas
+ratusz jakosc  roz
+
+fioletowe
+uniwerek zedytowane ang  jas
+smocza brama
+szkoła magii
+fort 
+wielki mur --
+nawiedzone miasto --
+kuznia --  roz
