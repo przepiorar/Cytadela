@@ -1,4 +1,7 @@
 Implementacja gry karcianej "Cytadela".
-Projekt zosta≥ wykonany jako praca inøynierska.
-W celu stworzenia gry uøyto silnika Unity oraz jÍzyka C#. 
-Grafiki uøyte w grze pochodzπ w 100% z oryginalnej wersji gry.
+
+Projekt zosta≈Ç wykonany jako praca in≈ºynierska.
+
+W celu stworzenia gry u≈ºyto silnika Unity oraz jƒôzyka C#. 
+
+Grafiki u≈ºyte w grze pochodz≈° w 100% z oryginalnej wersji gry.
